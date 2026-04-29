@@ -1,0 +1,1237 @@
+{
+  "materials": [
+    {
+      "canonical_name": "U-10Mo",
+      "aliases": [
+        "U-10wt.%Mo",
+        "U-10 wt% Mo",
+        "U-10wt%Mo",
+        "U-10Mo (monolithic)",
+        "Monolithic U-10Mo",
+        "U-10Mo monolithic",
+        "U-10Mo (atomized)",
+        "U-10Mo (ground)",
+        "U-10at%Mo",
+        "U-10Mo (wt.%)",
+        "γU-10Mo",
+        "γU (U-10Mo)",
+        "bcc UMo",
+        "UMo (bcc)",
+        "UMo",
+        "U-10Mo (monolithic, recrystallized)",
+        "U-10Mo (irradiated)",
+        "U-10Mo (unirradiated)",
+        "U-10Mo (machined)",
+        "U-10Mo (foil)",
+        "U-10Mo (Xe gas)",
+        "Dense U-10Mo",
+        "U-10Mo (dense)",
+        "U-10Mo/Zr",
+        "U-10Mo/Zr/AA6061",
+        "U-10Mo/Al",
+        "U-Mo (U-10Mo)",
+        "U-10Mo (irradiated, L1P773)",
+        "U-10Mo (雾化粉)",
+        "U-10Mo (磨制粉)",
+        "Xe in U-10Mo",
+        "Xe gas in U-10Mo",
+        "U-10at%Mo (gamma phase)",
+        "U-10at%Mo (γ相)",
+        "UMo (atomized powder fuel)"
+      ],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-10 wt% Molybdenum alloy, primary monolithic research reactor fuel",
+      "param_count": 1005
+    },
+    {
+      "canonical_name": "UO2",
+      "aliases": [
+        "UO₂",
+        "UO2+x",
+        "UO2-x",
+        "UO2 (HBS)",
+        "UO2 composite",
+        "UO2-additive composite",
+        "UO2-BeO-Xe",
+        "UO2-Gd2O3",
+        "Cr-doped UO2",
+        "UO2, Cr-doped UO2",
+        "UO2/MOX",
+        "UO2/MOX/(U,Gd)O2",
+        "UO2/Zry",
+        "UO2/U-Zr",
+        "HCF (UO₂, 4.95%)",
+        "HCF (UO₂)",
+        "HCF",
+        "HCF (UO₂, 4.95% enriched)",
+        "UO2-BeO composite",
+        "Xe in UO2",
+        "UO2 vs U-10Mo"
+      ],
+      "alloy_system": "UO2",
+      "material_type": "FuelMaterial",
+      "description": "Uranium dioxide, most common commercial nuclear fuel",
+      "param_count": 715
+    },
+    {
+      "canonical_name": "U-Pu-Zr",
+      "aliases": [
+        "U-(Pu)-Zr",
+        "U-xPu-yZr",
+        "U-Pu-10Zr",
+        "U-Pu-Zr/HT9",
+        "U-Pu-Zr/Fe",
+        "U-Pu-Zr (γ)",
+        "U-Pu-Zr metallic fuel",
+        "U-Pu-Zr metallic fuel (fluff region)",
+        "U-Pu-Zr (αU phase)",
+        "U-Pu-Zr (αZr phase)",
+        "U-Pu-Zr (γ phase)",
+        "U-Pu-Zr (irradiated, 1.9% FIMA)",
+        "U-Pu-Zr metallic fuel (region 2 outer)",
+        "U-Pu-Zr metallic fuel (region 3-a)",
+        "HT9/U-Pu-Zr",
+        "U-Zr/U-Pu-Zr",
+        "U-Pu-Zr alloy",
+        "U-Pu alloy (no Zr)",
+        "U-19Pu-Zr",
+        "U-26Pu-10Zr/HT9",
+        "U-25Pu-10Zr/D9",
+        "U-25Pu-10Zr/HT9",
+        "U-19Pu-10Zr / HT-9"
+      ],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-Plutonium-Zirconium ternary metallic fuel for fast reactors",
+      "param_count": 653
+    },
+    {
+      "canonical_name": "U-Zr",
+      "aliases": [
+        "U, U-Zr metallic fuel",
+        "U, U-10Zr",
+        "U/U-10Zr",
+        "U-Zr/HT9",
+        "U-Zr/Fe",
+        "U-Zr/D9",
+        "U-Zr (β phase)",
+        "U-Zr (γ phase)",
+        "U-Zr (β-γ interface)",
+        "U-Zr (γ phase alloy)",
+        "U-Zr alloy",
+        "U-Zr system",
+        "U-Zr / HT9",
+        "U-Zr / U-Pu-Zr",
+        "U-Zr/steel",
+        "U-Zr/316SS",
+        "U-Zr-Xe ternary",
+        "γ-U-Zr",
+        "α-U-Zr, δ-UZr₂",
+        "U-Zr pore"
+      ],
+      "alloy_system": "U-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-Zirconium binary metallic fuel for fast reactors",
+      "param_count": 535
+    },
+    {
+      "canonical_name": "U-Mo",
+      "aliases": [
+        "UMo",
+        "U-Mo alloy",
+        "U-Mo (irradiated)",
+        "U-Mo (γ相)",
+        "U-Mo (γ phase)",
+        "U-Mo/Al板",
+        "U-Mo合金",
+        "U-Mo (雾化粉)",
+        "U-Mo with ZrN coating",
+        "U-Mo/ZrN",
+        "U-Mo-Xe ternary",
+        "γ-U-Mo",
+        "γ-U-Mo-Xe",
+        "γU-xMo",
+        "U-Mo based alloys",
+        "U-xMo",
+        "U-20at%Mo"
+      ],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-Molybdenum alloy system, used in research reactor dispersion and monolithic fuels",
+      "param_count": 481
+    },
+    {
+      "canonical_name": "α-U",
+      "aliases": [
+        "alpha-U",
+        "α(U)",
+        "α-U (orthorhombic)",
+        "α-U (U-Pu-Zr)",
+        "α-U (U-Zr fuel)",
+        "α(U) in U-10Zr fuel",
+        "α-U surface",
+        "α-U near HT-9 cladding",
+        "α-U with Zr precipitation",
+        "α-U (annular region)",
+        "bcc U"
+      ],
+      "alloy_system": "U",
+      "material_type": "FuelMaterial",
+      "description": "Alpha-uranium (orthorhombic), low-temperature phase of pure uranium",
+      "param_count": 417
+    },
+    {
+      "canonical_name": "U-10Zr",
+      "aliases": [
+        "U-10%Zr",
+        "U-10.9Zr",
+        "U-10Zr (α-U phase)",
+        "U-10Zr (γ phase)",
+        "U-10Zr (α-U)",
+        "U-10Zr (γ-U)",
+        "U-10Zr assembly",
+        "U-10Zr / Zr-4 clad",
+        "U-10Zr / Zr-4",
+        "U-10Zr annular fuel",
+        "U-10Zr (δ-UZr₂ phase)",
+        "U-10Zr (EBR-II X423)",
+        "U-10Zr annular fuel (AFC-3A R4)",
+        "U-10Zr (α-U, 1073 K extruded)",
+        "U-Zr (U-10Zr)",
+        "U-10at%Zr"
+      ],
+      "alloy_system": "U-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-10 wt% Zirconium alloy, reference metallic fuel composition",
+      "param_count": 259
+    },
+    {
+      "canonical_name": "Zircaloy",
+      "aliases": [
+        "Zircaloy-4",
+        "Zircaloy-2/4",
+        "Zr-4",
+        "Zr-2",
+        "Zircaloy (all types)",
+        "Zircaloy cladding",
+        "Zircaloy SRA",
+        "Zircaloy RXA",
+        "Zircaloy PRXA",
+        "Zircaloy-4 (alpha phase)",
+        "Zircaloy-4 (beta phase)",
+        "Zircaloy-4 (50%alpha+50%beta)",
+        "Zr cladding",
+        "Zr/H2O",
+        "ZIRLO",
+        "Zry",
+        "CANDU包壳",
+        "Zr alloy",
+        "Zirconium"
+      ],
+      "alloy_system": "Zr",
+      "material_type": "CladdingMaterial",
+      "description": "Zirconium alloy cladding (Zircaloy-2/4, ZIRLO, etc.)",
+      "param_count": 188
+    },
+    {
+      "canonical_name": "water",
+      "aliases": [
+        "water",
+        "water/steam",
+        "coolant water",
+        "H2O"
+      ],
+      "alloy_system": "H2O",
+      "material_type": "CoolantMaterial",
+      "description": "Light water coolant/moderator",
+      "param_count": 184
+    },
+    {
+      "canonical_name": "U-19Pu-10Zr",
+      "aliases": [
+        "U-19Pu-10Zr/HT9",
+        "U-19Pu-10Zr metallic fuel",
+        "U-19Pu-10Zr (α-U phase)",
+        "U-19Pu-10Zr (EBR-II, bulk fuel)",
+        "U-19Pu-10Zr (EBR-II, fluff)",
+        "U-19Pu-10Zr (EBR-II, fluff region)",
+        "U-19Pu-10Zr (EBR-II, fluff top)",
+        "U-19Pu-10Zr (EBR-II, fluff bottom)",
+        "U-19Pu-10Zr (EBR-II)",
+        "U-19Pu-10Zr (EBR-II, X512-DP55)",
+        "U-19Pu-10Zr (γ phase)",
+        "U-19Pu-10Zr metallic fuel (fluff region)",
+        "U-19Pu-10Zr metallic fuel (central region)",
+        "U-19Pu-10Zr metallic fuel (region 2 outer)",
+        "U-19Pu-10Zr metallic fuel (region 2)"
+      ],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-19 wt% Plutonium-10 wt% Zirconium, benchmark EBR-II metallic fuel",
+      "param_count": 180
+    },
+    {
+      "canonical_name": "U",
+      "aliases": [
+        "U-metal",
+        "U metal",
+        "U (uranium metal)",
+        "uranium metal",
+        "U (pure)",
+        "U (uranium)",
+        "U (α phase)",
+        "U powder",
+        "high-purity U",
+        "U-235",
+        "γU",
+        "γ-U",
+        "U oxide",
+        "U3O8",
+        "U-based alloys",
+        "U基合金",
+        "U-Mo (U-10Mo)"
+      ],
+      "alloy_system": "U",
+      "material_type": "FuelMaterial",
+      "description": "Pure uranium / uranium metal",
+      "param_count": 145
+    },
+    {
+      "canonical_name": "U-7Mo",
+      "aliases": [
+        "U-7Mo (bcc)",
+        "U-7wt%Mo",
+        "U-7wt.%Mo",
+        "U-7Mo (ground)",
+        "γU-7Mo",
+        "U-7wt.%Mo (dispersion)"
+      ],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-7 wt% Molybdenum alloy, used in dispersion fuel",
+      "param_count": 99
+    },
+    {
+      "canonical_name": "MOX",
+      "aliases": [
+        "PuO₂/Zr inert matrix",
+        "MA-MOX",
+        "UO₂/PuO₂",
+        "(U,Gd)O2"
+      ],
+      "alloy_system": "UO2-PuO2",
+      "material_type": "FuelMaterial",
+      "description": "Mixed Oxide fuel (UO2-PuO2)",
+      "param_count": 82
+    },
+    {
+      "canonical_name": "HT9",
+      "aliases": [
+        "HT9 clad",
+        "HT-9 steel cladding",
+        "HT9 cladding",
+        "HT-9 cladding (FCCI region)",
+        "HT-9 cladding"
+      ],
+      "alloy_system": "Fe-Cr-Mo",
+      "material_type": "CladdingMaterial",
+      "description": "HT9 ferritic/martensitic steel cladding for fast reactors",
+      "param_count": 82
+    },
+    {
+      "canonical_name": "U-5Fs",
+      "aliases": [
+        "U-5Fs/SS316"
+      ],
+      "alloy_system": "U-Fs",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-5 fissium alloy, EBR-II driver fuel",
+      "param_count": 72
+    },
+    {
+      "canonical_name": "U-10Zr/HT9",
+      "aliases": [
+        "U-10Zr/Fe",
+        "U-10Zr/Fe-11Cr",
+        "U-10Zr/Fe-16Ni-9Cr",
+        "U-10Zr/Fe-Ni",
+        "U-10Zr/Fe-19Cr",
+        "fuel-cladding interface"
+      ],
+      "alloy_system": "U-Zr",
+      "material_type": "FuelMaterial",
+      "description": "U-10Zr fuel with HT9/Fe-based cladding (FCCI system)",
+      "param_count": 68
+    },
+    {
+      "canonical_name": "U3Si2",
+      "aliases": [
+        "U3Si2/U3Si5",
+        "U3Si5UN"
+      ],
+      "alloy_system": "U-Si",
+      "material_type": "FuelMaterial",
+      "description": "Uranium silicide (U3Si2), Accident Tolerant Fuel candidate",
+      "param_count": 63
+    },
+    {
+      "canonical_name": "U-7Mo/Al",
+      "aliases": [
+        "U-7wt%Mo/Al-2Si",
+        "U-7wt%Mo/Al-5Si",
+        "U-7Mo/Al dispersion",
+        "U-Mo dispersion fuel",
+        "U-Mo/Al dispersion",
+        "U-Mo dispersion",
+        "U-7Mo/U-10Mo dispersion",
+        "U-7Mo/U-10Mo"
+      ],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "U-7Mo dispersion fuel in aluminum matrix",
+      "param_count": 62
+    },
+    {
+      "canonical_name": "Zr",
+      "aliases": [
+        "Zr (pure)",
+        "Zr barrier on U-10Mo",
+        "ZrB2",
+        "Zr₂Si",
+        "Zr₂Si (tetragonal)",
+        "Zr rind (fcc, with N/O impurities)",
+        "ZrH",
+        "ZrO2",
+        "ZrO₂ (fcc)",
+        "Oxide layer"
+      ],
+      "alloy_system": "Zr",
+      "material_type": "PureElement",
+      "description": "Zirconium and its compounds (pure, ZrB2, ZrO2, ZrN, ZrH)",
+      "param_count": 55
+    },
+    {
+      "canonical_name": "Type-316 SS",
+      "aliases": [
+        "SS316",
+        "15Cr-20Ni SS (D9)",
+        "austenitic_steel"
+      ],
+      "alloy_system": "Fe-Cr-Ni",
+      "material_type": "CladdingMaterial",
+      "description": "Austenitic stainless steel (316SS, D9 variants)",
+      "param_count": 54
+    },
+    {
+      "canonical_name": "Xe",
+      "aliases": [
+        "Xe gas",
+        "xenon",
+        "Xe/Kr gas",
+        "fission gas",
+        "He/Xe/Kr混合气",
+        "He",
+        "helium",
+        "Kr",
+        "Cs"
+      ],
+      "alloy_system": null,
+      "material_type": "FissionProduct",
+      "description": "Fission gases and products (Xe, Kr, He, Cs)",
+      "param_count": 50
+    },
+    {
+      "canonical_name": "AA6061",
+      "aliases": [
+        "Al 6061",
+        "Al6061-T6",
+        "AA6061-T6",
+        "AA6061 Al cladding",
+        "AA6061-T6 cladding",
+        "AA6061-O",
+        "Al coating"
+      ],
+      "alloy_system": "Al",
+      "material_type": "CladdingMaterial",
+      "description": "Aluminum 6061 alloy (research reactor cladding/matrix)",
+      "param_count": 47
+    },
+    {
+      "canonical_name": "Mo",
+      "aliases": [
+        "Mo (BCC)",
+        "Mo (U-Mo中)",
+        "Mo (reference)"
+      ],
+      "alloy_system": "Mo",
+      "material_type": "PureElement",
+      "description": "Molybdenum (pure / reference)",
+      "param_count": 47
+    },
+    {
+      "canonical_name": "UN",
+      "aliases": [],
+      "alloy_system": "UN",
+      "material_type": "FuelMaterial",
+      "description": "Uranium nitride, advanced fuel form for fast reactors",
+      "param_count": 36
+    },
+    {
+      "canonical_name": "sodium",
+      "aliases": [
+        "sodium",
+        "Na coolant",
+        "liquid Na",
+        "Na",
+        "liquid sodium"
+      ],
+      "alloy_system": "Na",
+      "material_type": "CoolantMaterial",
+      "description": "Sodium coolant (liquid metal)",
+      "param_count": 29
+    },
+    {
+      "canonical_name": "U-Mo/Al",
+      "aliases": [
+        "UMoX/Al",
+        "UMoX",
+        "Al-clad",
+        "U-10Mo/Al"
+      ],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "U-Mo dispersion fuel in aluminum matrix (general)",
+      "param_count": 26
+    },
+    {
+      "canonical_name": "Pu",
+      "aliases": [
+        "Pu (pure)"
+      ],
+      "alloy_system": "Pu",
+      "material_type": "FuelMaterial",
+      "description": "Plutonium",
+      "param_count": 25
+    },
+    {
+      "canonical_name": "T91",
+      "aliases": [],
+      "alloy_system": "Fe-Cr-Mo",
+      "material_type": "CladdingMaterial",
+      "description": "T91 ferritic/martensitic steel",
+      "param_count": 23
+    },
+    {
+      "canonical_name": "Cu",
+      "aliases": [
+        "Cu"
+      ],
+      "alloy_system": "Cu",
+      "material_type": "PureElement",
+      "description": "Copper (pure element)",
+      "param_count": 23
+    },
+    {
+      "canonical_name": "Al",
+      "aliases": [
+        "aluminum",
+        "Al powder"
+      ],
+      "alloy_system": "Al",
+      "material_type": "CladdingMaterial",
+      "description": "Aluminum (research reactor matrix/cladding)",
+      "param_count": 20
+    },
+    {
+      "canonical_name": "Pu-Zr",
+      "aliases": [
+        "Pu-5at%Zr",
+        "Pu-12at%Zr"
+      ],
+      "alloy_system": "Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Plutonium-Zirconium alloy",
+      "param_count": 15
+    },
+    {
+      "canonical_name": "MX-type fuels",
+      "aliases": [
+        "MX-type fuels (MC, MN)",
+        "MC fuel"
+      ],
+      "alloy_system": "MX",
+      "material_type": "FuelMaterial",
+      "description": "MX-type advanced fuels (carbides, nitrides)",
+      "param_count": 15
+    },
+    {
+      "canonical_name": "U-Fe",
+      "aliases": [
+        "U/Fe",
+        "α-U/Fe",
+        "β-U/Fe",
+        "Pu-Fe",
+        "Pu-Fe system",
+        "(U,Pu)₆Fe",
+        "(U,Pu)6Fe",
+        "U₆Fe"
+      ],
+      "alloy_system": "U-Fe",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-Iron intermetallic / FCCI product phase",
+      "param_count": 15
+    },
+    {
+      "canonical_name": "Fe-Nd-U",
+      "aliases": [
+        "Fe₁₇Nd₂",
+        "(Fe,Cr,Ni)₁₇Ln₂",
+        "BCC Fe / Fe₁₇Nd₂"
+      ],
+      "alloy_system": "Fe-Ln",
+      "material_type": "FuelMaterial",
+      "description": "Iron-Lanthanide (Nd) intermetallic phase from FCCI",
+      "param_count": 15
+    },
+    {
+      "canonical_name": "NbZr0.6Ti0.4U50 HEA",
+      "aliases": [
+        "NbZr0.6Ti0.4Ux HEA",
+        "U-Nb-Zr-Ti-Mo-C",
+        "U-Nb-Zr-Ti-Mo",
+        "Nb-Ti-U-Zr"
+      ],
+      "alloy_system": "HEA",
+      "material_type": "FuelMaterial",
+      "description": "High-entropy alloy with U, Nb, Zr, Ti, Mo, C",
+      "param_count": 15
+    },
+    {
+      "canonical_name": "Fe-Cr",
+      "aliases": [
+        "BCC Fe",
+        "RPV steel",
+        "fcc metals (general)",
+        "bcc metals (general)"
+      ],
+      "alloy_system": "Fe-Cr",
+      "material_type": "StructuralMaterial",
+      "description": "Iron-Chromium alloy / ferritic steel",
+      "param_count": 14
+    },
+    {
+      "canonical_name": "ZrN",
+      "aliases": [
+        "ZrB2涂层",
+        "Zr barrier on U-10Mo",
+        "Zr barrier on U-10wt.%Mo",
+        "U-10wt.%Mo / Zr interface",
+        "U-10wt.%Mo / Zr interface (U-Zr₂ sublayer)"
+      ],
+      "alloy_system": "Zr-N",
+      "material_type": "BarrierMaterial",
+      "description": "Zirconium nitride barrier coating on U-Mo fuel",
+      "param_count": 14
+    },
+    {
+      "canonical_name": "BeO",
+      "aliases": [
+        "BeO additive",
+        "additive"
+      ],
+      "alloy_system": "BeO",
+      "material_type": "Additive",
+      "description": "Beryllium oxide (fuel additive for enhanced thermal conductivity)",
+      "param_count": 14
+    },
+    {
+      "canonical_name": "U-19Pu-14Zr",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-19 wt% Pu-14 wt% Zr metallic fuel",
+      "param_count": 12
+    },
+    {
+      "canonical_name": "U-4Mo",
+      "aliases": [
+        "U-4Mo (ground)"
+      ],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-4 wt% Molybdenum alloy",
+      "param_count": 12
+    },
+    {
+      "canonical_name": "U-6Zr",
+      "aliases": [
+        "U-6Zr/HT9",
+        "U-6Zr/T91",
+        "U-5at%Zr",
+        "HT9/U-6Zr"
+      ],
+      "alloy_system": "U-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-6 wt% Zirconium alloy",
+      "param_count": 12
+    },
+    {
+      "canonical_name": "γ'-U₂Mo",
+      "aliases": [],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "Gamma-prime U2Mo ordered phase",
+      "param_count": 12
+    },
+    {
+      "canonical_name": "U/Fe-Cr",
+      "aliases": [
+        "U/Fe-15Cr",
+        "U/Fe-15Cr-15Ni",
+        "Fe-Cr",
+        "Fe-Cr/SS",
+        "Fe-Cr-Ni alloy systems",
+        "fcc Fe/SS"
+      ],
+      "alloy_system": "U-Fe-Cr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium / Fe-Cr(-Ni) cladding interaction",
+      "param_count": 11
+    },
+    {
+      "canonical_name": "U-15Pu-10Zr",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-15 wt% Plutonium-10 wt% Zirconium",
+      "param_count": 10
+    },
+    {
+      "canonical_name": "U-6Mo",
+      "aliases": [
+        "U-6Mo (atomized)",
+        "U-6Mo (ground)"
+      ],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-6 wt% Molybdenum alloy",
+      "param_count": 10
+    },
+    {
+      "canonical_name": "D9",
+      "aliases": [
+        "15Cr-20Ni SS (D9)"
+      ],
+      "alloy_system": "Fe-Cr-Ni",
+      "material_type": "CladdingMaterial",
+      "description": "D9 austenitic stainless steel (15Cr-20Ni)",
+      "param_count": 10
+    },
+    {
+      "canonical_name": "Fe",
+      "aliases": [
+        "Fe",
+        "BCC Fe",
+        "Fe-Cr",
+        "Fe-Cr/SS",
+        "fcc Fe/SS",
+        "Fe₁₇Nd₂",
+        "(Fe,Cr,Ni)₁₇Ln₂"
+      ],
+      "alloy_system": "Fe",
+      "material_type": "StructuralMaterial",
+      "description": "Iron and Fe-based alloys (pure Fe, BCC Fe)",
+      "param_count": 10
+    },
+    {
+      "canonical_name": "SiC",
+      "aliases": [
+        "SiC/SiC",
+        "CVD SiC",
+        "SiCf/SiCm composite",
+        "spinel"
+      ],
+      "alloy_system": "SiC",
+      "material_type": "CladdingMaterial",
+      "description": "Silicon carbide (ATF cladding candidate)",
+      "param_count": 9
+    },
+    {
+      "canonical_name": "U-15Mo",
+      "aliases": [],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-15 wt% Molybdenum alloy",
+      "param_count": 8
+    },
+    {
+      "canonical_name": "U-18.5Pu-14.1Zr",
+      "aliases": [
+        "U-18.4Pu-14.1Zr"
+      ],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-18.5 wt% Pu-14.1 wt% Zr metallic fuel",
+      "param_count": 7
+    },
+    {
+      "canonical_name": "U-8Mo",
+      "aliases": [
+        "U-8Mo (ground)",
+        "γU-12Mo"
+      ],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-8 wt% Molybdenum alloy",
+      "param_count": 7
+    },
+    {
+      "canonical_name": "U-xPu-10Zr",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium with variable Pu, fixed 10 wt% Zr (parametric study)",
+      "param_count": 6
+    },
+    {
+      "canonical_name": "δ-UZr₂",
+      "aliases": [
+        "δ-UZr₂ center region",
+        "UZr₂₊ₓ",
+        "UZr₂₊ₓ center region",
+        "ω-UZr₂₊ₓ (center region)"
+      ],
+      "alloy_system": "U-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Delta-UZr2 intermetallic phase",
+      "param_count": 6
+    },
+    {
+      "canonical_name": "U-20.2Pu-9.1Zr-1.2Am-1.3Np",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr-Am-Np",
+      "material_type": "FuelMaterial",
+      "description": "Uranium alloy with Pu, Zr, Am, Np (transmutation fuel)",
+      "param_count": 5
+    },
+    {
+      "canonical_name": "U-50Zr",
+      "aliases": [
+        "U-50Zr alloy",
+        "U-50at%Zr"
+      ],
+      "alloy_system": "U-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-50 wt% Zirconium alloy",
+      "param_count": 5
+    },
+    {
+      "canonical_name": "U-Mo-Nb-Ti-V-Zr alloys",
+      "aliases": [
+        "U-Mo-Nb-Ti-V-Zr alloys",
+        "surrogate alloy screening",
+        "generated surrogate alloy",
+        "25 surrogate alloys",
+        "U-Mo (单块)"
+      ],
+      "alloy_system": "HEA",
+      "material_type": "FuelMaterial",
+      "description": "Multi-component U-based high-entropy alloys (surrogate screening)",
+      "param_count": 5
+    },
+    {
+      "canonical_name": "U-20Pu-10Zr",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-20 wt% Plutonium-10 wt% Zirconium",
+      "param_count": 4
+    },
+    {
+      "canonical_name": "U-10Pu",
+      "aliases": [],
+      "alloy_system": "U-Pu",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-10 wt% Plutonium",
+      "param_count": 4
+    },
+    {
+      "canonical_name": "U-2.5Nb",
+      "aliases": [
+        "U-2.5Nb / alloys",
+        "U-2.5Nb / surrogate alloys"
+      ],
+      "alloy_system": "U-Nb",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-2.5 wt% Niobium alloy",
+      "param_count": 4
+    },
+    {
+      "canonical_name": "U-15Pu-6.8Zr",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-15 wt% Pu-6.8 wt% Zr",
+      "param_count": 3
+    },
+    {
+      "canonical_name": "U-5Zr",
+      "aliases": [
+        "U-5at%Zr"
+      ],
+      "alloy_system": "U-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-5 wt% Zirconium alloy",
+      "param_count": 3
+    },
+    {
+      "canonical_name": "(U,Zr)O2",
+      "aliases": [
+        "UO2-Gd2O3",
+        "(U,Gd)O2"
+      ],
+      "alloy_system": "UO2-ZrO2",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-zirconium oxide solid solution",
+      "param_count": 3
+    },
+    {
+      "canonical_name": "EBR-II",
+      "aliases": [
+        "EBR-II Na inlet"
+      ],
+      "alloy_system": null,
+      "material_type": "Reactor",
+      "description": "EBR-II reactor / experimental conditions",
+      "param_count": 3
+    },
+    {
+      "canonical_name": "Ni",
+      "aliases": [
+        "Ni (FCC)",
+        "Ni",
+        "NiZr"
+      ],
+      "alloy_system": "Ni",
+      "material_type": "PureElement",
+      "description": "Nickel (pure element)",
+      "param_count": 3
+    },
+    {
+      "canonical_name": "U-8Pu-10Zr",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-8 wt% Pu-10 wt% Zr",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "U-11.1Pu-6.3Zr",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-11.1 wt% Pu-6.3 wt% Zr",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "U-10Mo-6Ti/Al",
+      "aliases": [
+        "U-10Mo-6Ti"
+      ],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "U-10Mo-6Ti dispersion fuel in Al",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "U-20Zr",
+      "aliases": [
+        "U-20at%Zr"
+      ],
+      "alloy_system": "U-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-20 wt% Zirconium alloy",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "porous fuel",
+      "aliases": [],
+      "alloy_system": null,
+      "material_type": "FuelMaterial",
+      "description": "Porous fuel (general)",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "Ce-Ni",
+      "aliases": [
+        "Fe-Ce"
+      ],
+      "alloy_system": "Ce-Ni",
+      "material_type": "FuelMaterial",
+      "description": "Cerium-Nickel / Iron-Cerium intermetallic (lanthanide surrogate)",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "U-7Mo to U-10Mo",
+      "aliases": [],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "U-Mo alloy range from 7 to 10 wt% Mo",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "steel-aluminum",
+      "aliases": [
+        "gas_mixture"
+      ],
+      "alloy_system": null,
+      "material_type": "Other",
+      "description": "Miscellaneous material combinations",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "magnetite (Fe3O4)",
+      "aliases": [],
+      "alloy_system": "Fe-O",
+      "material_type": "Other",
+      "description": "Magnetite (Fe3O4) oxide layer",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "LBE",
+      "aliases": [
+        "LBE",
+        "lead-bismuth eutectic"
+      ],
+      "alloy_system": "LBE",
+      "material_type": "CoolantMaterial",
+      "description": "Lead-Bismuth Eutectic coolant",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "Cr",
+      "aliases": [
+        "Cr"
+      ],
+      "alloy_system": "Cr",
+      "material_type": "PureElement",
+      "description": "Chromium (pure element)",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "Nb",
+      "aliases": [
+        "Nb"
+      ],
+      "alloy_system": "Nb",
+      "material_type": "PureElement",
+      "description": "Niobium (pure element)",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "W",
+      "aliases": [
+        "W"
+      ],
+      "alloy_system": "W",
+      "material_type": "PureElement",
+      "description": "Tungsten (pure element)",
+      "param_count": 2
+    },
+    {
+      "canonical_name": "UC",
+      "aliases": [],
+      "alloy_system": "UC",
+      "material_type": "FuelMaterial",
+      "description": "Uranium carbide",
+      "param_count": 1
+    },
+    {
+      "canonical_name": "U-24Pu-15Zr",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-24 wt% Pu-15 wt% Zr",
+      "param_count": 1
+    },
+    {
+      "canonical_name": "U-30Pu-20Zr",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-30 wt% Pu-20 wt% Zr",
+      "param_count": 1
+    },
+    {
+      "canonical_name": "U-20Pu-45Zr",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-20 wt% Pu-45 wt% Zr",
+      "param_count": 1
+    },
+    {
+      "canonical_name": "U-20.5Pu-3Zr",
+      "aliases": [],
+      "alloy_system": "U-Pu-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-20.5 wt% Pu-3 wt% Zr",
+      "param_count": 1
+    },
+    {
+      "canonical_name": "U-10Mo-3Pt/Al",
+      "aliases": [],
+      "alloy_system": "U-Mo",
+      "material_type": "FuelMaterial",
+      "description": "U-10Mo-3Pt dispersion fuel in Al",
+      "param_count": 1
+    },
+    {
+      "canonical_name": "U-23Zr",
+      "aliases": [],
+      "alloy_system": "U-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-23 wt% Zirconium alloy",
+      "param_count": 1
+    },
+    {
+      "canonical_name": "U-70at%Zr",
+      "aliases": [
+        "U-72at%Zr",
+        "U-70.7at%Zr",
+        "U-91at%Zr",
+        "U-64at%Zr",
+        "U-35at%Zr",
+        "U-30at%Zr",
+        "U-25at%Zr",
+        "U-14at%Zr",
+        "U-1at%Zr",
+        "U-10at%Zr"
+      ],
+      "alloy_system": "U-Zr",
+      "material_type": "FuelMaterial",
+      "description": "Uranium-Zirconium alloys at various Zr concentrations (atomic %)",
+      "param_count": 1
+    },
+    {
+      "canonical_name": "TRISO",
+      "aliases": [],
+      "alloy_system": "TRISO",
+      "material_type": "FuelMaterial",
+      "description": "TRISO coated particle fuel",
+      "param_count": 1
+    },
+    {
+      "canonical_name": "various U fuels",
+      "aliases": [],
+      "alloy_system": null,
+      "material_type": "FuelMaterial",
+      "description": "Various uranium fuels (general reference)",
+      "param_count": 1
+    },
+    {
+      "canonical_name": "U-3Zr-13Fe",
+      "aliases": [],
+      "alloy_system": "U-Zr-Fe",
+      "material_type": "FuelMaterial",
+      "description": "U-3Zr-13Fe at.% near cladding (FCCI zone)",
+      "param_count": 1
+    },
+    {
+      "canonical_name": "FLiBe",
+      "aliases": [
+        "FLiBe"
+      ],
+      "alloy_system": "FLiBe",
+      "material_type": "CoolantMaterial",
+      "description": "Fluoride lithium-beryllium molten salt coolant",
+      "param_count": 1
+    }
+  ],
+  "non_material": [
+    "通用",
+    "general",
+    "General",
+    "N/A",
+    "reactor",
+    "PSO-LSTM model",
+    "Generic metal",
+    "metal (generic)",
+    "通用核燃料",
+    "多种金属",
+    "通用金属",
+    "合金通用",
+    "金属",
+    "金属(通用)",
+    "核燃料",
+    "核结构材料",
+    "氧化物",
+    "universal",
+    "Universal",
+    "generic",
+    "metals (general)",
+    "general metals",
+    "BCC metals (Mo, Cr, etc.)",
+    "U-based alloys",
+    "bulk phase",
+    "cladding",
+    "metallic_fuel",
+    "U-Mo/Al弥散板",
+    "U-Mo(单块)",
+    "U-10Mo vs UO₂",
+    "fission products",
+    "Si",
+    "Si (silicon)",
+    "Gd",
+    "α-Zr (cladding)",
+    "He back-fill",
+    "MC fuel",
+    "MX-type fuels (MC, MN)",
+    "25 surrogate alloys",
+    "surrogate alloy screening",
+    "generated surrogate alloy"
+  ],
+  "stats": {
+    "total_unique_raw_values": 471,
+    "total_param_count": 6313,
+    "canonical_materials": 72,
+    "alloy_systems": [
+      "U-Mo",
+      "UO2",
+      "U-Pu-Zr",
+      "U-Zr",
+      "U",
+      "U-Si",
+      "UN",
+      "U-Fs",
+      "Pu",
+      "Pu-Zr",
+      "UC",
+      "MX",
+      "U-Pu",
+      "U-Pu-Zr-Am-Np",
+      "U-Fe",
+      "U-Fe-Cr",
+      "U-Nb",
+      "U-Nb-Zr-Ti-Mo",
+      "HEA",
+      "TRISO",
+      "Zr",
+      "Fe-Cr-Mo",
+      "Fe-Cr-Ni",
+      "Al",
+      "SiC",
+      "Mo",
+      "BeO",
+      "UO2-ZrO2",
+      "UO2-PuO2",
+      "Ce-Ni",
+      "U-Zr-Fe",
+      "Fe-O",
+      "Fe-Ln",
+      "Pu-Fe",
+      "Zr-N"
+    ]
+  }
+}
