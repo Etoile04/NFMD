@@ -5,7 +5,10 @@ import json
 import os
 from typing import Generator
 
+from logging_config import get_logger
 from models import ExtractedRecord
+
+logger = get_logger(__name__)
 
 
 def extract_records(source_dir: str) -> Generator[ExtractedRecord, None, None]:
@@ -19,7 +22,7 @@ def extract_records(source_dir: str) -> Generator[ExtractedRecord, None, None]:
             with open(filepath, "r", encoding="utf-8") as f:
                 data = json.load(f)
         except (json.JSONDecodeError, UnicodeDecodeError) as e:
-            print(f"  [FATAL] Cannot parse {filename}: {e}")
+            logger.fatal("Cannot parse %s: %s", filename, e)
             continue
 
         # Handle wrapper format
@@ -31,7 +34,7 @@ def extract_records(source_dir: str) -> Generator[ExtractedRecord, None, None]:
         elif isinstance(data, list):
             records = data
         else:
-            print(f"  [WARN] Unexpected format in {filename}: {type(data)}")
+            logger.warning("Unexpected format in %s: %s", filename, type(data))
             continue
 
         for rec in records:
