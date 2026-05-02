@@ -1,29 +1,27 @@
 """Load: Batch write transformed records to Supabase PostgreSQL."""
 
 import json
-import os
 from typing import Optional
 
 import psycopg
 import psycopg.sql
 
+from config import DB_URL, BATCH_SIZE
+
+from logging_config import get_logger
 from models import TransformedRecord
 
-
-# Default Supabase local connection
-DEFAULT_DB_URL = "postgresql://postgres:postgres@127.0.0.1:54322/postgres"
-
-BATCH_SIZE = 500
+logger = get_logger(__name__)
 
 
-def get_connection(db_url: str = DEFAULT_DB_URL) -> psycopg.Connection:
+def get_connection(db_url: str = DB_URL) -> psycopg.Connection:
     """Get a database connection."""
     return psycopg.connect(db_url, autocommit=False)
 
 
 def load_records(
     records: list[TransformedRecord],
-    db_url: str = DEFAULT_DB_URL,
+    db_url: str = DB_URL,
     mode: str = "append-safe",
 ) -> dict:
     """
@@ -47,14 +45,14 @@ def load_records(
     try:
         # Step 1: Build material lookup (name -> id)
         material_lookup = _build_material_lookup(conn)
-        print(f"  Material lookup: {len(material_lookup)} canonical names")
+        logger.info("Material lookup: %d canonical names", len(material_lookup))
 
         # Step 2: Group records by literature_id and upsert literature
         lit_groups = {}
         for rec in records:
             if rec.literature_id and rec.literature_id not in lit_groups:
                 lit_groups[rec.literature_id] = rec
-        print(f"  Literature entries: {len(lit_groups)}")
+        logger.info("Literature entries: %d", len(lit_groups))
 
         lit_stats = _upsert_literature(conn, list(lit_groups.values()), mode)
         stats["literature_upserted"] = lit_stats["upserted"]
@@ -81,14 +79,14 @@ def load_records(
                 stats["errors"].extend(batch_stats["errors"][:5])
 
             done = min(i + BATCH_SIZE, total)
-            print(f"  Progress: {done}/{total} parameters")
+            logger.info("Progress: %d/%d parameters", done, total)
 
-        print(f"  All batches processed")
+        logger.info("All batches processed")
 
     except Exception as e:
         conn.rollback()
         stats["errors"].append(f"FATAL: {str(e)}")
-        print(f"  [ERROR] {e}")
+        logger.error("Load error: %s", e)
     finally:
         conn.close()
 
@@ -133,7 +131,7 @@ def _upsert_literature(
             except Exception as e:
                 stats["errors"] += 1
                 if stats["errors"] <= 3:
-                    print(f"    [LIT ERROR] {rec.literature_id}: {e}")
+                    logger.error("Literature error %s: %s", rec.literature_id, e)
     return stats
 
 

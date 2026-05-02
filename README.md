@@ -31,29 +31,57 @@ AI 驱动的核燃料材料参数知识库，服务于核燃料性能代码（JS
 └─────────────────────────────────────────────────────┘
 ```
 
-## 数据库 Schema
+## Phase 2 Status — ETL Pipeline 完成
 
-- **materials** — 材料主表（89 种标准材料 + 367 个别名）
-- **parameters** — 参数主表（6750 条，支持 5 种值类型）
-- **literature** — 文献表（120+ 篇）
-- **categories** — 参数分类字典（36 个分类）
-- **terminology** — 中英术语表（54 条，支持中文搜索）
+### ETL Pipeline
+- 8 Python modules, ~1276 LOC
+- Pipeline stages: Extract → Validate → Transform → Load
+- Supports scalar, range, expression, list value types
+
+### Data Import Results
+- **6,980 parameters** imported, 0 fatal errors
+- **89 materials** + 358 aliases
+- **174 literature** entries
+- 47 distinct categories, 100% source coverage
+- Full-text search (ts_vector) populated for all records
+
+### Configuration
+- DB URL via `NFMD_DB_URL` environment variable (defaults to local Supabase)
+- See `.env.example` for setup
+
+### Testing
+- Run: `python3 -m pytest scripts/etl/tests/ -v`
+- 75 tests covering extract, validate, normalize, transform, load, and I/O
+
+### Database Schema
+
+- **materials** — 材料主表（89 种标准材料 + 358 个别名）
+- **parameters** — 参数主表（6,980 条，支持 5 种值类型）
+- **literature** — 文献表（174 篇）
+- **categories** — 参数分类字典（47 个分类）
+- **terminology** — 中英术语表（支持中文搜索）
 - **material_aliases** — 材料别名映射
 - **audit_log** — 审计日志
 
-## 目录结构
+### Project Structure
 
 ```
 NFMD/
-├── plans/
-│   ├── database-platform-plan.md   # 详细计划文档
-│   ├── schema_v2.sql               # PostgreSQL DDL
-│   └── material-alias-map.json     # 材料规范化映射
-├── data/
-│   └── fuel_swelling_wiki/         # 知识库数据（不纳入版本控制）
-├── scripts/                         # ETL 和工具脚本
-├── docs/                            # 文档
-└── README.md
+├── scripts/etl/          # ETL pipeline
+│   ├── extract.py        # JSON → ExtractedRecord
+│   ├── validate.py       # Rule-based validation
+│   ├── transform.py      # Normalization + mapping
+│   ├── load.py           # PostgreSQL UPSERT
+│   ├── normalize.py      # Material aliases, units, temp
+│   ├── models.py         # Data models
+│   ├── rules.py          # Validation rule definitions
+│   ├── run_pipeline.py   # CLI entry point
+│   ├── config.py         # DB URL configuration
+│   ├── logging_config.py # Centralized logging
+│   └── tests/            # Test suite (75 tests)
+├── data/imports/runs/    # ETL run artifacts
+├── plans/                # Design documents
+└── docs/                 # Specs and plans
 ```
 
 ## 技术栈
