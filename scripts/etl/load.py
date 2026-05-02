@@ -1,11 +1,12 @@
 """Load: Batch write transformed records to Supabase PostgreSQL."""
 
 import json
-import os
 from typing import Optional
 
 import psycopg
 import psycopg.sql
+
+from config import DB_URL, BATCH_SIZE
 
 from logging_config import get_logger
 from models import TransformedRecord
@@ -13,20 +14,14 @@ from models import TransformedRecord
 logger = get_logger(__name__)
 
 
-# Default Supabase local connection
-DEFAULT_DB_URL = "postgresql://postgres:postgres@127.0.0.1:54322/postgres"
-
-BATCH_SIZE = 500
-
-
-def get_connection(db_url: str = DEFAULT_DB_URL) -> psycopg.Connection:
+def get_connection(db_url: str = DB_URL) -> psycopg.Connection:
     """Get a database connection."""
     return psycopg.connect(db_url, autocommit=False)
 
 
 def load_records(
     records: list[TransformedRecord],
-    db_url: str = DEFAULT_DB_URL,
+    db_url: str = DB_URL,
     mode: str = "append-safe",
 ) -> dict:
     """
