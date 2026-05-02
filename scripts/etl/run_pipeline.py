@@ -206,6 +206,7 @@ def _dry_run_summary(
 
 
 def main():
+    """Parse CLI arguments and launch the ETL pipeline."""
     parser = argparse.ArgumentParser(description="NFMD ETL Pipeline")
     parser.add_argument(
         "--mode",
