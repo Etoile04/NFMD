@@ -141,6 +141,71 @@ def _check_confidence(rec: ExtractedRecord) -> list[str]:
     return []
 
 
+def _check_generic_name(rec: ExtractedRecord) -> list[str]:
+    """Reject generic/vague parameter names that provide no information."""
+    name = (rec.name or "").strip()
+    name_en = (rec.name_en or "").strip()
+    if name.lower() in GENERIC_NAMES or name_en.lower() in GENERIC_NAMES:
+        return [
+            f"Generic parameter name '{name or name_en}' — "
+            f"must use a specific physical quantity name "
+            f"(e.g., '气泡直径', '肿胀量', '扩散系数')"
+        ]
+    return []
+
+
+def _check_range_min_max(rec: ExtractedRecord) -> list[str]:
+    """Check that value_min <= value_max for range type."""
+    if rec.value_type == "range" and rec.value_min is not None and rec.value_max is not None:
+        if rec.value_min > rec.value_max:
+            return [
+                f"range value_min ({rec.value_min}) > value_max ({rec.value_max})"
+            ]
+    return []
+
+
+def _check_value_type_cross_fields(rec: ExtractedRecord) -> list[str]:
+    """Cross-check: value_type must match populated value fields."""
+    issues = []
+    vt = rec.value_type
+
+    # scalar: must have value_scalar or raw_value or value_str (fallback)
+    if vt == "scalar":
+        if rec.value_scalar is None and rec.raw_value is None and not rec.value_str:
+            issues.append("scalar type but no value_scalar, raw_value, or value_str")
+        # If only value_str exists (no numeric value), suggest text type
+        if rec.value_scalar is None and rec.raw_value is None and rec.value_str and not rec.value_str.replace(".", "").replace("-", "").replace("e", "").replace("+", "").isdigit():
+            issues.append(
+                f"scalar type but value_str '{rec.value_str}' is non-numeric — consider value_type='text'"
+            )
+
+    # range: must have both min and max
+    if vt == "range":
+        if rec.value_min is None or rec.value_max is None:
+            if rec.raw_value is None:
+                issues.append("range type requires both value_min and value_max")
+
+    # expression: must have value_expr or equation
+    if vt == "expression":
+        if not rec.value_expr and not rec.equation and not rec.raw_value:
+            issues.append("expression type requires value_expr or equation")
+
+    # list: must have value_list or raw_value as list
+    if vt == "list":
+        if rec.value_list is None and not isinstance(rec.raw_value, list):
+            issues.append("list type requires value_list")
+
+    return issues
+
+
+# Generic / vague parameter names that should be rejected during extraction
+GENERIC_NAMES = {
+    "气泡参数", "肿胀参数", "扩散参数", "elastic parameter",
+    "fuel_performance parameter", "Unnamed parameter", "swelling_rate",
+    "parameter", "unknown parameter", "未知参数",
+}
+
+
 # All rules, ordered by severity
 ALL_RULES: list[Rule] = [
     # Fatal (blocks entire run)
@@ -149,14 +214,17 @@ ALL_RULES: list[Rule] = [
     # Error (blocks this record)
     Rule("MISSING_ID", "error", _check_missing_id),
     Rule("MISSING_NAME", "error", _check_missing_name),
+    Rule("GENERIC_NAME", "error", _check_generic_name),
     Rule("MISSING_CATEGORY", "error", _check_missing_category),
     Rule("INVALID_CATEGORY", "warn", _check_invalid_category),
     Rule("MISSING_VALUE_TYPE", "error", _check_missing_value_type),
     Rule("INVALID_VALUE_TYPE", "error", _check_invalid_value_type),
     Rule("SCALAR_NO_VALUE", "error", _check_scalar_value),
     Rule("RANGE_NO_BOUNDS", "error", _check_range_value),
-    Rule("EXPR_NO_FORMULA", "warn", _check_expression_value),
+    Rule("RANGE_MIN_MAX_INVERTED", "error", _check_range_min_max),
+    Rule("EXPR_NO_FORMULA", "error", _check_expression_value),
     Rule("LIST_NO_VALUES", "error", _check_list_value),
+    Rule("VALUE_TYPE_MISMATCH", "error", _check_value_type_cross_fields),
 
     # Warn (proceeds but logged)
     Rule("MISSING_MATERIAL", "warn", _check_missing_material),

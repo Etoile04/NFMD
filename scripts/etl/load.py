@@ -16,6 +16,33 @@ DEFAULT_DB_URL = "postgresql://postgres:postgres@127.0.0.1:54322/postgres"
 BATCH_SIZE = 500
 
 
+def normalize_source_file(source_file: Optional[str]) -> Optional[str]:
+    """Normalize source_file to literature.id format.
+    
+    Handles patterns found in the wild:
+    - summaries/xxx.md → xxx
+    - summaries/xxx.txt.md → xxx
+    - raw/mineru/xxx/paper.md → xxx
+    - raw/papers/xxx → xxx
+    - xxx.md → xxx
+    - xxx.json → xxx
+    - bare id → id (unchanged)
+    """
+    if not source_file:
+        return source_file
+    s = source_file
+    if s.startswith("summaries/"):
+        s = s.removeprefix("summaries/")
+        s = s.removesuffix(".txt.md").removesuffix(".md")
+    elif s.startswith("raw/mineru/"):
+        s = s.removeprefix("raw/mineru/").split("/")[0]
+    elif s.startswith("raw/papers/"):
+        s = s.removeprefix("raw/papers/")
+    else:
+        s = s.removesuffix(".md").removesuffix(".json")
+    return s
+
+
 def get_connection(db_url: str = DEFAULT_DB_URL) -> psycopg.Connection:
     """Get a database connection."""
     return psycopg.connect(db_url, autocommit=False)
@@ -143,10 +170,11 @@ def _load_parameter_batch(
     material_lookup: dict[str, str],
     mode: str,
 ) -> dict:
-    """Load a batch of parameters."""
+    """Load a batch of parameters with business-key dedup."""
     stats = {
         "inserted": 0, "updated": 0, "skipped": 0, "errored": 0,
         "material_resolved": 0, "material_unresolved": 0,
+        "dedup_skipped": 0,
         "errors": [],
     }
 
@@ -166,8 +194,70 @@ def _load_parameter_batch(
                 if rec.value_list is not None:
                     value_list = json.dumps(rec.value_list, ensure_ascii=False)
 
+                # Normalize source_file to literature.id format
+                normalized_source = normalize_source_file(rec.source_file)
+
+                # Business-key dedup: check if (name, material_id, category, value_type, value_scalar, unit) already exists
+                # This prevents duplicate records with different ids but same content
+                if mode in ("append-safe", "replace-run"):
+                    cur.execute(
+                        """SELECT id FROM parameters
+                           WHERE name = %s AND category = %s AND value_type = %s
+                             AND (material_id = %s OR (material_id IS NULL AND %s IS NULL))
+                             AND (value_scalar = %s OR (value_scalar IS NULL AND %s IS NULL))
+                             AND (unit = %s OR (unit IS NULL AND %s IS NULL))
+                           LIMIT 1""",
+                        (
+                            rec.name, rec.category, rec.value_type,
+                            material_id, material_id,
+                            rec.value_scalar, rec.value_scalar,
+                            rec.unit, rec.unit,
+                        ),
+                    )
+                    existing = cur.fetchone()
+                    if existing:
+                        if mode == "append-safe":
+                            stats["dedup_skipped"] += 1
+                            continue
+                        # replace-run: update the existing record instead of inserting a new one
+                        cur.execute(
+                            """UPDATE parameters SET
+                                name_en = COALESCE(%s, name_en),
+                                symbol = COALESCE(%s, symbol),
+                                value_min = COALESCE(%s, value_min),
+                                value_max = COALESCE(%s, value_max),
+                                value_expr = COALESCE(%s, value_expr),
+                                value_list = COALESCE(%s::jsonb, value_list),
+                                value_text = COALESCE(%s, value_text),
+                                value_str = COALESCE(%s, value_str),
+                                uncertainty = COALESCE(%s, uncertainty),
+                                temperature_k = COALESCE(%s, temperature_k),
+                                temperature_str = COALESCE(%s, temperature_str),
+                                burnup_range = COALESCE(%s, burnup_range),
+                                method = COALESCE(%s, method),
+                                confidence = COALESCE(%s, confidence),
+                                source_file = COALESCE(%s, source_file),
+                                equation = COALESCE(%s, equation),
+                                notes = COALESCE(%s, notes)
+                            WHERE id = %s""",
+                            (
+                                rec.name_en, rec.symbol,
+                                rec.value_min, rec.value_max,
+                                rec.value_expr, value_list,
+                                rec.value_text, rec.value_str,
+                                rec.uncertainty,
+                                rec.temperature_k, rec.temperature_str,
+                                rec.burnup_range, rec.method,
+                                rec.confidence, normalized_source,
+                                rec.equation, rec.notes,
+                                existing[0],
+                            ),
+                        )
+                        stats["updated"] += 1
+                        continue
+
                 if mode == "append-safe":
-                    # Check if exists
+                    # Check if same id exists
                     cur.execute("SELECT 1 FROM parameters WHERE id = %s", (rec.id,))
                     if cur.fetchone():
                         stats["skipped"] += 1
@@ -214,6 +304,8 @@ def _load_parameter_batch(
                         material_raw = EXCLUDED.material_raw,
                         temperature_k = COALESCE(EXCLUDED.temperature_k, parameters.temperature_k),
                         confidence = EXCLUDED.confidence,
+                        source_file = COALESCE(EXCLUDED.source_file, parameters.source_file),
+                        equation = COALESCE(EXCLUDED.equation, parameters.equation),
                         notes = COALESCE(EXCLUDED.notes, parameters.notes)
                     """,
                     (
@@ -225,7 +317,7 @@ def _load_parameter_batch(
                         material_id, rec.material_raw,
                         rec.temperature_k, rec.temperature_str,
                         rec.burnup_range, rec.method,
-                        rec.confidence, rec.source_file, rec.equation, rec.notes,
+                        rec.confidence, normalized_source, rec.equation, rec.notes,
                     ),
                 )
                 if cur.rowcount > 0:
