@@ -170,6 +170,9 @@ ALTER TABLE parameters ADD CONSTRAINT chk_params_confidence CHECK (confidence IS
     'high', 'medium', 'low'
 ));
 -- 类型化值一致性：对应类型的值列应非空
+-- 注意：以下约束要求历史数据已清理。对于 value_scalar IS NULL 但 value_str IS NOT NULL 的
+-- 历史 scalar 记录，需先更新为合适的 value_type（如 'text'）才能启用这些约束。
+-- 修复参考: UPDATE parameters SET value_type = 'text' WHERE value_type = 'scalar' AND value_scalar IS NULL AND value_str IS NOT NULL;
 ALTER TABLE parameters ADD CONSTRAINT chk_params_scalar CHECK (
     value_type <> 'scalar' OR value_scalar IS NOT NULL
 );
@@ -372,8 +375,61 @@ CREATE TRIGGER trg_params_audit
     EXECUTE FUNCTION audit_trigger_func();
 
 -- ============================================================
+-- 10b. categories.param_count 自动维护触发器
+-- ============================================================
+-- 问题: ETL 增量导入后 param_count 不更新，导致全部失准
+-- 方案: 每次 parameters 表变更时自动刷新对应 category 的计数
+
+CREATE OR REPLACE FUNCTION refresh_category_param_count()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        UPDATE categories SET param_count = param_count + 1 WHERE name = NEW.category;
+        RETURN NEW;
+    ELSIF TG_OP = 'DELETE' THEN
+        UPDATE categories SET param_count = GREATEST(param_count - 1, 0) WHERE name = OLD.category;
+        RETURN OLD;
+    ELSIF TG_OP = 'UPDATE' THEN
+        IF OLD.category IS DISTINCT FROM NEW.category THEN
+            UPDATE categories SET param_count = GREATEST(param_count - 1, 0) WHERE name = OLD.category;
+            UPDATE categories SET param_count = param_count + 1 WHERE name = NEW.category;
+        END IF;
+        RETURN NEW;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trg_category_param_count ON parameters;
+CREATE TRIGGER trg_category_param_count
+AFTER INSERT OR UPDATE OF category OR DELETE ON parameters
+FOR EACH ROW EXECUTE FUNCTION refresh_category_param_count();
+
+-- ============================================================
 -- 11. 有用的视图和 RPC 函数
 -- ============================================================
+
+-- 11.0 source_file 格式标准化视图
+-- 问题: source_file 有 summaries/xxx.md, raw/mineru/xxx/paper.md 等多种格式
+-- 方案: 创建标准化视图，统一映射到 literature.id
+CREATE OR REPLACE VIEW v_source_file_normalized AS
+SELECT
+    id,
+    source_file,
+    CASE
+        WHEN source_file LIKE 'summaries/%.md' THEN
+            REPLACE(REPLACE(source_file, 'summaries/', ''), '.md', '')
+        WHEN source_file LIKE 'summaries/%.txt.md' THEN
+            REPLACE(REPLACE(source_file, 'summaries/', ''), '.txt.md', '')
+        WHEN source_file LIKE 'raw/mineru/%' THEN
+            split_part(REPLACE(source_file, 'raw/mineru/', ''), '/', 1)
+        WHEN source_file LIKE 'raw/papers/%' THEN
+            REPLACE(source_file, 'raw/papers/', '')
+        WHEN source_file LIKE '%.md' THEN REPLACE(source_file, '.md', '')
+        WHEN source_file LIKE '%.json' THEN REPLACE(source_file, '.json', '')
+        ELSE source_file
+    END AS literature_id_normalized
+FROM parameters
+WHERE source_file IS NOT NULL;
 
 -- 11.1 按材料统计参数
 CREATE OR REPLACE VIEW v_params_by_material AS
