@@ -10,8 +10,8 @@ import psycopg.sql
 from models import TransformedRecord
 
 
-# Default Supabase local connection
-DEFAULT_DB_URL = "postgresql://postgres:postgres@127.0.0.1:54322/postgres"
+# Default local Docker PostgreSQL connection
+DEFAULT_DB_URL = "postgresql://postgres:postgres@127.0.0.1:5432/nfmd"
 
 BATCH_SIZE = 500
 
@@ -189,10 +189,13 @@ def _load_parameter_batch(
                 elif rec.material_name:
                     stats["material_unresolved"] += 1
 
-                # Handle value_list serialization
-                value_list = None
+                # Handle value_list serialization — must use Jsonb wrapper
+                # so psycopg can infer the PostgreSQL type even when value is None
+                from psycopg.types.json import Jsonb
                 if rec.value_list is not None:
-                    value_list = json.dumps(rec.value_list, ensure_ascii=False)
+                    value_list = Jsonb(rec.value_list)
+                else:
+                    value_list = Jsonb(None)
 
                 # Normalize source_file to literature.id format
                 normalized_source = normalize_source_file(rec.source_file)
@@ -203,9 +206,9 @@ def _load_parameter_batch(
                     cur.execute(
                         """SELECT id FROM parameters
                            WHERE name = %s AND category = %s AND value_type = %s
-                             AND (material_id = %s OR (material_id IS NULL AND %s IS NULL))
-                             AND (value_scalar = %s OR (value_scalar IS NULL AND %s IS NULL))
-                             AND (unit = %s OR (unit IS NULL AND %s IS NULL))
+                             AND (material_id = %s::uuid OR (material_id IS NULL AND %s::uuid IS NULL))
+                             AND (value_scalar = %s::numeric OR (value_scalar IS NULL AND %s::numeric IS NULL))
+                             AND (unit = %s::text OR (unit IS NULL AND %s::text IS NULL))
                            LIMIT 1""",
                         (
                             rec.name, rec.category, rec.value_type,
@@ -227,7 +230,7 @@ def _load_parameter_batch(
                                 value_min = COALESCE(%s, value_min),
                                 value_max = COALESCE(%s, value_max),
                                 value_expr = COALESCE(%s, value_expr),
-                                value_list = COALESCE(%s::jsonb, value_list),
+                                value_list = COALESCE(%s, value_list),
                                 value_text = COALESCE(%s, value_text),
                                 value_str = COALESCE(%s, value_str),
                                 uncertainty = COALESCE(%s, uncertainty),
@@ -279,7 +282,7 @@ def _load_parameter_batch(
                         %s, %s, %s, %s, %s,
                         %s, %s,
                         %s, %s, %s, %s,
-                        %s, %s::jsonb, %s, %s,
+                        %s, %s, %s, %s,
                         %s, %s,
                         %s, %s,
                         %s, %s,

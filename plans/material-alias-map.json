@@ -1147,6 +1147,46 @@
       "material_type": "CoolantMaterial",
       "description": "Fluoride lithium-beryllium molten salt coolant",
       "param_count": 1
+    },
+    {
+      "canonical_name": "UHfNbTi",
+      "aliases": [
+        "UHfNbTi alloy",
+        "U-Hf-Nb-Ti",
+        "U-20Hf-20Nb-20Ti",
+        "UHfNbTi HEA"
+      ]
+    },
+    {
+      "canonical_name": "UTiNbTaFeMo",
+      "aliases": [
+        "UTiNbTaFeMo alloy",
+        "U-Ti-Nb-Ta-Fe-Mo",
+        "UTiNbTaFeMo HEA",
+        "UHEA",
+        "UTiNbTaFeMo (BCC)"
+      ]
+    },
+    {
+      "canonical_name": "UTiNb",
+      "aliases": [
+        "U-Ti-Nb",
+        "UTiNb alloy"
+      ]
+    },
+    {
+      "canonical_name": "UTiNbTa",
+      "aliases": [
+        "U-Ti-Nb-Ta",
+        "UTiNbTa alloy"
+      ]
+    },
+    {
+      "canonical_name": "UTiNbTaFe",
+      "aliases": [
+        "U-Ti-Nb-Ta-Fe",
+        "UTiNbTaFe alloy"
+      ]
     }
   ],
   "non_material": [

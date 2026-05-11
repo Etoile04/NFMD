@@ -15,6 +15,9 @@ def extract_records(source_dir: str) -> Generator[ExtractedRecord, None, None]:
 
     for filepath in files:
         filename = os.path.basename(filepath)
+        # Skip metadata/helper files (prefixed with _)
+        if filename.startswith("_"):
+            continue
         try:
             with open(filepath, "r", encoding="utf-8") as f:
                 data = json.load(f)
