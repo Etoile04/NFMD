@@ -21,7 +21,7 @@ from load import load_records
 # Default paths (relative to NFMD project root)
 DEFAULT_SOURCE_DIR = os.path.join(
     os.path.expanduser("~"),
-    ".openclaw/workspace/data/fuel_swelling_wiki/parameters"
+    ".openclaw/workspace/data/nuclear-materials-wiki/parameters"
 )
 DEFAULT_ALIAS_MAP = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),

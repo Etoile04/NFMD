@@ -1187,6 +1187,38 @@
         "U-Ti-Nb-Ta-Fe",
         "UTiNbTaFe alloy"
       ]
+    },
+    {
+      "canonical_name": "Pure U (BCC)",
+      "aliases": [
+        "α-U",
+        "alpha-U",
+        "U (BCC)",
+        "纯铀",
+        "Pure U"
+      ]
+    },
+    {
+      "canonical_name": "U-20Mo",
+      "aliases": [
+        "U-20wt.%Mo",
+        "U-20wt%Mo",
+        "U-20Mo alloy"
+      ]
+    },
+    {
+      "canonical_name": "Hf",
+      "aliases": [
+        "铪",
+        "Hafnium"
+      ]
+    },
+    {
+      "canonical_name": "Ti",
+      "aliases": [
+        "钛",
+        "Titanium"
+      ]
     }
   ],
   "non_material": [
