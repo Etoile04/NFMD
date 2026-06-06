@@ -1,102 +1,252 @@
 # NFMD — Nuclear Fuel Material Database
 
-AI 驱动的核燃料材料参数知识库，服务于核燃料性能代码（JSRT、BISON 等）的模型参数标定。
+**AI-driven parameter knowledge base for nuclear fuel materials**
 
-## 项目目标
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-336791.svg)](https://www.postgresql.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688.svg)](https://fastapi.tiangolo.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]()
 
-从文献检索、PDF 解析、知识提取、参数校验到比对入库的全流程自动化，最终构建可查询的核燃料材料参数数据库。
+An end-to-end pipeline for literature retrieval, PDF parsing, knowledge extraction, parameter validation, and database ingestion — building a queryable nuclear fuel material parameter database for fuel performance codes (JSRT, BISON, etc.).
 
-## 数据库规模
+---
 
-| 表 | 记录数 |
-|----|--------|
-| parameters | 17,095 |
-| materials | 89 |
-| literature | 163 |
-| categories | 47 |
-| material_aliases | 367 |
-| terminology | 54 |
-
-## 架构
+## 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                   前端展示层                          │
-│         飞书多维表格 / Supabase Studio                │
-├─────────────────────────────────────────────────────┤
-│                   API 层                             │
-│    Supabase REST API (PostgREST) + RPC               │
-├─────────────────────────────────────────────────────┤
-│                   数据库层 (PostgreSQL)               │
-│  materials / parameters / literature / categories    │
-│  terminology / material_aliases / audit_log          │
-├─────────────────────────────────────────────────────┤
-│                   ETL 层                              │
-│  JSON → SQL / 增量同步 / 术语转换 / 去重校验          │
-├─────────────────────────────────────────────────────┤
-│                   知识库层                            │
-│  summaries/ (138) / parameters/ (6750) / wiki/        │
-├─────────────────────────────────────────────────────┤
-│                   外部集成                            │
-│  Zotero / MinerU / Supabase / GitHub                 │
-└─────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────┐
+│                      Client Layer                         │
+│         Feishu Bitable / Supabase Studio / REST API       │
+├───────────────────────────────────────────────────────────┤
+│                   FastAPI REST API                        │
+│    search · parameters · materials · categories · stats   │
+│              (nfmd_reader, RLS-enforced)                  │
+├───────────────────────────────────────────────────────────┤
+│                PostgreSQL 16 (nfmd database)              │
+│  materials · parameters · literature · categories         │
+│  terminology · material_aliases · audit_log · review_*    │
+│  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  │
+│  Row-Level Security (nfmd_reader / nfmd_writer roles)     │
+│  Triggers: audit · tsvector · param_count                 │
+├───────────────────────────────────────────────────────────┤
+│                    ETL Pipeline                           │
+│  extract → validate → transform → normalize → load        │
+│  (7 modules, rule-based quality checks)                   │
+├───────────────────────────────────────────────────────────┤
+│                 Knowledge Sources                         │
+│  Zotero · MinerU · llm-wiki · Materials Project           │
+└───────────────────────────────────────────────────────────┘
 ```
 
-## 目录结构
+---
+
+## 📊 Database Scale
+
+| Table | Records | Purpose |
+|-------|---------|---------|
+| material_aliases | 384 | Material name normalization map |
+| materials | 98 | Canonical material entries |
+| audit_log | 93 | Change tracking (auto via trigger) |
+| parameters | 87 | Extracted material property values |
+| terminology | 54 | Chinese↔English term mapping |
+| categories | 6 | Property classification |
+| literature | 4 | Source publication metadata |
+| review_audit_log | 0 | Review workflow tracking |
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- PostgreSQL 16 (running in Docker)
+- Python 3.10+
+
+### 1. Database Setup
+
+```bash
+# Start PostgreSQL (adjust port as needed)
+docker run -d --name nfmd-postgres \
+  -e POSTGRES_DB=nfmd \
+  -e POSTGRES_USER=postgres \
+  -p 15432:5432 \
+  postgres:16
+
+# Create schema + roles
+psql -h localhost -p 15432 -U postgres -d nfmd -f plans/schema_v2.sql
+psql -h localhost -p 15432 -U postgres -d nfmd -f sql/create_roles.sql
+```
+
+### 2. Run ETL Pipeline
+
+```bash
+cd scripts
+bash run_etl.sh
+```
+
+### 3. Start API Server
+
+```bash
+cd scripts
+bash start_api.sh
+# or directly:
+# uvicorn api:app --host 0.0.0.0 --port 8000
+```
+
+### 4. Query
+
+```bash
+# Database stats
+curl http://localhost:8000/stats
+
+# Search parameters
+curl "http://localhost:8000/search?q=thermal+conductivity&material=UO2"
+
+# List materials
+curl http://localhost:8000/materials
+
+# List parameters with filters
+curl "http://localhost:8000/parameters?material=UO2&category=thermal"
+```
+
+---
+
+## 📁 Project Structure
 
 ```
 NFMD/
 ├── plans/
-│   ├── database-platform-plan.md   # 详细计划文档
-│   ├── schema_v2.sql               # PostgreSQL DDL (含质量防护触发器)
-│   └── material-alias-map.json     # 材料规范化映射
+│   ├── database-platform-plan.md       # Detailed design document
+│   ├── schema_v2.sql                   # PostgreSQL DDL (tables, triggers, views, RPCs)
+│   └── material-alias-map.json         # Material normalization dictionary
 ├── sql/
-│   └── repair_quality.sql          # 数据质量修复脚本
-├── data/
-│   └── fuel_swelling_wiki/         # 知识库数据（不纳入版本控制）
+│   ├── create_roles.sql                # RLS roles (nfmd_reader, nfmd_writer) + policies
+│   └── repair_quality.sql              # Data quality repair scripts
 ├── scripts/
-│   ├── etl/                        # ETL 管线 (extract/transform/load/normalize/validate)
-│   └── run_etl.sh                  # ETL 启动脚本
+│   ├── api.py                          # FastAPI REST API (254 lines, 6 endpoints)
+│   ├── start_api.sh                    # API launch script
+│   ├── run_etl.sh                      # ETL launcher
+│   └── etl/
+│       ├── extract.py                  # JSON/text → ExtractedRecord
+│       ├── validate.py                 # Rule-based validation (9 rules)
+│       ├── transform.py                # ExtractedRecord → TransformedRecord
+│       ├── normalize.py                # Material name + unit normalization
+│       ├── load.py                     # Batch INSERT with upsert
+│       ├── models.py                   # Data models (ExtractedRecord, TransformedRecord)
+│       ├── rules.py                    # Validation rule engine
+│       ├── io_utils.py                 # File I/O helpers
+│       └── run_pipeline.py             # Pipeline orchestrator
+├── data/                               # Knowledge base data (git-ignored)
+│   └── fuel_swelling_wiki/
 ├── docs/
-│   └── database-safety-rules.md    # 数据库操作安全规则
+│   └── database-safety-rules.md        # DB operation safety rules
 └── README.md
 ```
 
-## 数据质量防护
+---
 
-已实施的多层数据质量保障：
+## 🔌 REST API Reference
 
-1. **ETL 业务键去重** — `(name, material_id, category, value_type, value_scalar, unit)` 唯一约束，防止重复导入
-2. **验证规则** — `scripts/etl/rules.py` + `validate.py` 执行：
-   - 泛化名称过滤（避免 "property", "parameter" 等无意义名称入库）
-   - `value_type` 一致性校验（scalar 必须有 `value_scalar`，range 必须有 min/max）
-   - Range min ≤ max 检查
-3. **source_file 标准化** — `v_source_file_normalized` 视图将多种路径格式统一映射到 `literature.id`
-4. **param_count 自动维护** — `trg_category_param_count` 触发器在参数增删改时自动更新对应分类的计数
-5. **审计日志** — `audit_log` 表 + `trg_params_audit` 触发器记录所有参数变更
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/` | API info + version |
+| `GET` | `/stats` | Database statistics (table counts) |
+| `GET` | `/search` | Full-text parameter search (`q`, `material`) |
+| `GET` | `/parameters` | List parameters with filters (`material`, `category`, `limit`) |
+| `GET` | `/parameters/{id}` | Get single parameter by ID |
+| `GET` | `/materials` | List materials with optional `category` filter |
+| `GET` | `/categories` | List all categories |
 
-## 安全规则
+All read endpoints use `nfmd_reader` role with Row-Level Security enforced.
 
-所有数据库写操作必须遵循 [docs/database-safety-rules.md](docs/database-safety-rules.md) 中的规则。核心要点：
+---
 
-- 🔴 **禁止**: `DROP TABLE`, `TRUNCATE`, 无 `WHERE` 的 `DELETE`/`UPDATE`
-- 🟡 **需审批**: 影响超过 100 行的写操作、schema 变更
-- ✅ **安全**: 所有 `SELECT` 查询、`EXPLAIN ANALYZE`
-- 子智能体执行数据库操作前必须加载 `nfmd-db-ops` 技能
+## 🔒 Security
 
-## 技术栈
+### Row-Level Security (RLS)
 
-- **数据库**: Supabase (PostgreSQL 16)
-- **全文搜索**: PostgreSQL tsvector + 术语表中文转英文
-- **前端原型**: 飞书多维表格
-- **ETL**: Python 3.14 (`scripts/etl/`)
-- **知识库**: llm-wiki 技能体系
+Two database roles enforce access control:
 
-## 分支状态
+| Role | Access | Use Case |
+|------|--------|----------|
+| `nfmd_reader` | SELECT on all tables (except audit_log) | API server, read-only queries |
+| `nfmd_writer` | INSERT + UPDATE on data tables; INSERT-only on audit_log | ETL pipeline, write operations |
 
-- **main** — 当前活跃分支，包含所有最新代码和数据质量修复
-- **phase-2/quality-remediation** — 包含 ETL 测试套件和文档注释，未合并到 main（无冲突但有独立的 docstring 改进）
+All tables have RLS enabled. Audit log is write-only (not readable by either role).
 
-## License
+### Safety Rules
+
+All database write operations must follow [docs/database-safety-rules.md](docs/database-safety-rules.md):
+
+- 🔴 **Forbidden**: `DROP TABLE`, `TRUNCATE`, `DELETE`/`UPDATE` without `WHERE`
+- 🟡 **Needs approval**: Operations affecting >100 rows, schema changes
+- ✅ **Safe**: All `SELECT` queries, `EXPLAIN ANALYZE`
+- 🤖 Subagents must load `nfmd-db-ops` skill before any DB operations
+
+---
+
+## ✅ Data Quality
+
+Multi-layer quality assurance built into the pipeline:
+
+1. **Business key dedup** — Unique constraint on `(name, material_id, category, value_type, value_scalar, unit)` prevents duplicate imports
+2. **Rule engine** — 9 validation rules in `scripts/etl/rules.py`:
+   - Missing field detection (id, name, category, value_type)
+   - Invalid category / value_type checking
+   - Scalar/range value consistency (scalar needs `value_scalar`, range needs min/max)
+   - Range min ≤ max enforcement
+3. **Source file normalization** — `v_source_file_normalized` view maps diverse path formats to `literature.id`
+4. **Auto param_count** — `trg_category_param_count` trigger maintains category counts on parameter changes
+5. **Audit trail** — `audit_log` table + `trg_params_audit` trigger records all parameter changes
+6. **Material normalization** — `MaterialNormalizer` with alias map handles synonyms (e.g., "UO₂" = "二氧化铀" = "uranium dioxide")
+
+---
+
+## 🗄️ Database Objects
+
+### Tables (8)
+
+`materials` · `material_aliases` · `categories` · `literature` · `parameters` · `terminology` · `audit_log` · `review_audit_log`
+
+### Views (3)
+
+| View | Purpose |
+|------|---------|
+| `v_source_file_normalized` | Unifies file path formats → links to `literature` |
+| `v_params_by_material` | Parameters grouped by material |
+| `v_params_by_category` | Parameters grouped by category |
+
+### Functions (4)
+
+| Function | Purpose |
+|----------|---------|
+| `parameters_tsvector_update()` | Auto-update tsvector on parameter changes |
+| `audit_trigger_func()` | Record parameter changes to audit_log |
+| `refresh_category_param_count()` | Maintain category.param_count |
+| `search_parameters(query)` | Full-text search with tsvector ranking |
+| `stats_overview()` | Database statistics overview |
+
+### Triggers (3)
+
+`trg_params_tsvector` · `trg_params_audit` · `trg_category_param_count`
+
+---
+
+## 🛠️ Tech Stack
+
+| Component | Technology |
+|-----------|-----------|
+| Database | PostgreSQL 16 (Docker) |
+| API | FastAPI + Uvicorn |
+| ETL | Python 3.10+ (custom pipeline) |
+| Search | PostgreSQL tsvector + terminology Chinese↔English |
+| Security | Row-Level Security (RLS) |
+| Knowledge Base | llm-wiki skill system |
+| Literature | Zotero + MinerU PDF extraction |
+| Frontend | Feishu Bitable (prototype) |
+
+---
+
+## 📜 License
 
 MIT
