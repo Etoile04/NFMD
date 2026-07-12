@@ -111,6 +111,30 @@ curl "http://localhost:8000/parameters?material=UO2&category=thermal"
 
 ---
 
+## 📈 Phase 2 Status — ETL Pipeline
+
+### ETL Pipeline
+- 8 Python modules, ~1276 LOC
+- Pipeline stages: Extract → Validate → Transform → Load
+- Supports scalar, range, expression, list value types
+
+### Data Import Results
+- **6,980 parameters** imported, 0 fatal errors
+- **89 materials** + 358 aliases
+- **174 literature** entries
+- 47 distinct categories, 100% source coverage
+- Full-text search (ts_vector) populated for all records
+
+### Configuration
+- DB URL via `NFMD_DB_URL` environment variable (defaults to local Supabase)
+- See `.env.example` for setup
+
+### Testing
+- Run: `python3 -m pytest scripts/etl/tests/ -v`
+- 75 tests covering extract, validate, normalize, transform, load, and I/O
+
+---
+
 ## 📁 Project Structure
 
 ```
@@ -135,7 +159,17 @@ NFMD/
 │       ├── models.py                   # Data models (ExtractedRecord, TransformedRecord)
 │       ├── rules.py                    # Validation rule engine
 │       ├── io_utils.py                 # File I/O helpers
-│       └── run_pipeline.py             # Pipeline orchestrator
+│       ├── config.py                   # DB URL + batch size configuration
+│       ├── logging_config.py           # Centralized logging setup
+│       ├── run_pipeline.py             # Pipeline orchestrator
+│       └── tests/                      # Test suite (75 tests)
+│           ├── conftest.py
+│           ├── test_extract.py
+│           ├── test_validate.py
+│           ├── test_normalize.py
+│           ├── test_transform.py
+│           ├── test_load.py
+│           └── test_io_utils.py
 ├── data/                               # Knowledge base data (git-ignored)
 │   └── fuel_swelling_wiki/
 ├── docs/

@@ -9,6 +9,12 @@ class MaterialNormalizer:
     """Maps raw material strings to canonical material names."""
 
     def __init__(self, alias_map_path: str):
+        """Load the alias map and build internal lookup structures.
+
+        Args:
+            alias_map_path: Path to the JSON alias-map file containing
+                ``materials`` and ``non_material`` entries.
+        """
         with open(alias_map_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
@@ -64,6 +70,14 @@ class MaterialNormalizer:
         return variants
 
     def is_canonical(self, name: str) -> bool:
+        """Check whether *name* is a known canonical material name.
+
+        Args:
+            name: Material name to check.
+
+        Returns:
+            True if *name* is in the canonical set, False otherwise.
+        """
         return name in self.canonical_set
 
 
