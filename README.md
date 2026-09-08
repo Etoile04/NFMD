@@ -6,6 +6,7 @@
 [![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-336791.svg)](https://www.postgresql.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]()
+[![CI](https://github.com/Etoile04/NFMD/actions/workflows/ci.yml/badge.svg)](https://github.com/Etoile04/NFMD/actions/workflows/ci.yml)
 
 An end-to-end pipeline for literature retrieval, PDF parsing, knowledge extraction, parameter validation, and database ingestion — building a queryable nuclear fuel material parameter database for fuel performance codes (JSRT, BISON, etc.).
 
@@ -59,8 +60,14 @@ An end-to-end pipeline for literature retrieval, PDF parsing, knowledge extracti
 
 ### Prerequisites
 
+- [uv](https://docs.astral.sh/uv/) (manages Python + dependencies via `uv.lock`)
 - PostgreSQL 16 (running in Docker)
-- Python 3.10+
+
+### 0. Environment Setup
+
+```bash
+uv sync          # creates .venv and installs locked dependencies (incl. dev tools)
+```
 
 ### 1. Database Setup
 
@@ -80,17 +87,15 @@ psql -h localhost -p 15432 -U postgres -d nfmd -f sql/create_roles.sql
 ### 2. Run ETL Pipeline
 
 ```bash
-cd scripts
-bash run_etl.sh
+bash scripts/run_etl.sh          # defaults to dry-run mode
 ```
 
 ### 3. Start API Server
 
 ```bash
-cd scripts
-bash start_api.sh
+bash scripts/start_api.sh
 # or directly:
-# uvicorn api:app --host 0.0.0.0 --port 8000
+# cd scripts && uv run uvicorn api:app --host 0.0.0.0 --port 8900
 ```
 
 ### 4. Query
@@ -130,8 +135,9 @@ curl "http://localhost:8000/parameters?material=UO2&category=thermal"
 - See `.env.example` for setup
 
 ### Testing
-- Run: `python3 -m pytest scripts/etl/tests/ -v`
+- Run: `uv run pytest -v`
 - 75 tests covering extract, validate, normalize, transform, load, and I/O
+- CI: ruff + pytest on every push/PR ([.github/workflows/ci.yml](.github/workflows/ci.yml))
 
 ---
 
