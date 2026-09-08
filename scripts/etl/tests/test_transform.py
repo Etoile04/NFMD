@@ -1,11 +1,9 @@
 """Tests for transform module."""
 
-import pytest
 from unittest.mock import MagicMock
 
-from transform import transform_records, _normalize_confidence, _make_value_str
 from models import ExtractedRecord, TransformedRecord
-
+from transform import _make_value_str, _normalize_confidence, transform_records
 
 # ---------------------------------------------------------------------------
 # Helpers

@@ -1,21 +1,16 @@
 """Load: Batch write transformed records to Supabase PostgreSQL."""
 
-import json
-from typing import Optional
 
 import psycopg
 import psycopg.sql
-
-from config import DB_URL, BATCH_SIZE
-
+from config import BATCH_SIZE, DB_URL
 from logging_config import get_logger
 from models import TransformedRecord
-
 
 logger = get_logger(__name__)
 
 
-def normalize_source_file(source_file: Optional[str]) -> Optional[str]:
+def normalize_source_file(source_file: str | None) -> str | None:
     """Normalize source_file to literature.id format.
 
     Handles patterns found in the wild:
@@ -93,7 +88,7 @@ def load_records(
             try:
                 batch_stats = _load_parameter_batch(conn, batch, material_lookup, mode)
                 conn.commit()
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001 — isolate batch failure, pipeline continues
                 conn.rollback()
                 batch_stats = {"inserted": 0, "updated": 0, "skipped": 0, "errored": len(batch),
                                "material_resolved": 0, "material_unresolved": 0, "errors": [str(e)[:200]]}
@@ -111,9 +106,9 @@ def load_records(
 
         logger.info("All batches processed")
 
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 — recorded as FATAL in stats, run completes
         conn.rollback()
-        stats["errors"].append(f"FATAL: {str(e)}")
+        stats["errors"].append(f"FATAL: {e!s}")
         logger.error("Load error: %s", e)
     finally:
         conn.close()
@@ -156,7 +151,7 @@ def _upsert_literature(
                     (rec.literature_id, rec.source_file, rec.literature_year),
                 )
                 stats["upserted"] += 1
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001 — isolate record failure
                 stats["errors"] += 1
                 if stats["errors"] <= 3:
                     logger.error("Literature error %s: %s", rec.literature_id, e)
@@ -325,7 +320,7 @@ def _load_parameter_batch(
                 if cur.rowcount > 0:
                     stats["inserted"] += 1
 
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001 — isolate record failure
                 stats["errored"] += 1
                 if stats["errored"] <= 5:
                     stats["errors"].append(f"{rec.id}: {str(e)[:200]}")

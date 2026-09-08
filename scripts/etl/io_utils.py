@@ -2,14 +2,18 @@
 
 import json
 import os
+from collections.abc import Generator
 from datetime import datetime
-from pathlib import Path
-from typing import Any, Generator
+from typing import Any
+from zoneinfo import ZoneInfo
+
+# Run IDs are operator-facing labels; pin the wall clock to the ops timezone explicitly
+RUN_TZ = ZoneInfo("Asia/Shanghai")
 
 
 def create_run_dir(base_dir: str = "data/imports/runs") -> tuple[str, str]:
     """Create a timestamped run directory. Returns (run_id, run_dir_path)."""
-    run_id = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    run_id = datetime.now(tz=RUN_TZ).strftime("%Y-%m-%dT%H-%M-%S")
     run_dir = os.path.join(base_dir, run_id)
     os.makedirs(run_dir, exist_ok=True)
     return run_id, run_dir
@@ -27,14 +31,13 @@ def write_jsonl(path: str, records: list[dict[str, Any]]) -> None:
     """Write records to a JSONL file."""
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
-        for rec in records:
-            f.write(json.dumps(rec, ensure_ascii=False, default=str) + "\n")
+        f.writelines(json.dumps(rec, ensure_ascii=False, default=str) + "\n" for rec in records)
 
 
 def read_jsonl(path: str) -> list[dict[str, Any]]:
     """Read records from a JSONL file."""
     records = []
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if line:
@@ -44,7 +47,7 @@ def read_jsonl(path: str) -> list[dict[str, Any]]:
 
 def stream_jsonl(path: str) -> Generator[dict[str, Any], None, None]:
     """Stream records from a JSONL file (memory efficient)."""
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if line:
@@ -60,5 +63,5 @@ def write_json(path: str, data: Any) -> None:
 
 def read_json(path: str) -> Any:
     """Read data from a JSON file."""
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         return json.load(f)

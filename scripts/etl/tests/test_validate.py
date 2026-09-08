@@ -1,10 +1,8 @@
 """Tests for validate.py and rules.py."""
 
-import pytest
 
-from validate import validate_records
 from rules import ALL_RULES
-
+from validate import validate_records
 
 # ---------------------------------------------------------------------------
 # TestValidateRecords — integration tests for validate_records()
@@ -54,7 +52,7 @@ class TestValidateRecords:
     def test_mixed_valid_and_invalid(
         self, sample_scalar_record, malformed_record
     ):
-        valid, errored, issues = validate_records(
+        valid, errored, _issues = validate_records(
             [sample_scalar_record, malformed_record], "run-004"
         )
         assert len(valid) == 1

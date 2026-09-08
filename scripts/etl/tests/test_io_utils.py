@@ -1,11 +1,8 @@
 """Tests for io_utils module."""
 
-import os
 
 import pytest
-
-from io_utils import write_jsonl, read_jsonl, stream_jsonl, write_json, read_json
-
+from io_utils import read_json, read_jsonl, stream_jsonl, write_json, write_jsonl
 
 # ===========================================================================
 # TestJsonlIO

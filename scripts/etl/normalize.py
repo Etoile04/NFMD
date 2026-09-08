@@ -2,7 +2,7 @@
 
 import json
 import re
-from typing import Any, Optional
+from typing import Any
 
 
 class MaterialNormalizer:
@@ -15,7 +15,7 @@ class MaterialNormalizer:
             alias_map_path: Path to the JSON alias-map file containing
                 ``materials`` and ``non_material`` entries.
         """
-        with open(alias_map_path, "r", encoding="utf-8") as f:
+        with open(alias_map_path, encoding="utf-8") as f:
             data = json.load(f)
 
         # Build alias -> canonical_name lookup
@@ -39,7 +39,7 @@ class MaterialNormalizer:
             elif isinstance(nm, dict):
                 self.non_materials.add(nm.get("name", "").lower())
 
-    def normalize(self, raw_material: Optional[str]) -> Optional[str]:
+    def normalize(self, raw_material: str | None) -> str | None:
         """Return canonical name or None if unmapped."""
         if not raw_material:
             return None
@@ -101,7 +101,7 @@ UNIT_NORMALIZE: dict[str, str] = {
 }
 
 
-def normalize_unit(unit: Optional[str]) -> Optional[str]:
+def normalize_unit(unit: str | None) -> str | None:
     """Normalize unit string to standard form."""
     if not unit:
         return unit
@@ -109,7 +109,7 @@ def normalize_unit(unit: Optional[str]) -> Optional[str]:
 
 
 # Temperature parsing
-def parse_temperature(raw: Any) -> tuple[Optional[float], Optional[str]]:
+def parse_temperature(raw: Any) -> tuple[float | None, str | None]:
     """Parse temperature value. Returns (kelvin, original_string)."""
     if raw is None:
         return None, None

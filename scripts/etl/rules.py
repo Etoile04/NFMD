@@ -1,8 +1,8 @@
 """Validation rule definitions."""
 
-from typing import Callable
-from models import ExtractedRecord, ValidationIssue
+from collections.abc import Callable
 
+from models import ExtractedRecord, ValidationIssue
 
 # Allowed value types
 VALID_VALUE_TYPES = {"scalar", "range", "expression", "list", "text"}
@@ -90,36 +90,37 @@ def _check_invalid_value_type(rec: ExtractedRecord) -> list[str]:
 
 
 def _check_scalar_value(rec: ExtractedRecord) -> list[str]:
-    if rec.value_type == "scalar":
-        if rec.value_scalar is None and rec.raw_value is None:
-            return ["scalar type but no value_scalar or raw_value"]
+    if rec.value_type == "scalar" and rec.value_scalar is None and rec.raw_value is None:
+        return ["scalar type but no value_scalar or raw_value"]
     return []
 
 
 def _check_range_value(rec: ExtractedRecord) -> list[str]:
-    if rec.value_type == "range":
-        if rec.value_min is None and rec.value_max is None:
-            # Check if raw_value is a list of 2 elements
-            if isinstance(rec.raw_value, list) and len(rec.raw_value) == 2:
-                return []  # Will be resolved in transform
-            if rec.raw_value is not None:
-                return []  # raw_value exists, transform will try to parse
-            return ["range type but no value_min/value_max"]
+    if rec.value_type == "range" and rec.value_min is None and rec.value_max is None:
+        # Check if raw_value is a list of 2 elements
+        if isinstance(rec.raw_value, list) and len(rec.raw_value) == 2:
+            return []  # Will be resolved in transform
+        if rec.raw_value is not None:
+            return []  # raw_value exists, transform will try to parse
+        return ["range type but no value_min/value_max"]
     return []
 
 
 def _check_expression_value(rec: ExtractedRecord) -> list[str]:
-    if rec.value_type == "expression":
-        if not rec.value_expr and not rec.equation and rec.raw_value is None:
-            if not rec.value_str:  # value_str might contain the expression
-                return ["expression type but no value_expr/equation/raw_value/value_str"]
+    if (
+        rec.value_type == "expression"
+        and not rec.value_expr
+        and not rec.equation
+        and rec.raw_value is None
+        and not rec.value_str  # value_str might contain the expression
+    ):
+        return ["expression type but no value_expr/equation/raw_value/value_str"]
     return []
 
 
 def _check_list_value(rec: ExtractedRecord) -> list[str]:
-    if rec.value_type == "list":
-        if rec.value_list is None and not isinstance(rec.raw_value, list):
-            return ["list type but no value_list and raw_value is not a list"]
+    if rec.value_type == "list" and rec.value_list is None and not isinstance(rec.raw_value, list):
+        return ["list type but no value_list and raw_value is not a list"]
     return []
 
 
@@ -147,20 +148,22 @@ def _check_generic_name(rec: ExtractedRecord) -> list[str]:
     name_en = (rec.name_en or "").strip()
     if name.lower() in GENERIC_NAMES or name_en.lower() in GENERIC_NAMES:
         return [
-            f"Generic parameter name '{name or name_en}' — "
-            f"must use a specific physical quantity name "
-            f"(e.g., '气泡直径', '肿胀量', '扩散系数')"
+            f"Generic parameter name '{name or name_en}' — must use a specific physical quantity name (e.g., '气泡直径', '肿胀量', '扩散系数')"
         ]
     return []
 
 
 def _check_range_min_max(rec: ExtractedRecord) -> list[str]:
     """Check that value_min <= value_max for range type."""
-    if rec.value_type == "range" and rec.value_min is not None and rec.value_max is not None:
-        if rec.value_min > rec.value_max:
-            return [
-                f"range value_min ({rec.value_min}) > value_max ({rec.value_max})"
-            ]
+    if (
+        rec.value_type == "range"
+        and rec.value_min is not None
+        and rec.value_max is not None
+        and rec.value_min > rec.value_max
+    ):
+        return [
+            f"range value_min ({rec.value_min}) > value_max ({rec.value_max})"
+        ]
     return []
 
 
@@ -180,20 +183,16 @@ def _check_value_type_cross_fields(rec: ExtractedRecord) -> list[str]:
             )
 
     # range: must have both min and max
-    if vt == "range":
-        if rec.value_min is None or rec.value_max is None:
-            if rec.raw_value is None:
-                issues.append("range type requires both value_min and value_max")
+    if vt == "range" and (rec.value_min is None or rec.value_max is None) and rec.raw_value is None:
+        issues.append("range type requires both value_min and value_max")
 
     # expression: must have value_expr or equation
-    if vt == "expression":
-        if not rec.value_expr and not rec.equation and not rec.raw_value:
-            issues.append("expression type requires value_expr or equation")
+    if vt == "expression" and not rec.value_expr and not rec.equation and not rec.raw_value:
+        issues.append("expression type requires value_expr or equation")
 
     # list: must have value_list or raw_value as list
-    if vt == "list":
-        if rec.value_list is None and not isinstance(rec.raw_value, list):
-            issues.append("list type requires value_list")
+    if vt == "list" and rec.value_list is None and not isinstance(rec.raw_value, list):
+        issues.append("list type requires value_list")
 
     return issues
 
