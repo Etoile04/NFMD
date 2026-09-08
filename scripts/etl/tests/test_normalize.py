@@ -1,16 +1,9 @@
 """Tests for normalize module: MaterialNormalizer, normalize_unit, parse_temperature."""
 
 import json
-import os
-import sys
 
 import pytest
-
-# Ensure scripts/etl/ is importable
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
 from normalize import MaterialNormalizer, normalize_unit, parse_temperature
-
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -161,7 +154,7 @@ class TestParseTemperature:
 
     def test_numeric_int(self):
         """Integer value is treated as Kelvin."""
-        val, orig = parse_temperature(500)
+        val, _orig = parse_temperature(500)
         assert val == 500.0
 
     def test_none_returns_none_tuple(self):
@@ -172,27 +165,27 @@ class TestParseTemperature:
 
     def test_string_number(self):
         """String '300' converts to float 300.0."""
-        val, orig = parse_temperature("300")
+        val, _orig = parse_temperature("300")
         assert val == 300.0
 
     def test_string_with_K_unit(self):
         """String '600 K' parses to 600.0."""
-        val, orig = parse_temperature("600 K")
+        val, _orig = parse_temperature("600 K")
         assert val == 600.0
 
     def test_celsius_converted(self):
         """Celsius value is converted to Kelvin."""
-        val, orig = parse_temperature("25°C")
+        val, _orig = parse_temperature("25°C")
         assert val == pytest.approx(298.15, abs=0.01)
 
     def test_room_temperature(self):
         """'room temperature' returns ~298 K."""
-        val, orig = parse_temperature("room temp")
+        val, _orig = parse_temperature("room temp")
         assert val == pytest.approx(298.15, abs=0.01)
 
     def test_range_temperature(self):
         """Range '600-800 K' returns average."""
-        val, orig = parse_temperature("600-800 K")
+        val, _orig = parse_temperature("600-800 K")
         assert val == 700.0
 
     def test_non_numeric_string(self):
@@ -217,13 +210,13 @@ class TestParseTemperature:
         """Small numbers (≤50) are not treated as Kelvin in the plain-number path."""
         # "25 " — the regex-only path for numbers with trailing space
         # requires val > 50, so 25 won't match that branch
-        val, orig = parse_temperature("25")
+        val, _orig = parse_temperature("25")
         # 25 goes through the direct float(path) — float("25") = 25.0 > 0, so
         # it actually returns (25.0, "25"). This tests actual behavior.
         assert val == 25.0
 
     def test_fahrenheit_converted(self):
         """Fahrenheit value is converted to Kelvin."""
-        val, orig = parse_temperature("77°F")
+        val, _orig = parse_temperature("77°F")
         expected = (77.0 - 32) * 5 / 9 + 273.15
         assert val == pytest.approx(expected, abs=0.01)

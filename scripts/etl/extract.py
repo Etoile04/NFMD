@@ -1,9 +1,10 @@
 """Extract: Read source JSON files and generate unified intermediate records."""
 
+import contextlib
 import glob
 import json
 import os
-from typing import Generator
+from collections.abc import Generator
 
 from logging_config import get_logger
 from models import ExtractedRecord
@@ -22,7 +23,7 @@ def extract_records(source_dir: str) -> Generator[ExtractedRecord, None, None]:
         if filename.startswith("_"):
             continue
         try:
-            with open(filepath, "r", encoding="utf-8") as f:
+            with open(filepath, encoding="utf-8") as f:
                 data = json.load(f)
         except (json.JSONDecodeError, UnicodeDecodeError) as e:
             logger.fatal("Cannot parse %s: %s", filename, e)
@@ -30,10 +31,7 @@ def extract_records(source_dir: str) -> Generator[ExtractedRecord, None, None]:
 
         # Handle wrapper format
         if isinstance(data, dict):
-            if "parameters" in data:
-                records = data["parameters"]
-            else:
-                records = [data]  # single record as dict
+            records = data.get("parameters", [data])  # fallback: single record as dict
         elif isinstance(data, list):
             records = data
         else:
@@ -70,15 +68,11 @@ def _to_extracted_record(rec: dict, filename: str) -> ExtractedRecord:
     # For range with raw_value as list
     if value_type == "range" and isinstance(raw_value, list) and len(raw_value) == 2:
         if value_min is None:
-            try:
+            with contextlib.suppress(ValueError, TypeError):
                 value_min = float(raw_value[0])
-            except (ValueError, TypeError):
-                pass
         if value_max is None:
-            try:
+            with contextlib.suppress(ValueError, TypeError):
                 value_max = float(raw_value[1])
-            except (ValueError, TypeError):
-                pass
 
     # For list type, raw_value might be the list
     if value_type == "list" and isinstance(raw_value, list) and value_list is None:
@@ -95,10 +89,8 @@ def _to_extracted_record(rec: dict, filename: str) -> ExtractedRecord:
         temp_str = temp_raw
     # Also check temperature_K explicitly
     if temp_k is None and rec.get("temperature_K"):
-        try:
+        with contextlib.suppress(ValueError, TypeError):
             temp_k = float(rec["temperature_K"])
-        except (ValueError, TypeError):
-            pass
 
     return ExtractedRecord(
         record_id=rec.get("id", ""),
@@ -143,6 +135,5 @@ def _clean_source_file(source: str) -> str:
     # Remove path prefix if any
     source = source.replace("summaries/", "").replace("summaries\\", "")
     # Remove .md extension if present (keep base name)
-    if source.endswith(".md"):
-        source = source[:-3]
+    source = source.removesuffix(".md")
     return source

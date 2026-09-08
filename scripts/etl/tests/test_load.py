@@ -3,19 +3,12 @@
 Uses mocking (unittest.mock) to avoid requiring a live database connection.
 """
 
-import os
-import sys
-
-import pytest
-
-# Ensure scripts/etl/ is importable
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from unittest.mock import MagicMock, patch
 
-from load import load_records, _build_material_lookup, _upsert_literature
+import pytest
+from load import _build_material_lookup, _upsert_literature, load_records
 from models import TransformedRecord
-
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -23,21 +16,21 @@ from models import TransformedRecord
 
 def _make_transformed_record(**overrides) -> TransformedRecord:
     """Build a minimal TransformedRecord with sensible defaults."""
-    defaults = dict(
-        id="param-001",
-        name="density",
-        name_en="density",
-        category="physical_property",
-        value_type="scalar",
-        value_scalar=15.6,
-        unit="g/cm³",
-        material_name="U-10Mo",
-        material_raw="U-10Mo",
-        temperature_k=293.0,
-        source_file="test_paper.json",
-        literature_id="lit-001",
-        literature_year=2024,
-    )
+    defaults = {
+        "id": "param-001",
+        "name": "density",
+        "name_en": "density",
+        "category": "physical_property",
+        "value_type": "scalar",
+        "value_scalar": 15.6,
+        "unit": "g/cm³",
+        "material_name": "U-10Mo",
+        "material_raw": "U-10Mo",
+        "temperature_k": 293.0,
+        "source_file": "test_paper.json",
+        "literature_id": "lit-001",
+        "literature_year": 2024,
+    }
     defaults.update(overrides)
     return TransformedRecord(**defaults)
 

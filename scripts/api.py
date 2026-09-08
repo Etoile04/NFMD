@@ -5,7 +5,6 @@ NFMD API — 轻量 FastAPI 层
 """
 
 import os
-from typing import Optional
 
 import psycopg
 from fastapi import FastAPI, HTTPException, Query
@@ -47,38 +46,38 @@ class StatsResponse(BaseModel):
 
 class ParameterResult(BaseModel):
     id: str
-    name: Optional[str] = None
-    name_en: Optional[str] = None
-    symbol: Optional[str] = None
-    category: Optional[str] = None
-    subcategory: Optional[str] = None
-    value_type: Optional[str] = None
-    value_scalar: Optional[float] = None
-    value_min: Optional[float] = None
-    value_max: Optional[float] = None
-    value_expr: Optional[str] = None
-    value_str: Optional[str] = None
-    unit: Optional[str] = None
-    material_name: Optional[str] = None
-    material_raw: Optional[str] = None
-    temperature_k: Optional[float] = None
-    confidence: Optional[str] = None
-    source_file: Optional[str] = None
-    rank: Optional[float] = None
+    name: str | None = None
+    name_en: str | None = None
+    symbol: str | None = None
+    category: str | None = None
+    subcategory: str | None = None
+    value_type: str | None = None
+    value_scalar: float | None = None
+    value_min: float | None = None
+    value_max: float | None = None
+    value_expr: str | None = None
+    value_str: str | None = None
+    unit: str | None = None
+    material_name: str | None = None
+    material_raw: str | None = None
+    temperature_k: float | None = None
+    confidence: str | None = None
+    source_file: str | None = None
+    rank: float | None = None
 
 
 class MaterialInfo(BaseModel):
     name: str
-    material_type: Optional[str] = None
+    material_type: str | None = None
     param_count: int = 0
 
 
 class CategoryInfo(BaseModel):
     category: str
-    category_zh: Optional[str] = None
+    category_zh: str | None = None
     param_count: int = 0
     material_count: int = 0
-    avg_confidence: Optional[float] = None
+    avg_confidence: float | None = None
 
 
 # --- Endpoints ---
@@ -106,9 +105,9 @@ def stats():
 @app.get("/search", response_model=list[ParameterResult], tags=["parameters"])
 def search_parameters(
     q: str = Query(..., description="搜索关键词（支持中英文）"),
-    category: Optional[str] = Query(None, description="分类过滤"),
-    material: Optional[str] = Query(None, description="材料过滤"),
-    confidence: Optional[str] = Query(None, description="置信度过滤 (high/medium/low)"),
+    category: str | None = Query(None, description="分类过滤"),
+    material: str | None = Query(None, description="材料过滤"),
+    confidence: str | None = Query(None, description="置信度过滤 (high/medium/low)"),
     limit: int = Query(50, ge=1, le=200, description="返回数量上限"),
 ):
     """全文搜索参数（中文术语自动翻译为英文后搜索）"""
@@ -120,7 +119,7 @@ def search_parameters(
                 (q, category, material, confidence, limit),
             )
             cols = [desc[0] for desc in cur.description]
-            results = [dict(zip(cols, row)) for row in cur.fetchall()]
+            results = [dict(zip(cols, row, strict=True)) for row in cur.fetchall()]
             return results
     finally:
         conn.close()
@@ -128,9 +127,9 @@ def search_parameters(
 
 @app.get("/parameters", response_model=list[ParameterResult], tags=["parameters"])
 def list_parameters(
-    material: Optional[str] = Query(None),
-    category: Optional[str] = Query(None),
-    confidence: Optional[str] = Query(None),
+    material: str | None = Query(None),
+    category: str | None = Query(None),
+    confidence: str | None = Query(None),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
 ):
@@ -168,7 +167,7 @@ def list_parameters(
                 params,
             )
             cols = [desc[0] for desc in cur.description]
-            return [dict(zip(cols, row)) for row in cur.fetchall()]
+            return [dict(zip(cols, row, strict=True)) for row in cur.fetchall()]
     finally:
         conn.close()
 
@@ -194,7 +193,7 @@ def get_parameter(param_id: str):
             cols = [desc[0] for desc in cur.description]
             row = cur.fetchone()
             if row:
-                return dict(zip(cols, row))
+                return dict(zip(cols, row, strict=True))
             raise HTTPException(404, f"Parameter '{param_id}' not found")
     finally:
         conn.close()
@@ -202,8 +201,8 @@ def get_parameter(param_id: str):
 
 @app.get("/materials", response_model=list[MaterialInfo], tags=["materials"])
 def list_materials(
-    type: Optional[str] = Query(None, description="材料类型过滤"),
-    has_params: Optional[bool] = Query(None, description="只列出有参数的材料"),
+    type: str | None = Query(None, description="材料类型过滤"),
+    has_params: bool | None = Query(None, description="只列出有参数的材料"),
 ):
     """列出所有材料"""
     conn = get_db()
@@ -229,7 +228,7 @@ def list_materials(
                 params,
             )
             cols = [desc[0] for desc in cur.description]
-            return [dict(zip(cols, row)) for row in cur.fetchall()]
+            return [dict(zip(cols, row, strict=True)) for row in cur.fetchall()]
     finally:
         conn.close()
 
@@ -242,7 +241,7 @@ def list_categories():
         with conn.cursor() as cur:
             cur.execute("SELECT * FROM v_params_by_category")
             cols = [desc[0] for desc in cur.description]
-            return [dict(zip(cols, row)) for row in cur.fetchall()]
+            return [dict(zip(cols, row, strict=True)) for row in cur.fetchall()]
     finally:
         conn.close()
 

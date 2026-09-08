@@ -1,17 +1,9 @@
 """Shared pytest fixtures for NFMD ETL pipeline tests."""
 
 import json
-import os
-import sys
-import tempfile
 
 import pytest
-
-# Ensure scripts/etl/ is importable
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
 from models import ExtractedRecord
-
 
 # ---------------------------------------------------------------------------
 # Valid ExtractedRecord fixtures

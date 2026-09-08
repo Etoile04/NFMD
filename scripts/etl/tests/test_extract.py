@@ -1,10 +1,8 @@
 """Tests for extract module: extract_records, _to_extracted_record, _clean_source_file."""
 
 import json
-import pytest
 
-from extract import extract_records, _to_extracted_record, _clean_source_file
-
+from extract import _clean_source_file, _to_extracted_record, extract_records
 
 # ========================================================================
 # TestExtractRecords

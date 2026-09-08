@@ -2,7 +2,6 @@
 """CLI entry point for the ETL pipeline."""
 
 import argparse
-import json
 import os
 import sys
 import time
@@ -10,13 +9,13 @@ import time
 # Add scripts/etl to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from io_utils import create_run_dir, write_jsonl, write_json, read_jsonl, stream_jsonl
-from logging_config import get_logger
 from extract import extract_records
-from validate import validate_records
-from transform import transform_records
-from normalize import MaterialNormalizer
+from io_utils import create_run_dir, write_json, write_jsonl
 from load import load_records
+from logging_config import get_logger
+from normalize import MaterialNormalizer
+from transform import transform_records
+from validate import validate_records
 
 logger = get_logger(__name__)
 
@@ -32,7 +31,7 @@ DEFAULT_ALIAS_MAP = os.path.join(
 )
 
 
-def run_pipeline(mode: str, source_dir: str, alias_map: str, run_id: str = None):
+def run_pipeline(mode: str, source_dir: str, alias_map: str, run_id: str | None = None):
     """Execute the full ETL pipeline."""
     start = time.time()
 
@@ -75,7 +74,6 @@ def run_pipeline(mode: str, source_dir: str, alias_map: str, run_id: str = None)
     logger.info("Stage 2: Validate")
     valid, errored, issues = validate_records(records, run_id)
 
-    error_count = sum(1 for i in issues if i.severity == "error")
     warn_count = sum(1 for i in issues if i.severity == "warn")
     fatal_count = sum(1 for i in issues if i.severity == "fatal")
 
@@ -123,7 +121,7 @@ def run_pipeline(mode: str, source_dir: str, alias_map: str, run_id: str = None)
         logger.info("Stage 4: Load (mode=%s)", mode)
         load_stats = load_records(transformed, mode=mode)
         summary = {
-            "source_files": len(set(r.source_file for r in records)),
+            "source_files": len({r.source_file for r in records}),
             "records_extracted": len(records),
             "records_valid": len(valid),
             "records_warn": warn_count,
@@ -188,7 +186,7 @@ def _dry_run_summary(
 
     return {
         "mode": "dry-run",
-        "source_files": len(set(r.source_file for r in all_records)),
+        "source_files": len({r.source_file for r in all_records}),
         "records_extracted": len(all_records),
         "records_valid": len(valid),
         "records_error": len(errored),

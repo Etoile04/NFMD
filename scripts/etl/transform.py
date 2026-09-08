@@ -1,7 +1,5 @@
 """Transform: Normalize records for database loading."""
 
-import re
-from typing import Optional
 
 from models import ExtractedRecord, TransformedRecord
 from normalize import MaterialNormalizer, normalize_unit, parse_temperature
@@ -22,7 +20,7 @@ def transform_records(
 
 def _transform_one(
     rec: ExtractedRecord, material_norm: MaterialNormalizer
-) -> Optional[TransformedRecord]:
+) -> TransformedRecord | None:
     """Transform a single record."""
     # Material normalization
     material_name = material_norm.normalize(rec.raw_material)
@@ -53,12 +51,11 @@ def _transform_one(
     value_str = rec.value_str or _make_value_str(rec)
 
     # Handle expression type: value might be in equation or value_str
-    if rec.value_type == "expression":
-        if not value_expr:
-            if rec.equation and rec.equation not in ("Eq. 1", "Eq. 2", "Eq. 3"):
-                value_expr = rec.equation
-            elif isinstance(rec.raw_value, str):
-                value_expr = rec.raw_value
+    if rec.value_type == "expression" and not value_expr:
+        if rec.equation and rec.equation not in ("Eq. 1", "Eq. 2", "Eq. 3"):
+            value_expr = rec.equation
+        elif isinstance(rec.raw_value, str):
+            value_expr = rec.raw_value
 
     # Combine notes from multiple sources
     notes_parts = []
@@ -107,7 +104,7 @@ def _transform_one(
     )
 
 
-def _normalize_confidence(raw: Optional[str]) -> Optional[str]:
+def _normalize_confidence(raw: str | None) -> str | None:
     """Normalize confidence value."""
     if not raw or raw in ("None", "none", "null"):
         return None
@@ -121,7 +118,7 @@ def _normalize_confidence(raw: Optional[str]) -> Optional[str]:
     return None
 
 
-def _make_value_str(rec: ExtractedRecord) -> Optional[str]:
+def _make_value_str(rec: ExtractedRecord) -> str | None:
     """Generate value_str from available data."""
     if rec.value_str:
         return rec.value_str

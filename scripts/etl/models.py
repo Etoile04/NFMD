@@ -1,7 +1,7 @@
 """Data models for ETL pipeline."""
 
-from dataclasses import dataclass, field, asdict
-from typing import Any, Optional
+from dataclasses import asdict, dataclass, field
+from typing import Any
 
 
 @dataclass
@@ -9,37 +9,37 @@ class ExtractedRecord:
     """Intermediate record from extract stage — preserves raw facts."""
     record_id: str
     source_file: str
-    source_paper: Optional[str] = None
+    source_paper: str | None = None
     name: str = ""
-    name_en: Optional[str] = None
-    name_zh: Optional[str] = None
-    symbol: Optional[str] = None
+    name_en: str | None = None
+    name_zh: str | None = None
+    symbol: str | None = None
     category: str = ""
-    subcategory: Optional[str] = None
+    subcategory: str | None = None
     value_type: str = ""
     raw_value: Any = None
-    raw_unit: Optional[str] = None
-    raw_material: Optional[str] = None
-    raw_temperature: Optional[Any] = None  # could be number or string
-    raw_burnup: Optional[str] = None
-    raw_method: Optional[str] = None
-    raw_confidence: Optional[str] = None
-    equation: Optional[str] = None
-    notes: Optional[str] = None
-    description: Optional[str] = None
-    phase: Optional[str] = None
-    conditions: Optional[str] = None
-    uncertainty: Optional[str] = None
+    raw_unit: str | None = None
+    raw_material: str | None = None
+    raw_temperature: Any | None = None  # could be number or string
+    raw_burnup: str | None = None
+    raw_method: str | None = None
+    raw_confidence: str | None = None
+    equation: str | None = None
+    notes: str | None = None
+    description: str | None = None
+    phase: str | None = None
+    conditions: str | None = None
+    uncertainty: str | None = None
     # Pre-extracted typed values (from source JSON)
-    value_scalar: Optional[float] = None
-    value_min: Optional[float] = None
-    value_max: Optional[float] = None
-    value_expr: Optional[str] = None
-    value_list: Optional[list] = None
-    value_text: Optional[str] = None
-    value_str: Optional[str] = None
-    temperature_K: Optional[float] = None
-    temperature_str: Optional[str] = None
+    value_scalar: float | None = None
+    value_min: float | None = None
+    value_max: float | None = None
+    value_expr: str | None = None
+    value_list: list | None = None
+    value_text: str | None = None
+    value_str: str | None = None
+    temperature_K: float | None = None
+    temperature_str: str | None = None
 
     def to_dict(self) -> dict:
         return {k: v for k, v in asdict(self).items() if v is not None}
@@ -66,36 +66,36 @@ class TransformedRecord:
     """Normalized record ready for database load."""
     id: str
     name: str
-    name_en: Optional[str] = None
-    name_zh: Optional[str] = None
-    symbol: Optional[str] = None
+    name_en: str | None = None
+    name_zh: str | None = None
+    symbol: str | None = None
     category: str = ""
-    subcategory: Optional[str] = None
+    subcategory: str | None = None
     value_type: str = ""
-    value_scalar: Optional[float] = None
-    value_min: Optional[float] = None
-    value_max: Optional[float] = None
-    value_expr: Optional[str] = None
-    value_list: Optional[Any] = None  # JSON-serializable
-    value_text: Optional[str] = None
-    value_str: Optional[str] = None
-    unit: Optional[str] = None
-    uncertainty: Optional[str] = None
-    material_name: Optional[str] = None  # canonical name from alias map
-    material_raw: Optional[str] = None
-    temperature_k: Optional[float] = None
-    temperature_str: Optional[str] = None
-    burnup_range: Optional[str] = None
-    method: Optional[str] = None
-    confidence: Optional[str] = None
-    source_file: Optional[str] = None
-    equation: Optional[str] = None
-    notes: Optional[str] = None
+    value_scalar: float | None = None
+    value_min: float | None = None
+    value_max: float | None = None
+    value_expr: str | None = None
+    value_list: Any | None = None  # JSON-serializable
+    value_text: str | None = None
+    value_str: str | None = None
+    unit: str | None = None
+    uncertainty: str | None = None
+    material_name: str | None = None  # canonical name from alias map
+    material_raw: str | None = None
+    temperature_k: float | None = None
+    temperature_str: str | None = None
+    burnup_range: str | None = None
+    method: str | None = None
+    confidence: str | None = None
+    source_file: str | None = None
+    equation: str | None = None
+    notes: str | None = None
     # Literature metadata
-    literature_id: Optional[str] = None
-    literature_title: Optional[str] = None
-    literature_authors: Optional[str] = None
-    literature_year: Optional[int] = None
+    literature_id: str | None = None
+    literature_title: str | None = None
+    literature_authors: str | None = None
+    literature_year: int | None = None
 
     def to_dict(self) -> dict:
         return {k: v for k, v in asdict(self).items() if v is not None}
