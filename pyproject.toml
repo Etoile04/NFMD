@@ -1,0 +1,33 @@
+[project]
+name = "nfmd"
+version = "0.1.0"
+description = "Nuclear Fuel Material Database — ETL pipeline + REST API for nuclear fuel material parameters"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.128",
+    "psycopg[binary]>=3.3,<4",
+    "pydantic>=2.12,<3",
+    "uvicorn>=0.40",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9,<10",
+    "ruff>=0.12",
+]
+
+[tool.ruff]
+target-version = "py310"
+
+[tool.ruff.lint]
+extend-select = ["I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+# FastAPI 的依赖注入惯用法要求在参数默认值里调用 Query()/Path()，bugbear B008 对此误报
+"scripts/api.py" = ["B008"]
+
+[tool.pytest.ini_options]
+pythonpath = ["scripts/etl"]
+testpaths = ["scripts/etl/tests"]

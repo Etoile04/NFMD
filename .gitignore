@@ -24,3 +24,7 @@ Thumbs.db
 .env
 .env.local
 data/imports/
+
+# Local tool state
+.mimosa/
+.benchmarks/
