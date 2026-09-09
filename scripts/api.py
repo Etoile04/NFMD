@@ -7,18 +7,14 @@ NFMD API — 轻量 FastAPI 层
 import os
 
 import psycopg
+from etl.config import DEFAULT_DB_URL
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel
 
 # --- Config ---
-DB_URL = os.environ.get(
-    "NFMD_DB_URL",
-    "postgresql://nfmd_reader:nfmd_read_2026@127.0.0.1:5432/nfmd",
-)
-DB_WRITE_URL = os.environ.get(
-    "NFMD_DB_WRITE_URL",
-    "postgresql://nfmd_writer:nfmd_write_2026@127.0.0.1:5432/nfmd",
-)
+DB_URL = os.environ.get("NFMD_DB_URL", DEFAULT_DB_URL)
+# No credential default: the write URL, if ever needed, comes from the environment
+DB_WRITE_URL = os.environ.get("NFMD_DB_WRITE_URL")
 
 app = FastAPI(
     title="NFMD API",
