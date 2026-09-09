@@ -6,13 +6,15 @@ import os
 import sys
 import time
 
+import psycopg
+
 # Add scripts/etl to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from config import Settings
 from extract import extract_records
 from io_utils import create_run_dir, write_json, write_jsonl
-from load import load_records
+from load import LoadFatalError, load_records
 from logging_config import get_logger
 from normalize import MaterialNormalizer
 from transform import transform_records
@@ -123,7 +125,24 @@ def run_pipeline(
         summary = _dry_run_summary(records, valid, errored, issues, transformed)
     else:
         logger.info("Stage 4: Load (mode=%s)", mode)
-        load_stats = load_records(transformed, settings.db_url, mode=mode)
+        try:
+            with psycopg.connect(settings.db_url) as conn:
+                load_stats = load_records(transformed, conn, mode=mode, batch_size=settings.batch_size)
+        except LoadFatalError as e:
+            summary = {
+                "mode": mode,
+                "records_transformed": len(transformed),
+                "records_fatal": fatal_count,
+                **e.stats.to_dict(),
+                "fatal_error": str(e),
+            }
+            write_json(os.path.join(run_dir, "04-load-summary.json"), summary)
+            meta["status"] = "fatal"
+            meta["fatal_error"] = str(e)
+            meta["elapsed_seconds"] = round(time.time() - start, 1)
+            write_json(os.path.join(run_dir, "run-meta.json"), meta)
+            logger.fatal("Load aborted (fatal): %s", e)
+            raise SystemExit(1)
         summary = {
             "source_files": len({r.source_file for r in records}),
             "records_extracted": len(records),
@@ -131,12 +150,12 @@ def run_pipeline(
             "records_warn": warn_count,
             "records_error": len(errored),
             "records_fatal": fatal_count,
-            **load_stats,
+            **load_stats.to_dict(),
         }
-        logger.info("Inserted: %d", load_stats['parameters_inserted'])
-        logger.info("Updated: %d", load_stats['parameters_updated'])
-        logger.info("Skipped: %d", load_stats['parameters_skipped'])
-        logger.info("Errored: %d", load_stats['parameters_errored'])
+        logger.info("Inserted: %d", load_stats.parameters_inserted)
+        logger.info("Updated: %d", load_stats.parameters_updated)
+        logger.info("Skipped: %d", load_stats.parameters_skipped)
+        logger.info("Errored: %d", load_stats.parameters_errored)
 
     # Save summary
     summary_path = os.path.join(run_dir, "04-load-summary.json")

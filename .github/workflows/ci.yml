@@ -27,3 +27,31 @@ jobs:
           python-version: "3.14"
       - run: uv sync
       - run: uv run pytest -v
+
+  integration:
+    name: Integration (postgres)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: nfmd
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      NFMD_TEST_DB_URL: postgresql://postgres:postgres@127.0.0.1:5432/postgres
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.14"
+      - run: sudo apt-get update -q && sudo apt-get install -y -q postgresql-client
+      - run: uv sync
+      - run: uv run pytest -m integration -v
