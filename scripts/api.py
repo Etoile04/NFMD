@@ -1,20 +1,55 @@
 """
 NFMD API — 轻量 FastAPI 层
 暴露数据库 RPC 函数和核心查询为 REST API
-使用 nfmd_reader 角色连接（RLS 强制生效）
+
+Database 模块持有连接生命周期与行→dict 整形（ADR-0002：依赖只接受
+不创建）；SQL 字面量与参数占位符留在端点调用点，execute 一律
+"字面量 + %s" 形态，可被安全门禁机检。连接级失败统一翻译为 503。
 """
 
-import os
+from collections.abc import Iterator
+from functools import lru_cache
 
 import psycopg
-from etl.config import DEFAULT_DB_URL
-from fastapi import FastAPI, HTTPException, Query
+from etl.config import Settings
+from fastapi import Depends, FastAPI, HTTPException, Query, Request
+from fastapi.responses import JSONResponse
+from psycopg.rows import dict_row
 from pydantic import BaseModel
 
-# --- Config ---
-DB_URL = os.environ.get("NFMD_DB_URL", DEFAULT_DB_URL)
-# No credential default: the write URL, if ever needed, comes from the environment
-DB_WRITE_URL = os.environ.get("NFMD_DB_WRITE_URL")
+
+@lru_cache
+def get_settings() -> Settings:
+    """Application settings — built once; tests override via dependency_overrides."""
+    return Settings.from_env()
+
+
+class Database:
+    """连接生命周期 + dict 行整形的唯一持有者。
+
+    调用方约定：``with db.cursor() as cur: cur.execute("<literal SQL>", params)``
+    —— 每条 SQL 以字面量出现在调用点（单行，与 execute 同行），值一律经
+    占位符绑定。
+    """
+
+    def __init__(self, db_url: str) -> None:
+        self._conn = psycopg.connect(db_url, autocommit=True, row_factory=dict_row)
+
+    def cursor(self):
+        return self._conn.cursor()
+
+    def close(self) -> None:
+        self._conn.close()
+
+
+def get_database(settings: Settings = Depends(get_settings)) -> Iterator[Database]:
+    """Per-request Database; swap the adapter (fake/pool) at this seam."""
+    db = Database(settings.db_url)
+    try:
+        yield db
+    finally:
+        db.close()
+
 
 app = FastAPI(
     title="NFMD API",
@@ -23,10 +58,11 @@ app = FastAPI(
 )
 
 
-# --- Helpers ---
-def get_db(read_only: bool = True) -> psycopg.Connection:
-    url = DB_URL if read_only else DB_WRITE_URL
-    return psycopg.connect(url, autocommit=True)
+@app.exception_handler(psycopg.OperationalError)
+@app.exception_handler(psycopg.InterfaceError)
+async def database_unavailable(_: Request, __: Exception) -> JSONResponse:
+    """连接级失败 → 503（暂时不可用，重试可愈）；其余 psycopg 错误走默认 500。"""
+    return JSONResponse(status_code=503, content={"detail": "database unavailable"})
 
 
 # --- Models ---
@@ -84,18 +120,14 @@ def root():
 
 
 @app.get("/stats", response_model=StatsResponse, tags=["meta"])
-def stats():
+def stats(db: Database = Depends(get_database)):
     """数据库总览统计"""
-    conn = get_db()
-    try:
-        with conn.cursor() as cur:
-            cur.execute("SELECT stats_overview()")
-            row = cur.fetchone()
-            if row:
-                return row[0]
-            raise HTTPException(500, "stats_overview returned no data")
-    finally:
-        conn.close()
+    with db.cursor() as cur:
+        cur.execute("SELECT stats_overview() AS stats_overview")
+        row = cur.fetchone()
+    if row and row["stats_overview"]:
+        return row["stats_overview"]
+    raise HTTPException(500, "stats_overview returned no data")
 
 
 @app.get("/search", response_model=list[ParameterResult], tags=["parameters"])
@@ -105,20 +137,12 @@ def search_parameters(
     material: str | None = Query(None, description="材料过滤"),
     confidence: str | None = Query(None, description="置信度过滤 (high/medium/low)"),
     limit: int = Query(50, ge=1, le=200, description="返回数量上限"),
+    db: Database = Depends(get_database),
 ):
     """全文搜索参数（中文术语自动翻译为英文后搜索）"""
-    conn = get_db()
-    try:
-        with conn.cursor() as cur:
-            cur.execute(
-                "SELECT * FROM search_parameters(%s, %s, %s, %s, %s)",
-                (q, category, material, confidence, limit),
-            )
-            cols = [desc[0] for desc in cur.description]
-            results = [dict(zip(cols, row, strict=True)) for row in cur.fetchall()]
-            return results
-    finally:
-        conn.close()
+    with db.cursor() as cur:
+        cur.execute("SELECT * FROM search_parameters(%s, %s, %s, %s, %s)", (q, category, material, confidence, limit))
+        return cur.fetchall()
 
 
 @app.get("/parameters", response_model=list[ParameterResult], tags=["parameters"])
@@ -128,118 +152,43 @@ def list_parameters(
     confidence: str | None = Query(None),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
+    db: Database = Depends(get_database),
 ):
-    """列出参数，支持过滤和分页"""
-    conn = get_db()
-    try:
-        conditions = []
-        params = []
-        if material:
-            conditions.append("m.name = %s")
-            params.append(material)
-        if category:
-            conditions.append("p.category = %s")
-            params.append(category)
-        if confidence:
-            conditions.append("p.confidence = %s")
-            params.append(confidence)
-
-        where = (" WHERE " + " AND ".join(conditions)) if conditions else ""
-        params.extend([limit, offset])
-
-        with conn.cursor() as cur:
-            cur.execute(
-                f"""SELECT p.id, p.name, p.name_en, p.symbol,
-                           p.category, p.subcategory, p.value_type,
-                           p.value_scalar, p.value_min, p.value_max,
-                           p.value_expr, p.value_str, p.unit,
-                           m.name AS material_name, p.material_raw,
-                           p.temperature_k, p.confidence, p.source_file
-                    FROM parameters p
-                    LEFT JOIN materials m ON p.material_id = m.id
-                    {where}
-                    ORDER BY m.name, p.category, p.name
-                    LIMIT %s OFFSET %s""",
-                params,
-            )
-            cols = [desc[0] for desc in cur.description]
-            return [dict(zip(cols, row, strict=True)) for row in cur.fetchall()]
-    finally:
-        conn.close()
+    """列出参数，支持过滤和分页（NULL-guard 谓词：未提供的过滤项恒真）"""
+    with db.cursor() as cur:
+        cur.execute("SELECT p.id, p.name, p.name_en, p.symbol, p.category, p.subcategory, p.value_type, p.value_scalar, p.value_min, p.value_max, p.value_expr, p.value_str, p.unit, m.name AS material_name, p.material_raw, p.temperature_k, p.confidence, p.source_file FROM parameters p LEFT JOIN materials m ON p.material_id = m.id WHERE (%s::text IS NULL OR m.name = %s) AND (%s::text IS NULL OR p.category = %s) AND (%s::text IS NULL OR p.confidence = %s) ORDER BY m.name, p.category, p.name LIMIT %s OFFSET %s", (material, material, category, category, confidence, confidence, limit, offset))
+        return cur.fetchall()
 
 
 @app.get("/parameters/{param_id}", response_model=ParameterResult, tags=["parameters"])
-def get_parameter(param_id: str):
+def get_parameter(param_id: str, db: Database = Depends(get_database)):
     """获取单条参数详情"""
-    conn = get_db()
-    try:
-        with conn.cursor() as cur:
-            cur.execute(
-                """SELECT p.id, p.name, p.name_en, p.symbol,
-                          p.category, p.subcategory, p.value_type,
-                          p.value_scalar, p.value_min, p.value_max,
-                          p.value_expr, p.value_str, p.unit,
-                          m.name AS material_name, p.material_raw,
-                          p.temperature_k, p.confidence, p.source_file
-                   FROM parameters p
-                   LEFT JOIN materials m ON p.material_id = m.id
-                   WHERE p.id = %s""",
-                (param_id,),
-            )
-            cols = [desc[0] for desc in cur.description]
-            row = cur.fetchone()
-            if row:
-                return dict(zip(cols, row, strict=True))
-            raise HTTPException(404, f"Parameter '{param_id}' not found")
-    finally:
-        conn.close()
+    with db.cursor() as cur:
+        cur.execute("SELECT p.id, p.name, p.name_en, p.symbol, p.category, p.subcategory, p.value_type, p.value_scalar, p.value_min, p.value_max, p.value_expr, p.value_str, p.unit, m.name AS material_name, p.material_raw, p.temperature_k, p.confidence, p.source_file FROM parameters p LEFT JOIN materials m ON p.material_id = m.id WHERE p.id = %s", (param_id,))
+        row = cur.fetchone()
+    if row:
+        return row
+    raise HTTPException(404, f"Parameter '{param_id}' not found")
 
 
 @app.get("/materials", response_model=list[MaterialInfo], tags=["materials"])
 def list_materials(
     type: str | None = Query(None, description="材料类型过滤"),
     has_params: bool | None = Query(None, description="只列出有参数的材料"),
+    db: Database = Depends(get_database),
 ):
-    """列出所有材料"""
-    conn = get_db()
-    try:
-        conditions = []
-        params = []
-        if type:
-            conditions.append("m.material_type = %s")
-            params.append(type)
-
-        where = (" WHERE " + " AND ".join(conditions)) if conditions else ""
-
-        with conn.cursor() as cur:
-            cur.execute(
-                f"""SELECT m.name, m.material_type,
-                           COUNT(p.id)::int AS param_count
-                    FROM materials m
-                    LEFT JOIN parameters p ON p.material_id = m.id
-                    {where}
-                    GROUP BY m.name, m.material_type
-                    {"HAVING COUNT(p.id) > 0" if has_params else ""}
-                    ORDER BY param_count DESC, m.name""",
-                params,
-            )
-            cols = [desc[0] for desc in cur.description]
-            return [dict(zip(cols, row, strict=True)) for row in cur.fetchall()]
-    finally:
-        conn.close()
+    """列出所有材料（has_params 为 true 时仅保留有参数者）"""
+    with db.cursor() as cur:
+        cur.execute("SELECT m.name, m.material_type, COUNT(p.id)::int AS param_count FROM materials m LEFT JOIN parameters p ON p.material_id = m.id WHERE (%s::text IS NULL OR m.material_type = %s) GROUP BY m.name, m.material_type HAVING (%s::bool IS NOT TRUE OR COUNT(p.id) > 0) ORDER BY param_count DESC, m.name", (type, type, has_params))
+        return cur.fetchall()
 
 
 @app.get("/categories", response_model=list[CategoryInfo], tags=["categories"])
-def list_categories():
+def list_categories(db: Database = Depends(get_database)):
     """列出分类统计"""
-    conn = get_db()
-    try:
-        with conn.cursor() as cur:
-            cur.execute("SELECT * FROM v_params_by_category")
-            cols = [desc[0] for desc in cur.description]
-            return [dict(zip(cols, row, strict=True)) for row in cur.fetchall()]
-    finally:
-        conn.close()
+    with db.cursor() as cur:
+        cur.execute("SELECT * FROM v_params_by_category")
+        return cur.fetchall()
 
 
 # --- Run directly ---
