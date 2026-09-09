@@ -3,7 +3,8 @@
 import os
 
 import pytest
-from config import DEFAULT_DB_URL, Settings
+
+from etl.config import DEFAULT_DB_URL, Settings
 
 
 class TestDefaults:

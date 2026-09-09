@@ -1,8 +1,8 @@
 """Tests for validate.py and rules.py."""
 
 
-from rules import ALL_RULES
-from validate import validate_records
+from etl.rules import ALL_RULES
+from etl.validate import validate_records
 
 # ---------------------------------------------------------------------------
 # TestValidateRecords — integration tests for validate_records()
@@ -118,7 +118,7 @@ class TestRules:
         assert "banana" in hits[0][2]
 
     def test_scalar_missing_value_flagged(self):
-        from models import ExtractedRecord
+        from etl.models import ExtractedRecord
 
         rec = ExtractedRecord(
             record_id="no-val-001",

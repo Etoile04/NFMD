@@ -2,7 +2,8 @@
 
 
 import pytest
-from io_utils import read_json, read_jsonl, stream_jsonl, write_json, write_jsonl
+
+from etl.io_utils import read_json, read_jsonl, stream_jsonl, write_json, write_jsonl
 
 # ===========================================================================
 # TestJsonlIO

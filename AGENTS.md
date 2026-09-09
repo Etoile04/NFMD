@@ -1,6 +1,6 @@
 # AGENTS.md — NFMD (Nuclear Fuel Material Database)
 
-核燃料材料参数知识库：ETL 管线（`scripts/etl/`）+ FastAPI 只读 API（`scripts/api.py`）+ PostgreSQL 16（RLS、触发器、tsvector 全文检索）。架构与 API 参考见 [README.md](README.md)。
+核燃料材料参数知识库：ETL 管线 + FastAPI 只读 API（同在 `etl` 包内：`scripts/etl/`，editable 安装，入口 `etl.run_pipeline` / `etl.api`）+ PostgreSQL 16（RLS、触发器、tsvector 全文检索）。架构与 API 参考见 [README.md](README.md)。
 
 **数据库操作安全红线**：任何 DB 写操作前先读 [docs/database-safety-rules.md](docs/database-safety-rules.md)（🔴 禁止无 WHERE 的 DELETE/UPDATE、DROP、TRUNCATE；🟡 影响 >100 行或 schema 变更需人工批准）。
 

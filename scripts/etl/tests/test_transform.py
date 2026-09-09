@@ -2,8 +2,8 @@
 
 from unittest.mock import MagicMock
 
-from models import ExtractedRecord, TransformedRecord
-from transform import _make_value_str, _normalize_confidence, transform_records
+from etl.models import ExtractedRecord, TransformedRecord
+from etl.transform import _make_value_str, _normalize_confidence, transform_records
 
 # ---------------------------------------------------------------------------
 # Helpers

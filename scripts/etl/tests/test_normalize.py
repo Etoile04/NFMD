@@ -3,7 +3,8 @@
 import json
 
 import pytest
-from normalize import MaterialNormalizer, normalize_unit, parse_temperature
+
+from etl.normalize import MaterialNormalizer, normalize_unit, parse_temperature
 
 # ---------------------------------------------------------------------------
 # Fixtures

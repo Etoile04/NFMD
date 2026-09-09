@@ -1,7 +1,7 @@
 """Validate: Apply rules to extracted records."""
 
-from models import ExtractedRecord, ValidationIssue
-from rules import ALL_RULES
+from etl.models import ExtractedRecord, ValidationIssue
+from etl.rules import ALL_RULES
 
 
 def validate_records(

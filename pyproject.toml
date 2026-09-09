@@ -12,6 +12,14 @@ dependencies = [
     "uvicorn>=0.40",
 ]
 
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+# scripts/etl 目录即包 etl（原地包化，ADR-0004）
+packages = ["scripts/etl"]
+
 [dependency-groups]
 dev = [
     "httpx>=0.28.1",
@@ -25,12 +33,14 @@ target-version = "py310"
 [tool.ruff.lint]
 extend-select = ["I", "UP", "B", "SIM"]
 
+[tool.ruff.lint.isort]
+known-first-party = ["etl"]
+
 [tool.ruff.lint.per-file-ignores]
-# FastAPI 的依赖注入惯用法要求在参数默认值里调用 Query()/Path()，bugbear B008 对此误报
-"scripts/api.py" = ["B008"]
+# FastAPI 的依赖注入惯用法要求在参数默认值里调用 Query()/Depends()，bugbear B008 对此误报
+"scripts/etl/api.py" = ["B008"]
 
 [tool.pytest.ini_options]
-pythonpath = ["scripts", "scripts/etl"]
 testpaths = ["scripts/etl/tests"]
 markers = [
     "integration: requires a reachable PostgreSQL (docker nfmd-postgres:15432 or NFMD_TEST_DB_URL); auto-skips otherwise",

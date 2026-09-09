@@ -2,7 +2,7 @@
 
 import json
 
-from extract import _clean_source_file, _to_extracted_record, extract_records
+from etl.extract import _clean_source_file, _to_extracted_record, extract_records
 
 # ========================================================================
 # TestExtractRecords

@@ -6,8 +6,8 @@ import json
 import os
 from collections.abc import Generator
 
-from logging_config import get_logger
-from models import ExtractedRecord
+from etl.logging_config import get_logger
+from etl.models import ExtractedRecord
 
 logger = get_logger(__name__)
 
