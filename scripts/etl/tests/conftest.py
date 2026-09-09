@@ -151,3 +151,83 @@ def tmp_jsonl_file(tmp_path):
     p = tmp_path / "output.jsonl"
     p.touch()
     return str(p)
+
+
+# ---------------------------------------------------------------------------
+# Integration fixtures — real PostgreSQL (auto-skip when unreachable)
+# ---------------------------------------------------------------------------
+
+import os
+import subprocess
+from pathlib import Path
+
+import psycopg
+
+# Host providing CREATE DATABASE rights (docker nfmd-postgres by default)
+TEST_ADMIN_URL = os.environ.get(
+    "NFMD_TEST_DB_URL",
+    "postgresql://postgres:postgres@127.0.0.1:15432/postgres",
+)
+SCHEMA_PATH = Path(__file__).resolve().parents[3] / "plans" / "schema_v2.sql"
+
+
+def _psql(db_url: str, sql: str) -> None:
+    """Run one SQL statement via psql (DDL 工具走正道，不经 psycopg.execute)."""
+    subprocess.run(
+        ["psql", db_url, "-q", "-v", "ON_ERROR_STOP=1", "-c", sql],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+
+def _apply_schema(db_url: str) -> None:
+    subprocess.run(
+        ["psql", db_url, "-q", "-v", "ON_ERROR_STOP=1", "-f", str(SCHEMA_PATH)],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+
+@pytest.fixture(scope="session")
+def test_db_url():
+    """一次性数据库：会话开始创建并应用 schema，结束 DROP（不碰安全红线）。"""
+    try:
+        with psycopg.connect(TEST_ADMIN_URL, connect_timeout=2):
+            pass
+    except psycopg.OperationalError:
+        pytest.skip("PostgreSQL not reachable (run docker nfmd-postgres or set NFMD_TEST_DB_URL)")
+
+    dbname = f"nfmd_test_{os.getpid()}"
+    _psql(TEST_ADMIN_URL, f'CREATE DATABASE "{dbname}"')
+    db_url = TEST_ADMIN_URL.rsplit("/", 1)[0] + "/" + dbname
+    _apply_schema(db_url)
+    yield db_url
+    _psql(TEST_ADMIN_URL, f'DROP DATABASE "{dbname}" WITH (FORCE)')
+
+
+@pytest.fixture(scope="session")
+def broken_db_url():
+    """空库（无 schema）——用于致命失败路径。"""
+    try:
+        with psycopg.connect(TEST_ADMIN_URL, connect_timeout=2):
+            pass
+    except psycopg.OperationalError:
+        pytest.skip("PostgreSQL not reachable (run docker nfmd-postgres or set NFMD_TEST_DB_URL)")
+
+    dbname = f"nfmd_test_broken_{os.getpid()}"
+    _psql(TEST_ADMIN_URL, f'CREATE DATABASE "{dbname}"')
+    yield TEST_ADMIN_URL.rsplit("/", 1)[0] + "/" + dbname
+    _psql(TEST_ADMIN_URL, f'DROP DATABASE "{dbname}" WITH (FORCE)')
+
+
+@pytest.fixture
+def materials_db(test_db_url):
+    """Seed 一个规范材料 UO2（load 测试的材料解析依赖）。"""
+    with (
+        psycopg.connect(test_db_url) as conn,
+        conn.cursor() as cur,
+    ):
+        cur.execute("INSERT INTO materials (name, material_type) VALUES ('UO2', 'FuelMaterial') ON CONFLICT DO NOTHING")
+    return test_db_url

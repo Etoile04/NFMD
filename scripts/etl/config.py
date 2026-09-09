@@ -13,17 +13,13 @@ from dataclasses import dataclass
 # Dev default: local Docker PostgreSQL (README Quick Start / .env.example)
 DEFAULT_DB_URL = "postgresql://postgres:postgres@127.0.0.1:54322/postgres"
 
-# Batch size for parameter loading (kept as a constant for transitional
-# callers; Settings.batch_size is the canonical surface)
-BATCH_SIZE = 500
-
 
 @dataclass(frozen=True)
 class Settings:
     """Frozen configuration snapshot — construct a new one instead of mutating."""
 
     db_url: str = DEFAULT_DB_URL
-    batch_size: int = BATCH_SIZE
+    batch_size: int = 500
     default_source_dir: str = os.path.join(
         os.path.expanduser("~"),
         ".openclaw/workspace/data/nuclear-materials-wiki/parameters",

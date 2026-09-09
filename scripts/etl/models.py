@@ -99,3 +99,25 @@ class TransformedRecord:
 
     def to_dict(self) -> dict:
         return {k: v for k, v in asdict(self).items() if v is not None}
+
+
+@dataclass
+class LoadStats:
+    """load 阶段的结果语义（ADR-0002）。
+
+    计数与错误清单进 interface；致命失败不是一种 stats 取值，
+    由 load.LoadFatalError 表达。
+    """
+
+    parameters_inserted: int = 0
+    parameters_updated: int = 0
+    parameters_skipped: int = 0
+    parameters_errored: int = 0
+    literature_upserted: int = 0
+    literature_errors: int = 0
+    material_resolved: int = 0
+    material_unresolved: int = 0
+    errors: list[str] = field(default_factory=list)
+
+    def to_dict(self) -> dict:
+        return asdict(self)

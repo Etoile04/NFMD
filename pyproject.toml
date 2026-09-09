@@ -32,3 +32,6 @@ extend-select = ["I", "UP", "B", "SIM"]
 [tool.pytest.ini_options]
 pythonpath = ["scripts", "scripts/etl"]
 testpaths = ["scripts/etl/tests"]
+markers = [
+    "integration: requires a reachable PostgreSQL (docker nfmd-postgres:15432 or NFMD_TEST_DB_URL); auto-skips otherwise",
+]
