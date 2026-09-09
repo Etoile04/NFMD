@@ -142,7 +142,7 @@ def run_pipeline(
             meta["elapsed_seconds"] = round(time.time() - start, 1)
             write_json(os.path.join(run_dir, "run-meta.json"), meta)
             logger.fatal("Load aborted (fatal): %s", e)
-            raise SystemExit(1)
+            raise SystemExit(1) from e
         summary = {
             "source_files": len({r.source_file for r in records}),
             "records_extracted": len(records),

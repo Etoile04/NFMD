@@ -225,7 +225,9 @@ def broken_db_url():
 @pytest.fixture
 def materials_db(test_db_url):
     """Seed 一个规范材料 UO2（load 测试的材料解析依赖）。"""
-    with psycopg.connect(test_db_url) as conn:
-        with conn.cursor() as cur:
-            cur.execute("INSERT INTO materials (name, material_type) VALUES ('UO2', 'FuelMaterial') ON CONFLICT DO NOTHING")
+    with (
+        psycopg.connect(test_db_url) as conn,
+        conn.cursor() as cur,
+    ):
+        cur.execute("INSERT INTO materials (name, material_type) VALUES ('UO2', 'FuelMaterial') ON CONFLICT DO NOTHING")
     return test_db_url

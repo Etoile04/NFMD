@@ -83,9 +83,11 @@ class TestFatalPath:
         """回归：致命失败必须 raise（旧实现折进 stats["errors"] 正常返回）。"""
         rec = _make_transformed_record()
 
-        with psycopg.connect(broken_db_url) as conn:
-            with pytest.raises(LoadFatalError):
-                load_records([rec], conn)
+        with (
+            psycopg.connect(broken_db_url) as conn,
+            pytest.raises(LoadFatalError),
+        ):
+            load_records([rec], conn)
 
     def test_fatal_error_carries_partial_stats(self, broken_db_url):
         rec = _make_transformed_record()

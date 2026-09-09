@@ -17,13 +17,15 @@ pytestmark = pytest.mark.integration
 
 @pytest.fixture
 def api_client(test_db_url):
-    with psycopg.connect(test_db_url) as conn:
-        with conn.cursor() as cur:
-            cur.execute("INSERT INTO materials (name, material_type) VALUES ('UO2', 'FuelMaterial') ON CONFLICT DO NOTHING")
-            cur.execute("SELECT id FROM materials WHERE name = 'UO2'")
-            material_id = cur.fetchone()[0]
-            cur.execute("INSERT INTO literature (id, title, year, parameter_count) VALUES ('lit-api-1', 'API Integration Paper', 2024, 1) ON CONFLICT (id) DO NOTHING")
-            cur.execute("INSERT INTO parameters (id, name, name_en, category, value_type, value_scalar, unit, material_id, source_file, confidence) VALUES ('pg-api-001', '密度', 'density', 'physical', 'scalar', 10.97, 'g/cm³', %s, 'api-paper', 'high') ON CONFLICT (id) DO NOTHING", (material_id,))
+    with (
+        psycopg.connect(test_db_url) as conn,
+        conn.cursor() as cur,
+    ):
+        cur.execute("INSERT INTO materials (name, material_type) VALUES ('UO2', 'FuelMaterial') ON CONFLICT DO NOTHING")
+        cur.execute("SELECT id FROM materials WHERE name = 'UO2'")
+        material_id = cur.fetchone()[0]
+        cur.execute("INSERT INTO literature (id, title, year, parameter_count) VALUES ('lit-api-1', 'API Integration Paper', 2024, 1) ON CONFLICT (id) DO NOTHING")
+        cur.execute("INSERT INTO parameters (id, name, name_en, category, value_type, value_scalar, unit, material_id, source_file, confidence) VALUES ('pg-api-001', '密度', 'density', 'physical', 'scalar', 10.97, 'g/cm³', %s, 'api-paper', 'high') ON CONFLICT (id) DO NOTHING", (material_id,))
 
     app = api.app
     app.dependency_overrides[api.get_settings] = lambda: Settings(db_url=test_db_url)
