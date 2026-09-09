@@ -15,11 +15,11 @@ _Avoid_: property（太泛）、数据项
 _Avoid_: substance
 
 **Alias**:
-指向某个 Material 的非规范名称（"二氧化铀" → UO2），归一依据 alias map。
+指向某个 Material 的非规范名称（"二氧化铀" → UO2）。
 _Avoid_: 同义词表、synonym
 
 **Literature**:
-参数的来源出版物元数据；源文件路径经 `v_source_file_normalized` 视图归一后关联到它。
+参数的来源出版物元数据；源文件经归一后关联到它。
 
 **value_type**:
 Parameter 的取值形态——scalar（单值）、range（min/max 区间）、expression（公式）、list、text。
@@ -30,7 +30,7 @@ Parameter 的取值形态——scalar（单值）、range（min/max 区间）、
 ### 管线
 
 **Pipeline**:
-五阶段流程：extract → validate → transform → normalize → load，由 run_pipeline 编排。
+从源文件到数据库的五阶段流程：extract → validate → transform → normalize → load。
 
 **ExtractedRecord**:
 extract 阶段的产物——尚未校验、尚未归一的原始记录形态。
@@ -39,4 +39,4 @@ extract 阶段的产物——尚未校验、尚未归一的原始记录形态。
 transform/normalize 阶段的产物——已归一、可入库的记录形态。
 
 **Run**:
-一次管线执行的工件集合（报告、拒收清单等），落在 runs base 下的独立 run 目录。
+一次管线执行的工件集合（报告、拒收清单等）。
