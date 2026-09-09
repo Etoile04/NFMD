@@ -40,12 +40,3 @@ transform/normalize 阶段的产物——已归一、可入库的记录形态。
 
 **Run**:
 一次管线执行的工件集合（报告、拒收清单等），落在 runs base 下的独立 run 目录。
-
-### 工程面
-
-**nfmd_etl**:
-ETL 管线的 Python 包；五阶段模块的归宿。公开面保持最小，调用方走子模块导入。
-_Avoid_: scripts/etl（旧布局名）、etl（裸名，易撞）
-
-**nfmd-etl**:
-管线的命令行入口；console_script 与 `python -m nfmd_etl.run_pipeline` 等价。
