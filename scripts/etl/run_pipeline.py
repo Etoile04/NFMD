@@ -9,6 +9,7 @@ import time
 # Add scripts/etl to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+from config import Settings
 from extract import extract_records
 from io_utils import create_run_dir, write_json, write_jsonl
 from load import load_records
@@ -20,26 +21,29 @@ from validate import validate_records
 logger = get_logger(__name__)
 
 
-# Default paths (relative to NFMD project root)
-DEFAULT_SOURCE_DIR = os.path.join(
-    os.path.expanduser("~"),
-    ".openclaw/workspace/data/nuclear-materials-wiki/parameters"
-)
+# Default alias map (relative to NFMD project root)
 DEFAULT_ALIAS_MAP = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "plans/material-alias-map.json"
 )
 
 
-def run_pipeline(mode: str, source_dir: str, alias_map: str, run_id: str | None = None):
+def run_pipeline(
+    mode: str,
+    source_dir: str,
+    alias_map: str,
+    run_id: str | None = None,
+    settings: Settings | None = None,
+):
     """Execute the full ETL pipeline."""
+    settings = settings or Settings.from_env()
     start = time.time()
 
     # Create run directory
     if not run_id:
-        run_id, run_dir = create_run_dir()
+        run_id, run_dir = create_run_dir(base_dir=settings.runs_base)
     else:
-        run_dir = os.path.join("data/imports/runs", run_id)
+        run_dir = os.path.join(settings.runs_base, run_id)
         os.makedirs(run_dir, exist_ok=True)
 
     logger.info("NFMD ETL Pipeline")
@@ -119,7 +123,7 @@ def run_pipeline(mode: str, source_dir: str, alias_map: str, run_id: str | None 
         summary = _dry_run_summary(records, valid, errored, issues, transformed)
     else:
         logger.info("Stage 4: Load (mode=%s)", mode)
-        load_stats = load_records(transformed, mode=mode)
+        load_stats = load_records(transformed, settings.db_url, mode=mode)
         summary = {
             "source_files": len({r.source_file for r in records}),
             "records_extracted": len(records),
@@ -205,6 +209,7 @@ def _dry_run_summary(
 
 def main():
     """Parse CLI arguments and launch the ETL pipeline."""
+    settings = Settings.from_env()
     parser = argparse.ArgumentParser(description="NFMD ETL Pipeline")
     parser.add_argument(
         "--mode",
@@ -214,7 +219,7 @@ def main():
     )
     parser.add_argument(
         "--source-dir",
-        default=DEFAULT_SOURCE_DIR,
+        default=settings.default_source_dir,
         help="Source parameters directory",
     )
     parser.add_argument(

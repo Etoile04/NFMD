@@ -3,7 +3,7 @@
 
 import psycopg
 import psycopg.sql
-from config import BATCH_SIZE, DB_URL
+from config import BATCH_SIZE
 from logging_config import get_logger
 from models import TransformedRecord
 
@@ -37,14 +37,14 @@ def normalize_source_file(source_file: str | None) -> str | None:
     return s
 
 
-def get_connection(db_url: str = DB_URL) -> psycopg.Connection:
+def get_connection(db_url: str) -> psycopg.Connection:
     """Get a database connection."""
     return psycopg.connect(db_url, autocommit=False)
 
 
 def load_records(
     records: list[TransformedRecord],
-    db_url: str = DB_URL,
+    db_url: str,
     mode: str = "append-safe",
 ) -> dict:
     """
