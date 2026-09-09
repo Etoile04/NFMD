@@ -95,7 +95,7 @@ def load_records(
 
         logger.info("All batches processed")
 
-    except Exception as e:  # noqa: BLE001 — anything outside per-record isolation is fatal
+    except Exception as e:
         conn.rollback()
         logger.error("Load error: %s", e)
         raise LoadFatalError(str(e), stats) from e

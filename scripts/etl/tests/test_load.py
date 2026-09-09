@@ -9,7 +9,12 @@ from unittest.mock import MagicMock
 
 import psycopg
 import pytest
-from load import LoadFatalError, _build_material_lookup, _upsert_literature, load_records
+from load import (
+    LoadFatalError,
+    _build_material_lookup,
+    _upsert_literature,
+    load_records,
+)
 from models import LoadStats, TransformedRecord
 
 # ---------------------------------------------------------------------------

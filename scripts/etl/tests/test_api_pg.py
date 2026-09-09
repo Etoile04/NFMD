@@ -6,12 +6,11 @@ v_params_by_category）钉在真库上——这是架构评审候选 1 承诺的
 端点→Database→psycopg 全链路走真。
 """
 
+import api
 import psycopg
 import pytest
-from fastapi.testclient import TestClient
-
-import api
 from config import Settings
+from fastapi.testclient import TestClient
 
 pytestmark = pytest.mark.integration
 

@@ -157,11 +157,11 @@ def tmp_jsonl_file(tmp_path):
 # Integration fixtures — real PostgreSQL (auto-skip when unreachable)
 # ---------------------------------------------------------------------------
 
-import os  # noqa: E402
-import subprocess  # noqa: E402
-from pathlib import Path  # noqa: E402
+import os
+import subprocess
+from pathlib import Path
 
-import psycopg  # noqa: E402
+import psycopg
 
 # Host providing CREATE DATABASE rights (docker nfmd-postgres by default)
 TEST_ADMIN_URL = os.environ.get(
