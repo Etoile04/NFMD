@@ -2,7 +2,7 @@
 
 from collections.abc import Callable
 
-from models import ExtractedRecord, ValidationIssue
+from etl.models import ExtractedRecord, ValidationIssue
 
 # Allowed value types
 VALID_VALUE_TYPES = {"scalar", "range", "expression", "list", "text"}

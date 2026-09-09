@@ -94,8 +94,8 @@ bash scripts/run_etl.sh          # defaults to dry-run mode
 
 ```bash
 bash scripts/start_api.sh
-# or directly:
-# cd scripts && uv run uvicorn api:app --host 0.0.0.0 --port 8900
+# or directly (works from any cwd after `uv sync`):
+# uv run uvicorn etl.api:app --host 0.0.0.0 --port 8900
 ```
 
 ### 4. Query
@@ -153,10 +153,10 @@ NFMD/
 │   ├── create_roles.sql                # RLS roles (nfmd_reader, nfmd_writer) + policies
 │   └── repair_quality.sql              # Data quality repair scripts
 ├── scripts/
-│   ├── api.py                          # FastAPI REST API (254 lines, 6 endpoints)
 │   ├── start_api.sh                    # API launch script
-│   ├── run_etl.sh                      # ETL launcher
-│   └── etl/
+│   ├── run_etl.sh                      # ETL launcher (uv run python -m etl.run_pipeline)
+│   └── etl/                            # `etl` package (editable-installed, ADR-0004)
+│       ├── api.py                       # FastAPI REST API (uvicorn etl.api:app)
 │       ├── extract.py                  # JSON/text → ExtractedRecord
 │       ├── validate.py                 # Rule-based validation (9 rules)
 │       ├── transform.py                # ExtractedRecord → TransformedRecord

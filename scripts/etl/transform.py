@@ -1,8 +1,8 @@
 """Transform: Normalize records for database loading."""
 
 
-from models import ExtractedRecord, TransformedRecord
-from normalize import MaterialNormalizer, normalize_unit, parse_temperature
+from etl.models import ExtractedRecord, TransformedRecord
+from etl.normalize import MaterialNormalizer, normalize_unit, parse_temperature
 
 
 def transform_records(

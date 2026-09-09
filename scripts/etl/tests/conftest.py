@@ -3,7 +3,8 @@
 import json
 
 import pytest
-from models import ExtractedRecord
+
+from etl.models import ExtractedRecord
 
 # ---------------------------------------------------------------------------
 # Valid ExtractedRecord fixtures

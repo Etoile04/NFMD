@@ -3,22 +3,18 @@
 
 import argparse
 import os
-import sys
 import time
 
 import psycopg
 
-# Add scripts/etl to path
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
-from config import Settings
-from extract import extract_records
-from io_utils import create_run_dir, write_json, write_jsonl
-from load import LoadFatalError, load_records
-from logging_config import get_logger
-from normalize import MaterialNormalizer
-from transform import transform_records
-from validate import validate_records
+from etl.config import Settings
+from etl.extract import extract_records
+from etl.io_utils import create_run_dir, write_json, write_jsonl
+from etl.load import LoadFatalError, load_records
+from etl.logging_config import get_logger
+from etl.normalize import MaterialNormalizer
+from etl.transform import transform_records
+from etl.validate import validate_records
 
 logger = get_logger(__name__)
 

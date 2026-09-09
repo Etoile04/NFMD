@@ -8,9 +8,9 @@
 
 import psycopg
 import pytest
-from load import LoadFatalError, load_records
-from models import LoadStats
 
+from etl.load import LoadFatalError, load_records
+from etl.models import LoadStats
 from etl.tests.test_load import _make_transformed_record
 
 pytestmark = pytest.mark.integration

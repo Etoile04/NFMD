@@ -9,13 +9,14 @@ from unittest.mock import MagicMock
 
 import psycopg
 import pytest
-from load import (
+
+from etl.load import (
     LoadFatalError,
     _build_material_lookup,
     _upsert_literature,
     load_records,
 )
-from models import LoadStats, TransformedRecord
+from etl.models import LoadStats, TransformedRecord
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -139,6 +140,6 @@ class TestLoadRecordsContract:
 
     def test_connection_opened_by_caller_not_module(self):
         """模块不再自建连接：不导入 get_connection 之类的内部工厂。"""
-        import load
+        from etl import load
 
         assert not hasattr(load, "get_connection")

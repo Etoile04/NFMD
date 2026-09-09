@@ -5,17 +5,19 @@ NFMD API — 轻量 FastAPI 层
 Database 模块持有连接生命周期与行→dict 整形（ADR-0002：依赖只接受
 不创建）；SQL 字面量与参数占位符留在端点调用点，execute 一律
 "字面量 + %s" 形态，可被安全门禁机检。连接级失败统一翻译为 503。
+启动：uv run uvicorn etl.api:app
 """
 
 from collections.abc import Iterator
 from functools import lru_cache
 
 import psycopg
-from etl.config import Settings
 from fastapi import Depends, FastAPI, HTTPException, Query, Request
 from fastapi.responses import JSONResponse
 from psycopg.rows import dict_row
 from pydantic import BaseModel
+
+from etl.config import Settings
 
 
 @lru_cache

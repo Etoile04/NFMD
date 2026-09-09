@@ -8,10 +8,11 @@ fetch, dict rows, close).
 
 import contextlib
 
-import api
 import pytest
-from api import app
 from fastapi.testclient import TestClient
+
+from etl import api
+from etl.api import app
 
 
 class FakeCursor:

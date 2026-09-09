@@ -9,9 +9,10 @@ inserted/updated 计数由预检查分支决定，不依赖 rowcount。
 """
 
 import psycopg
-from logging_config import get_logger
-from models import LoadStats, TransformedRecord
 from psycopg.types.json import Jsonb
+
+from etl.logging_config import get_logger
+from etl.models import LoadStats, TransformedRecord
 
 logger = get_logger(__name__)
 
