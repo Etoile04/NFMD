@@ -2,6 +2,7 @@
 
 from collections.abc import Callable
 
+from etl.confidence import normalize_confidence_label
 from etl.models import ExtractedRecord, ValidationIssue
 
 # Allowed value types
@@ -137,7 +138,8 @@ def _check_missing_source_file(rec: ExtractedRecord) -> list[str]:
 
 
 def _check_confidence(rec: ExtractedRecord) -> list[str]:
-    if rec.raw_confidence and rec.raw_confidence not in VALID_CONFIDENCE:
+    # ChatExtract 判据（NFMA-2）：标签或 0-1 数值分都合法，见 etl.confidence
+    if rec.raw_confidence and normalize_confidence_label(rec.raw_confidence) is None:
         return [f"Invalid confidence '{rec.raw_confidence}'"]
     return []
 

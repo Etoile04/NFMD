@@ -6,6 +6,7 @@ import json
 import os
 from collections.abc import Generator
 
+from etl.confidence import derive_confidence
 from etl.logging_config import get_logger
 from etl.models import ExtractedRecord
 
@@ -92,6 +93,10 @@ def _to_extracted_record(rec: dict, filename: str) -> ExtractedRecord:
         with contextlib.suppress(ValueError, TypeError):
             temp_k = float(rec["temperature_K"])
 
+    channel_a = rec.get("channel_a")
+    channel_b = rec.get("channel_b")
+    self_audit = rec.get("self_audit")
+
     return ExtractedRecord(
         record_id=rec.get("id", ""),
         source_file=_clean_source_file(rec.get("source_file", filename)),
@@ -110,6 +115,10 @@ def _to_extracted_record(rec: dict, filename: str) -> ExtractedRecord:
         raw_burnup=rec.get("burnup_range"),
         raw_method=rec.get("method"),
         raw_confidence=rec.get("confidence"),
+        channel_a=channel_a,
+        channel_b=channel_b,
+        self_audit=self_audit,
+        derived_confidence=derive_confidence(channel_a, channel_b, self_audit),
         equation=rec.get("equation"),
         notes=rec.get("notes") or rec.get("note"),
         description=rec.get("description"),
