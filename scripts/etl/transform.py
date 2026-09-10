@@ -1,6 +1,8 @@
 """Transform: Normalize records for database loading."""
 
 
+from etl.confidence import normalize_confidence_label
+from etl.formula import FormulaNormalizer, build_formula_normalizer
 from etl.models import ExtractedRecord, TransformedRecord
 from etl.normalize import MaterialNormalizer, normalize_unit, parse_temperature
 
@@ -8,22 +10,34 @@ from etl.normalize import MaterialNormalizer, normalize_unit, parse_temperature
 def transform_records(
     records: list[ExtractedRecord],
     material_norm: MaterialNormalizer,
+    formula_norm: FormulaNormalizer | None = None,
 ) -> list[TransformedRecord]:
-    """Transform extracted records into database-ready format."""
+    """Transform extracted records into database-ready format.
+
+    ``formula_norm`` 按接口注入（ADR-0005）：缺省时由工厂构建——
+    装有 ``etl[chem]`` extras 用 pymatgen 引擎，否则降级为 stdlib
+    正则引擎（行为差异见 etl.formula）。
+    """
+    if formula_norm is None:
+        formula_norm = build_formula_normalizer()
     results = []
     for rec in records:
-        transformed = _transform_one(rec, material_norm)
+        transformed = _transform_one(rec, material_norm, formula_norm)
         if transformed:
             results.append(transformed)
     return results
 
 
 def _transform_one(
-    rec: ExtractedRecord, material_norm: MaterialNormalizer
+    rec: ExtractedRecord,
+    material_norm: MaterialNormalizer,
+    formula_norm: FormulaNormalizer,
 ) -> TransformedRecord | None:
     """Transform a single record."""
     # Material normalization
     material_name = material_norm.normalize(rec.raw_material)
+    # 化学式机械归一（pymatgen 引擎需 etl[chem] extras，注入式，见 ADR-0005）
+    formula_result = formula_norm.normalize(rec.raw_material)
 
     # Temperature: use pre-extracted if available, otherwise parse
     temp_k = rec.temperature_K
@@ -38,8 +52,9 @@ def _transform_one(
     # Unit normalization
     unit = normalize_unit(rec.raw_unit)
 
-    # Confidence normalization
-    confidence = _normalize_confidence(rec.raw_confidence)
+    # Confidence：ChatExtract 推导结果优先（etl.confidence），缺失时回退
+    # 到记录自带标签/数值分的归一化
+    confidence = rec.derived_confidence or normalize_confidence_label(rec.raw_confidence)
 
     # Value decomposition
     value_scalar = rec.value_scalar
@@ -92,6 +107,7 @@ def _transform_one(
         uncertainty=rec.uncertainty if rec.uncertainty and rec.uncertainty != "None" else None,
         material_name=material_name,
         material_raw=rec.raw_material,
+        material_formula=formula_result.formula,
         temperature_k=temp_k,
         temperature_str=temp_str,
         burnup_range=rec.raw_burnup,
@@ -104,18 +120,9 @@ def _transform_one(
     )
 
 
-def _normalize_confidence(raw: str | None) -> str | None:
-    """Normalize confidence value."""
-    if not raw or raw in ("None", "none", "null"):
-        return None
-    raw = raw.lower().strip()
-    if raw in ("high", "h"):
-        return "high"
-    if raw in ("medium", "med", "m"):
-        return "medium"
-    if raw in ("low", "l"):
-        return "low"
-    return None
+def _normalize_confidence(raw) -> str | None:
+    """归一化 confidence（已迁至 etl.confidence，保留薄封装供既有调用）。"""
+    return normalize_confidence_label(raw)
 
 
 def _make_value_str(rec: ExtractedRecord) -> str | None:

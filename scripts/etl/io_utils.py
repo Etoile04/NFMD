@@ -7,6 +7,8 @@ from datetime import datetime
 from typing import Any
 from zoneinfo import ZoneInfo
 
+from etl.path_safety import safe_open_read, safe_open_write, safe_read_path
+
 # Run IDs are operator-facing labels; pin the wall clock to the ops timezone explicitly
 RUN_TZ = ZoneInfo("Asia/Shanghai")
 
@@ -29,15 +31,14 @@ def open_run_dir(run_id: str, base_dir: str = "data/imports/runs") -> str:
 
 def write_jsonl(path: str, records: list[dict[str, Any]]) -> None:
     """Write records to a JSONL file."""
-    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
+    with safe_open_write(path) as f:
         f.writelines(json.dumps(rec, ensure_ascii=False, default=str) + "\n" for rec in records)
 
 
 def read_jsonl(path: str) -> list[dict[str, Any]]:
     """Read records from a JSONL file."""
     records = []
-    with open(path, encoding="utf-8") as f:
+    with safe_open_read(path) as f:
         for line in f:
             line = line.strip()
             if line:
@@ -47,7 +48,7 @@ def read_jsonl(path: str) -> list[dict[str, Any]]:
 
 def stream_jsonl(path: str) -> Generator[dict[str, Any], None, None]:
     """Stream records from a JSONL file (memory efficient)."""
-    with open(path, encoding="utf-8") as f:
+    with safe_open_read(path) as f:
         for line in f:
             line = line.strip()
             if line:
@@ -56,12 +57,11 @@ def stream_jsonl(path: str) -> Generator[dict[str, Any], None, None]:
 
 def write_json(path: str, data: Any) -> None:
     """Write data to a JSON file."""
-    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
+    with safe_open_write(path) as f:
         json.dump(data, f, ensure_ascii=False, indent=2, default=str)
 
 
 def read_json(path: str) -> Any:
     """Read data from a JSON file."""
-    with open(path, encoding="utf-8") as f:
+    with open(safe_read_path(path), encoding="utf-8") as f:
         return json.load(f)

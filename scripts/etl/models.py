@@ -23,7 +23,12 @@ class ExtractedRecord:
     raw_temperature: Any | None = None  # could be number or string
     raw_burnup: str | None = None
     raw_method: str | None = None
-    raw_confidence: str | None = None
+    raw_confidence: Any = None
+    # ChatExtract 双通道 + 自审计元数据（上游 llm-wiki 提供，见 etl.prompts）
+    channel_a: Any = None
+    channel_b: Any = None
+    self_audit: Any = None
+    derived_confidence: str | None = None
     equation: str | None = None
     notes: str | None = None
     description: str | None = None
@@ -83,6 +88,7 @@ class TransformedRecord:
     uncertainty: str | None = None
     material_name: str | None = None  # canonical name from alias map
     material_raw: str | None = None
+    material_formula: str | None = None  # 化学式机械归一结果（ADR-0005）
     temperature_k: float | None = None
     temperature_str: str | None = None
     burnup_range: str | None = None

@@ -12,6 +12,10 @@ dependencies = [
     "uvicorn>=0.40",
 ]
 
+[project.optional-dependencies]
+# 化学式归一引擎（ADR-0005）：可选 extras，缺失时 ETL 降级为 stdlib 正则引擎
+chem = ["pymatgen>=2024.10"]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
