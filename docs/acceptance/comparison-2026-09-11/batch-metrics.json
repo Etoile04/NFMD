@@ -1,0 +1,64 @@
+{
+  "baseline_label": "f730210（升级前基线）· 30 文件确定性样本",
+  "current_label": "bb34853（当前 main）· 30 文件确定性样本",
+  "baseline": {
+    "run_dir": "/tmp/nfmd-comparison-work/runs-baseline/batch-baseline",
+    "run_id": "batch-baseline",
+    "status": "completed",
+    "elapsed_seconds": 0.0,
+    "source_files": 29,
+    "records_extracted": 841,
+    "records_valid": 837,
+    "records_error": 4,
+    "validation_pass_rate": 0.9952,
+    "severity_counts": {
+      "warn": 434,
+      "error": 7
+    },
+    "top_issue_codes": {
+      "warn:MISSING_MATERIAL": 280,
+      "warn:INVALID_CATEGORY": 154,
+      "error:LIST_NO_VALUES": 3,
+      "error:VALUE_TYPE_MISMATCH": 3,
+      "error:RANGE_MIN_MAX_INVERTED": 1
+    },
+    "confidence_distribution": {
+      "high": 530,
+      "medium": 286,
+      "low": 21
+    },
+    "confidence_coverage": 1.0,
+    "material_resolved": 346,
+    "material_formula_matched": 0
+  },
+  "current": {
+    "run_dir": "/tmp/nfmd-comparison-work/runs-current/batch-current",
+    "run_id": "batch-current",
+    "status": "completed",
+    "elapsed_seconds": 0.1,
+    "source_files": 29,
+    "records_extracted": 841,
+    "records_valid": 837,
+    "records_error": 4,
+    "validation_pass_rate": 0.9952,
+    "severity_counts": {
+      "warn": 434,
+      "error": 7
+    },
+    "top_issue_codes": {
+      "warn:MISSING_MATERIAL": 280,
+      "warn:INVALID_CATEGORY": 154,
+      "error:LIST_NO_VALUES": 3,
+      "error:VALUE_TYPE_MISMATCH": 3,
+      "error:RANGE_MIN_MAX_INVERTED": 1
+    },
+    "confidence_distribution": {
+      "high": 530,
+      "medium": 286,
+      "low": 21
+    },
+    "confidence_coverage": 1.0,
+    "material_resolved": 346,
+    "material_formula_matched": 61
+  }
+}

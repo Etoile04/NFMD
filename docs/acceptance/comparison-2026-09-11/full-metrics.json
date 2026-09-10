@@ -1,0 +1,78 @@
+{
+  "baseline_label": "f730210（升级前基线）· 全量 458 文件",
+  "current_label": "bb34853（当前 main）· 全量 458 文件",
+  "baseline": {
+    "run_dir": "/tmp/nfmd-comparison-work/runs-baseline/full-baseline",
+    "run_id": null,
+    "status": "crashed",
+    "elapsed_seconds": null,
+    "source_files": 469,
+    "records_extracted": 14740,
+    "records_valid": 14319,
+    "records_error": 421,
+    "validation_pass_rate": 0.9714,
+    "severity_counts": {
+      "warn": 6622,
+      "error": 549
+    },
+    "top_issue_codes": {
+      "warn:MISSING_MATERIAL": 4251,
+      "warn:INVALID_CATEGORY": 1919,
+      "warn:INVALID_CONFIDENCE": 452,
+      "error:INVALID_VALUE_TYPE": 171,
+      "error:VALUE_TYPE_MISMATCH": 115,
+      "error:GENERIC_NAME": 113,
+      "error:SCALAR_NO_VALUE": 44,
+      "error:LIST_NO_VALUES": 38,
+      "error:EXPR_NO_FORMULA": 28,
+      "error:RANGE_MIN_MAX_INVERTED": 16,
+      "error:MISSING_ID": 6,
+      "error:MISSING_NAME": 6,
+      "error:MISSING_CATEGORY": 6,
+      "error:MISSING_VALUE_TYPE": 6
+    },
+    "confidence_distribution": null,
+    "confidence_coverage": null,
+    "material_resolved": null,
+    "material_formula_matched": null
+  },
+  "current": {
+    "run_dir": "/tmp/nfmd-comparison-work/runs-current/full-current",
+    "run_id": "full-current",
+    "status": "completed",
+    "elapsed_seconds": 0.7,
+    "source_files": 469,
+    "records_extracted": 14740,
+    "records_valid": 14319,
+    "records_error": 421,
+    "validation_pass_rate": 0.9714,
+    "severity_counts": {
+      "warn": 6170,
+      "error": 549
+    },
+    "top_issue_codes": {
+      "warn:MISSING_MATERIAL": 4251,
+      "warn:INVALID_CATEGORY": 1919,
+      "error:INVALID_VALUE_TYPE": 171,
+      "error:VALUE_TYPE_MISMATCH": 115,
+      "error:GENERIC_NAME": 113,
+      "error:SCALAR_NO_VALUE": 44,
+      "error:LIST_NO_VALUES": 38,
+      "error:EXPR_NO_FORMULA": 28,
+      "error:RANGE_MIN_MAX_INVERTED": 16,
+      "error:MISSING_ID": 6,
+      "error:MISSING_NAME": 6,
+      "error:MISSING_CATEGORY": 6,
+      "error:MISSING_VALUE_TYPE": 6
+    },
+    "confidence_distribution": {
+      "high": 10254,
+      "medium": 3741,
+      "low": 235,
+      "missing": 89
+    },
+    "confidence_coverage": 0.9938,
+    "material_resolved": 8073,
+    "material_formula_matched": 1707
+  }
+}
