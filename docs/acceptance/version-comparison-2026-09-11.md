@@ -3,10 +3,10 @@
 - 日期：2026-09-11
 - 基线版本：`f730210`（升级前，NFMA-1 ETL 升级之前）
 - 当前版本：`bb34853`（当前 main）
-- 语料：`fuel_swelling_wiki/parameters` 全量快照 458 文件（469 引用）+ 确定性抽样 30 文件（清单 `data/comparison/sample-manifest.json`，抽样见 `data/comparison/sample/`）
-- 运行方式：两版本各自 checkout（基线经 git worktree），`python -m etl.run_pipeline --mode dry-run`，产物存 `data/comparison/runs-{baseline,current}/`
+- 语料：`fuel_swelling_wiki/parameters` 全量快照 458 文件（469 引用）+ 确定性抽样 30 文件（清单见 [comparison-2026-09-11/sample-manifest.json](comparison-2026-09-11/sample-manifest.json)；抽样规则：快照文件名排序后每第 15 个）
+- 运行方式：两版本各自 checkout（基线经 git worktree），`python -m etl.run_pipeline --mode dry-run`，产物存 `data/comparison/runs-{baseline,current}/`（本地）
 - 分析工具：`python -m etl.compare_runs`（单测 `scripts/etl/tests/test_compare_runs.py`）
-- 详细机器可读对比：[version-comparison-sample.md](version-comparison-sample.md)（30 文件样本）、[version-comparison-full.md](version-comparison-full.md)（全量语料）、`data/comparison/version-comparison-{sample,full}.json`
+- 详细机器可读对比：[version-comparison-sample.md](version-comparison-sample.md)（30 文件样本）、[version-comparison-full.md](version-comparison-full.md)（全量语料）、指标数据集 [comparison-2026-09-11/{batch,full}-metrics.json](comparison-2026-09-11/)
 
 ## 结论
 
@@ -26,6 +26,45 @@
 | confidence 覆盖率 | N/A（崩溃） | 99.38% |
 | 材料解析 / 化学式匹配 | N/A（崩溃） | 8,073 / 1,707 |
 | 运行时长 | N/A | 0.7 s |
+
+## 逐篇实测明细（30 文件样本）
+
+两版本的抽取/校验/解析/confidence 在每篇文献上**逐条一致**（行为保持的直接证据）；差异仅出现在最后一列——当前版本新增的 `material_formula` 化学式匹配数（基线恒为 0）。解析率/material_name 两版本相同，故只列一列。
+
+| 文献（source_file 摘要） | 记录 | 解析率 | conf 覆盖 | formula（当前版新增） |
+|---|---|---|---|---|
+| 10_1680_ieacifcacc_48748 | 16 | 0% | 100% | 0 |
+| 2001_Ravishankar_EffectivePotentialAgCu | 3 | 0% | 100% | 0 |
+| 2010_Gan_Transmissionelectro | 82 | 38% | 100% | 1 |
+| 2013_Kim_UMoalloyfuelforTRUburnin | 25 | 16% | 100% | 0 |
+| 2015_Rabin_FOURPOINTBENDTESTINGOFIRR | 24 | 42% | 100% | 0 |
+| 2016_Säubert_NeutronandhardXr | 42 | 0% | 100% | 0 |
+| 2018_Devaraj_Grainboundaryengin | 40 | 50% | 100% | 0 |
+| 2018_Starikov_Atomisticsimulation | 24 | 92% | 100% | 0 |
+| 2019_Miao_Anexplorationofme | 7 | 43% | 100% | 2 |
+| 2020_Hirschhorn_UZr_DiffusionCouple_PF | 13 | 100% | 100% | 0 |
+| 2021_Beeler_Radiationdrivendif | 19 | 79% | 100% | 0 |
+| 2022_Aagesen_PFBubbleInterconnection | 29 | 100% | 100% | 0 |
+| 2022_Sun_Unveilingtheintera | 43 | 100% | 100% | **43** |
+| 2023_Ke_MicrostructureModeling | 36 | 39% | 100% | 7 |
+| 2023_Tian_Moleculardynamicssimulation | 28 | 29% | 100% | 0 |
+| 2024_Kim_ThermalConductivityUMo | 1 | 100% | 100% | 0 |
+| 2025_Doyle_SwellingandFission | 21 | 95% | 100% | 0 |
+| 2025_Pizzocri_MultiFidelity_FuelPerformance | 8 | 100% | 100% | **8** |
+| 2026_Fay_3DPoreReconstruction_Fluff_EBR2 | 12 | 100% | 100% | 0 |
+| Evidence of Xe-incorporation … U-Mo fuel | 32 | 0% | 100% | 0 |
+| R.M. WILLARD 1985 U-10 wt% 系 | 42 | 57% | 100% | 0 |
+| Smith et al. 2023 UC inclusions | 11 | 0% | 100% | 0 |
+| Yun 等 U-10Zr meta | 30 | 100% | 100% | 0 |
+| kim_hofman_cheon_2013 U-Mo | 23 | 0% | 100% | 0 |
+| raw/mineru/10_1016_j_jnucmat_2010_04_016 | 53 | 0% | 100% | 0 |
+| raw/mineru/10_1016_j_jnucmat_2017_07_030 | 42 | 0% | 100% | 0 |
+| raw/mineru/10_1016_j_jnucmat_2020_152441 | 51 | 0% | 100% | 0 |
+| raw/mineru/10_1016_j_matchar_2020_110696 | 40 | 0% | 100% | 0 |
+| raw/mineru/Aagesen 2022 U-(Pu)-Zr | 40 | 98% | 100% | 0 |
+| 合计 | **837** | 41.3% | 100% | **61** |
+
+观察：formula 增益集中在材料名以化学式书写的论文（2022_Sun 全部 43 条命中、2025_Pizzocri 8/8、2023_Ke 7）；解析率 0% 的论文（如 jnucmat DOI 系、U-Mo 燃料类）暴露的是 **alias map 词典缺口**——这正是调研报告 WP2 的目标场景（化学式机械归一），但 `material_name` 语义归一仍依赖 alias map，需按「结论 3」的路径补充词典。
 
 ## 复现
 

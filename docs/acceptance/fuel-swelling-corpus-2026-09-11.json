@@ -1,0 +1,34 @@
+{
+  "source_dir": "/tmp/nfmd-comparison-work/corpus-snapshot",
+  "source_files": 469,
+  "records_extracted": 14740,
+  "records_valid": 14319,
+  "records_error": 421,
+  "fatal_count": 0,
+  "success_rate": 0.9714,
+  "gate_passed": true,
+  "confidence_distribution": {
+    "high": 10254,
+    "medium": 3741,
+    "low": 235,
+    "missing": 89
+  },
+  "formula_engine": "pymatgen",
+  "material_resolved": 8073,
+  "material_formula_matched": 1707,
+  "top_issue_codes": {
+    "warn:MISSING_MATERIAL": 4251,
+    "warn:INVALID_CATEGORY": 1919,
+    "error:INVALID_VALUE_TYPE": 171,
+    "error:VALUE_TYPE_MISMATCH": 115,
+    "error:GENERIC_NAME": 113,
+    "error:SCALAR_NO_VALUE": 44,
+    "error:LIST_NO_VALUES": 38,
+    "error:EXPR_NO_FORMULA": 28,
+    "error:RANGE_MIN_MAX_INVERTED": 16,
+    "error:MISSING_ID": 6,
+    "error:MISSING_NAME": 6,
+    "error:MISSING_CATEGORY": 6,
+    "error:MISSING_VALUE_TYPE": 6
+  }
+}

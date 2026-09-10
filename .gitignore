@@ -3,6 +3,8 @@ data/
 *.pdf
 *.json
 !plans/material-alias-map.json
+# 验收/对比报告的机器可读证据（JSON）随文档入库
+!docs/acceptance/**
 
 # Python
 __pycache__/
