@@ -19,3 +19,11 @@ GitHub Issues（仓库 `Etoile04/NFMD`，经 `gh` CLI 读写）。See `docs/agen
 ### Domain docs
 
 Single-context：根目录 `CONTEXT.md` + `docs/adr/`（按需懒创建；存在则先读）。See `docs/agents/domain.md`.
+
+## Agent operations (NFMZ)
+
+本仓库的开发由 Paperclip 看板上的 NFMZ agent 公司承担：工单编号 `NFMA-###`，分支命名 `NFMA-XXXX-<slug>`；本仓库为独立版本线，不受其他仓库规则约束，提交信息按惯例引用 `NFMA-###`（无强制 gate）。
+
+**当前交付物**：ETL 管线（`etl.run_pipeline` / `etl.api`）+ FastAPI 只读 API + PostgreSQL 16 schema（RLS）。Web 前端尚未启动——启动后 E2E 验收加入浏览器测试相（断点 1440 / 768 / 375，WCAG AA 基线）。
+
+**版本线**：独立版本，`vX.Y.Z`（当前 0.x 阶段）；发布 = main 打 tag + GitHub Release（notes 引用对应 `NFMA-###` 工单）。
