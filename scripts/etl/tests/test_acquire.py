@@ -86,7 +86,7 @@ class TestValidatePublicHttpUrl:
 
 
 class TestHostIsAllowed:
-    ALLOWLIST = ["api.crossref.org", "api.unpaywall.org"]
+    ALLOWLIST = ("api.crossref.org", "api.unpaywall.org")
 
     def test_exact_match(self):
         assert host_is_allowed("api.crossref.org", self.ALLOWLIST)
