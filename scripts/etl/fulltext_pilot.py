@@ -20,6 +20,7 @@ import argparse
 import json
 import math
 import re
+import unicodedata
 from pathlib import Path
 
 from etl.confidence import derive_confidence
@@ -157,8 +158,14 @@ def renumber_pilot_ids(records: list[dict], slug: str) -> None:
 def _gold_values(gold_rec: dict):
     if gold_rec.get("value_type") == "range":
         return ("range", gold_rec.get("value_min"), gold_rec.get("value_max"))
-    if gold_rec.get("value_scalar") is not None:
-        return ("scalar", float(gold_rec["value_scalar"]), None)
+    v = gold_rec.get("value_scalar")
+    if v is None:
+        v = gold_rec.get("value")
+    if v is not None:
+        try:
+            return ("scalar", float(v), None)
+        except (TypeError, ValueError):
+            return ("text", str(v), None)
     if gold_rec.get("value_str") not in (None, ""):
         try:
             return ("scalar", float(gold_rec["value_str"]), None)
@@ -184,7 +191,9 @@ def evaluate_against_gold(records: list[dict], gold: list[dict], tol: float = _R
     value 匹配（同值多记录时 1:1 消耗，不重复计数）。
     """
     def unit_key(u):
-        return re.sub(r"[\s·^\-_/（）()]", "", (u or "").lower())
+        # NFKD 折叠上标（cm⁻³ → cm-3）并统一减号/空白/连接符
+        s = unicodedata.normalize("NFKD", (u or "").lower()).replace("−", "-").replace("–", "-")
+        return re.sub(r"[\s·^\-_/（）()]", "", s)
 
     def match_extracted(gold_rec, extracted, used, require_unit):
         tg, vg1, vg2 = _gold_values(gold_rec)
@@ -241,7 +250,7 @@ def evaluate_against_gold(records: list[dict], gold: list[dict], tol: float = _R
 
 
 def _load_json(path: str):
-    with safe_open_read(safe_read_path(path), encoding="utf-8") as f:
+    with safe_open_read(safe_read_path(path)) as f:
         return json.load(f)
 
 
@@ -249,13 +258,13 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="NFMA-9 全文抽取试点：合并 + 评估")
     sub = parser.add_subparsers(dest="cmd", required=True)
 
-    p_merge = sub.add_argument("merge", help="合并双通道产物")
+    p_merge = sub.add_parser("merge", help="合并双通道产物")
     p_merge.add_argument("--slug", required=True)
     p_merge.add_argument("--channel-a", required=True)
     p_merge.add_argument("--channel-b", required=True)
     p_merge.add_argument("--output", required=True)
 
-    p_eval = sub.add_argument("evaluate", help="对照金标评估")
+    p_eval = sub.add_parser("evaluate", help="对照金标评估")
     p_eval.add_argument("--records-dir", required=True)
     p_eval.add_argument("--gold-dir", required=True)
     p_eval.add_argument("--slugs", nargs="+", required=True)
