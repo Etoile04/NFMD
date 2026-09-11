@@ -1,0 +1,407 @@
+[
+  {
+    "qid": "temperature range of analyzed irradiation creep data",
+    "value_type": "range",
+    "value": [250, 380],
+    "unit": "°C",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "The available irradiation creep data cover a limited fluence (cZxio22) and remperature range (250-380*C)"
+  },
+  {
+    "qid": "fluence at 2000 hours in DFR spring irradiation",
+    "value_type": "scalar",
+    "value": 7e+21,
+    "unit": "n/cm²",
+    "category": "irradiation_condition",
+    "material": "M316",
+    "sentence": "The data points in Figure 3 show an apparent increase in irradiation creep after 200o hours. This tendency could be simply dus to data scatter or possibly,a small amount of swelling in SA 316starting after 2000 hours (7x102in/cm2)."
+  },
+  {
+    "qid": "stress exponent threshold for linear behavior of CW M316",
+    "value_type": "scalar",
+    "value": 15000,
+    "unit": "psi",
+    "category": "irradiation_creep",
+    "material": "M316",
+    "sentence": "the 20 percent.coldworked type M3l6 stainless steel exhibit linear behavior for equivalent stresses below l:5,000 psi and a higher stress exponent for higher stresses."
+  },
+  {
+    "qid": "cold work level of CW M316 stainless steel",
+    "value_type": "scalar",
+    "value": 20,
+    "unit": "%",
+    "category": "material_processing",
+    "material": "M316",
+    "sentence": "the 20 percent.coldworked type M3l6 stainless steel exhibit linear behavior for equivalent stresses below l:5,000 psi"
+  },
+  {
+    "qid": "SA M316 (Batch 1) spring stress group levels",
+    "value_type": "list",
+    "value": [2.0, 4.0, 5.5, 8.0],
+    "unit": "ksi",
+    "category": "irradiation_condition",
+    "material": "M316",
+    "sentence": "these stresses formed groups centered at 2.0, 4.0, 5.5 and 8.0 ksi for SA M316 (Batch 1), and 3.0, 5.0, 9.0 and i2.5 ksi for Cw M316 (Batch 1)."
+  },
+  {
+    "qid": "CW M316 (Batch 1) spring stress group levels",
+    "value_type": "list",
+    "value": [3.0, 5.0, 9.0, 12.5],
+    "unit": "ksi",
+    "category": "irradiation_condition",
+    "material": "M316",
+    "sentence": "these stresses formed groups centered at 2.0, 4.0, 5.5 and 8.0 ksi for SA M316 (Batch 1), and 3.0, 5.0, 9.0 and i2.5 ksi for Cw M316 (Batch 1)."
+  },
+  {
+    "qid": "swelling sufficient to explain observed creep rate increase",
+    "value_type": "scalar",
+    "value": 0.02,
+    "unit": "%",
+    "category": "swelling",
+    "material": "M316",
+    "sentence": "For example, swelling of 0.o2% would be sufficient to increase the creep rate by the amount observed."
+  },
+  {
+    "qid": "Poisson's ratio used for equivalent strain conversion",
+    "value_type": "scalar",
+    "value": 0.5,
+    "unit": null,
+    "category": "model_parameter",
+    "material": null,
+    "sentence": "To convert the hoop irradiation creep strain rates to corresponding equivalent strain rates, a value for Poisson's ratio is necessary. Figure 4 shows the resulting creep rates when Poisson's ratio is O.5."
+  },
+  {
+    "qid": "overprediction factor of McElroy-Gilbert model for SA M316 at 280°C",
+    "value_type": "scalar",
+    "value": 5,
+    "unit": null,
+    "category": "model_parameter",
+    "material": "M316",
+    "sentence": "as a result at 28o*C the model overpredicts the fast neutron spectrum SA M3l6 and SA 304 irradiation creep rates by factors of 5 and 3, respactively."
+  },
+  {
+    "qid": "overprediction factor of McElroy-Gilbert model for SA 304 at 280°C",
+    "value_type": "scalar",
+    "value": 3,
+    "unit": null,
+    "category": "model_parameter",
+    "material": "304",
+    "sentence": "as a result at 28o*C the model overpredicts the fast neutron spectrum SA M3l6 and SA 304 irradiation creep rates by factors of 5 and 3, respactively."
+  },
+  {
+    "qid": "hoop stress of EBR-II pressurized tubes for axial strain profiles",
+    "value_type": "scalar",
+    "value": 15,
+    "unit": "ksi",
+    "category": "irradiation_condition",
+    "material": "304L",
+    "sentence": "this is supported by thq axial strain profiles of the two EBR-II pressurized tubes at 15 ksil7]. The strain profiles were symmetrical above and below the core midplanc for temperatu\"e differences of 30 to 70'C."
+  },
+  {
+    "qid": "temperature difference across core midplane with symmetric strain profiles",
+    "value_type": "range",
+    "value": [30, 70],
+    "unit": "°C",
+    "category": "irradiation_condition",
+    "material": "304L",
+    "sentence": "The strain profiles were symmetrical above and below the core midplanc for temperatu\"e differences of 30 to 70'C."
+  },
+  {
+    "qid": "shear stress above which CW M316 transient strain is linear with stress",
+    "value_type": "scalar",
+    "value": 3.0,
+    "unit": "ksi",
+    "category": "irradiation_creep",
+    "material": "M316",
+    "sentence": "Since the transient strain for shear stresses greater than 3.0 ksi is a linear function of the stress (see Figure 8)"
+  },
+  {
+    "qid": "shear stress at which SA M316 transient strain increases rapidly",
+    "value_type": "scalar",
+    "value": 8.0,
+    "unit": "ksi",
+    "category": "irradiation_creep",
+    "material": "M316",
+    "sentence": "the transient irradiation shear strain is not a linear function of the stress, but remains essentially constant until 8.0 ksi, when it increases rapidly (see Figure 8)."
+  },
+  {
+    "qid": "temperature gradient across fuel pin or capsule tubing",
+    "value_type": "range",
+    "value": [400, 800],
+    "unit": "°C/cm",
+    "category": "fuel_design",
+    "material": null,
+    "sentence": "The cylindrical tubing used in fuel pins or capsules is subjected to temperature gradient of the order of 400 to 800*c/c/m"
+  },
+  {
+    "qid": "swelling-creep coupling constant D (example value)",
+    "value_type": "scalar",
+    "value": 2e-7,
+    "unit": null,
+    "category": "irradiation_creep",
+    "material": null,
+    "sentence": "for g_swelling rate of 1x AV/v per 1022 fast fluence (E>0.1 Mev), a fast flux of 10^15, a stress of 10^4 psi, and a D value_of 2 × 10^-7 , the second term in equation (4) yields a creep rate of 7.2 × 10^-5 %/hr."
+  },
+  {
+    "qid": "fast flux assumed in swelling-creep coupling example",
+    "value_type": "scalar",
+    "value": 1e+15,
+    "unit": "n/cm²/s",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "for g_swelling rate of 1x AV/v per 1022 fast fluence (E>0.1 Mev), a fast flux of 10^15, a stress of 10^4 psi, and a D value_of 2 × 10^-7"
+  },
+  {
+    "qid": "stress assumed in swelling-creep coupling example",
+    "value_type": "scalar",
+    "value": 1e+4,
+    "unit": "psi",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "for g_swelling rate of 1x AV/v per 1022 fast fluence (E>0.1 Mev), a fast flux of 10^15, a stress of 10^4 psi, and a D value_of 2 × 10^-7"
+  },
+  {
+    "qid": "creep rate from swelling-coupled term in example",
+    "value_type": "scalar",
+    "value": 7.2e-5,
+    "unit": "%/hr",
+    "category": "irradiation_creep",
+    "material": null,
+    "sentence": "a D value_of 2 × 10^-7 , the second term in equation (4) yields a creep rate of 7.2 × 10^-5 %/hr."
+  },
+  {
+    "qid": "irradiation creep rate of SA 304L (reference value)",
+    "value_type": "scalar",
+    "value": 5.4e-5,
+    "unit": "%/hr",
+    "category": "irradiation_creep",
+    "material": "304L",
+    "sentence": "This value may be coupared to the creep rates for SA 304L and M316, shown in Figure i, of 5.4 × 10^-5 and 1.7 × 10^-5 Z/hr, respectively."
+  },
+  {
+    "qid": "irradiation creep rate of SA M316 (reference value)",
+    "value_type": "scalar",
+    "value": 1.7e-5,
+    "unit": "%/hr",
+    "category": "irradiation_creep",
+    "material": "M316",
+    "sentence": "This value may be coupared to the creep rates for SA 304L and M316, shown in Figure i, of 5.4 × 10^-5 and 1.7 × 10^-5 Z/hr, respectively."
+  },
+  {
+    "qid": "creep rate enhancement of SA 304L at indicated swelling rate",
+    "value_type": "scalar",
+    "value": 130,
+    "unit": "%",
+    "category": "irradiation_creep",
+    "material": "304L",
+    "sentence": "Thus, at the indicated swelling rate the irradiation creep rates of SA 3o4L and M316 wouid be enhanced by 130 and 420%, respectively."
+  },
+  {
+    "qid": "creep rate enhancement of SA M316 at indicated swelling rate",
+    "value_type": "scalar",
+    "value": 420,
+    "unit": "%",
+    "category": "irradiation_creep",
+    "material": "M316",
+    "sentence": "Thus, at the indicated swelling rate the irradiation creep rates of SA 3o4L and M316 wouid be enhanced by 130 and 420%, respectively."
+  },
+  {
+    "qid": "minimum D value from residual stress preliminary analysis",
+    "value_type": "scalar",
+    "value": 2e-7,
+    "unit": null,
+    "category": "irradiation_creep",
+    "material": null,
+    "sentence": "The prelininary analysis of these gesults indicates mininun D values (see equation 4) greater than 2xlo-7 indicating a large increase in irradiation creep rate for high swelling rate values."
+  },
+  {
+    "qid": "transient creep constant A of CW M316",
+    "value_type": "scalar",
+    "value": 0.12,
+    "unit": null,
+    "category": "irradiation_creep",
+    "material": "M316",
+    "sentence": "Table II Irradiation Creep Materials Constants (temperature range 250-380°C): CW M316 — ×10^29? A=0.12, B=0.37, C=0.51, Maximum Equivalent Stress Level 21.7 ksi"
+  },
+  {
+    "qid": "steady state creep constant B of CW M316",
+    "value_type": "scalar",
+    "value": 0.37,
+    "unit": null,
+    "category": "irradiation_creep",
+    "material": "M316",
+    "sentence": "Table II Irradiation Creep Materials Constants (temperature range 250-380°C): CW M316 — A=0.12, B×10^29=0.37, C×10^38=0.51, Maximum Equivalent Stress Level 21.7 ksi"
+  },
+  {
+    "qid": "high stress creep constant C of CW M316",
+    "value_type": "scalar",
+    "value": 0.51,
+    "unit": null,
+    "category": "irradiation_creep",
+    "material": "M316",
+    "sentence": "Table II Irradiation Creep Materials Constants (temperature range 250-380°C): CW M316 — A=0.12, B×10^29=0.37, C×10^38=0.51, Maximum Equivalent Stress Level 21.7 ksi"
+  },
+  {
+    "qid": "transient creep constant A of CW 304",
+    "value_type": "scalar",
+    "value": 1.2,
+    "unit": null,
+    "category": "irradiation_creep",
+    "material": "304",
+    "sentence": "Table II Irradiation Creep Materials Constants: CW 304 — A=1.2, B=3-7, Maximum Equivalent Stress Level 10.2 ksi"
+  },
+  {
+    "qid": "steady state creep constant B range of CW 304",
+    "value_type": "range",
+    "value": [3, 7],
+    "unit": null,
+    "category": "irradiation_creep",
+    "material": "304",
+    "sentence": "Table II Irradiation Creep Materials Constants: CW 304 — A=1.2, B=3-7, Maximum Equivalent Stress Level 10.2 ksi"
+  },
+  {
+    "qid": "steady state creep constant B of SA M316",
+    "value_type": "scalar",
+    "value": 0.47,
+    "unit": null,
+    "category": "irradiation_creep",
+    "material": "M316",
+    "sentence": "Table II Irradiation Creep Materials Constants (temperature range 250-380°C): SA M316 — B=0.47, Maximum Equivalent Stress Level 14.7 ksi"
+  },
+  {
+    "qid": "steady state creep constant B of SA 304",
+    "value_type": "scalar",
+    "value": 0.86,
+    "unit": null,
+    "category": "irradiation_creep",
+    "material": "304",
+    "sentence": "Table II Irradiation Creep Materials Constants (temperature range 250-380°C): SA 304 — B=0.86, Maximum Equivalent Stress Level 13.9 ksi"
+  },
+  {
+    "qid": "steady state creep constant B of SA 304L",
+    "value_type": "scalar",
+    "value": 1.5,
+    "unit": null,
+    "category": "irradiation_creep",
+    "material": "304L",
+    "sentence": "Table II Irradiation Creep Materials Constants (temperature range 250-380°C): SA 304L — B=1.5, Maximum Equivalent Stress Level 23.1 ksi"
+  },
+  {
+    "qid": "maximum equivalent stress level for CW M316 creep constants",
+    "value_type": "scalar",
+    "value": 21.7,
+    "unit": "ksi",
+    "category": "irradiation_condition",
+    "material": "M316",
+    "sentence": "Table II: CW M316 Maximum Equivalent Stress Level — 21.7 ksi"
+  },
+  {
+    "qid": "maximum equivalent stress level for CW 304 creep constants",
+    "value_type": "scalar",
+    "value": 10.2,
+    "unit": "ksi",
+    "category": "irradiation_condition",
+    "material": "304",
+    "sentence": "Table II: CW 304 Maximum Equivalent Stress Level — 10.2 ksi"
+  },
+  {
+    "qid": "maximum equivalent stress level for SA M316 creep constants",
+    "value_type": "scalar",
+    "value": 14.7,
+    "unit": "ksi",
+    "category": "irradiation_condition",
+    "material": "M316",
+    "sentence": "Table II: SA M316 Maximum Equivalent Stress Level — 14.7 ksi"
+  },
+  {
+    "qid": "maximum equivalent stress level for SA 304 creep constants",
+    "value_type": "scalar",
+    "value": 13.9,
+    "unit": "ksi",
+    "category": "irradiation_condition",
+    "material": "304",
+    "sentence": "Table II: SA 304 Maximum Equivalent Stress Level — 13.9 ksi"
+  },
+  {
+    "qid": "maximum equivalent stress level for SA 304L creep constants",
+    "value_type": "scalar",
+    "value": 23.1,
+    "unit": "ksi",
+    "category": "irradiation_condition",
+    "material": "304L",
+    "sentence": "Table II: SA 304L Maximum Equivalent Stress Level — 23.1 ksi"
+  },
+  {
+    "qid": "stress threshold for negative strain intercepts in SA stainless steel",
+    "value_type": "scalar",
+    "value": 15,
+    "unit": "ksi",
+    "category": "irradiation_creep",
+    "material": null,
+    "sentence": "Values for the A constant are not reported for SA materials because the strain intercepts tend to be negative at low stresses (below equivalent stresses of 15, oon psi)."
+  },
+  {
+    "qid": "stress threshold for nonlinear stress effect in CW 304",
+    "value_type": "scalar",
+    "value": 10,
+    "unit": "ksi",
+    "category": "irradiation_creep",
+    "material": "304",
+    "sentence": "As indicated in Table II the CW 304 show a nonlinear stress effect at equivalent stresses of l0 ksi."
+  },
+  {
+    "qid": "irradiation time of SA M316 spring data showing high-stress non-linearity",
+    "value_type": "scalar",
+    "value": 427,
+    "unit": "h",
+    "category": "irradiation_condition",
+    "material": "M316",
+    "sentence": "The SA M3l6 total shear strain spring data irradiated for 427 hours also show a non-linearity at high stress levels."
+  },
+  {
+    "qid": "chromium content of 304L stainless steel (EBR-II tubes)",
+    "value_type": "scalar",
+    "value": 18.43,
+    "unit": "wt.%",
+    "category": "material_composition",
+    "material": "304L",
+    "sentence": "Table 1 Compositions of the Stainless Steels Used in Irradiation Tests: 304L — Cr 18.43, Ni 10.05, C .023"
+  },
+  {
+    "qid": "nickel content of 304L stainless steel (EBR-II tubes)",
+    "value_type": "scalar",
+    "value": 10.05,
+    "unit": "wt.%",
+    "category": "material_composition",
+    "material": "304L",
+    "sentence": "Table 1 Compositions of the Stainless Steels Used in Irradiation Tests: 304L — Cr 18.43, Ni 10.05, C .023"
+  },
+  {
+    "qid": "molybdenum content of M316 stainless steel (Batch 1)",
+    "value_type": "scalar",
+    "value": 2.29,
+    "unit": "wt.%",
+    "category": "material_composition",
+    "material": "M316",
+    "sentence": "Table 1 Compositions: M316 (Batch 1) — C .036, Cr 16.70, Ni 13.7, Mo 2.29, Mn 1.87, Si .64"
+  },
+  {
+    "qid": "chromium content of M316 stainless steel (Batch 1)",
+    "value_type": "scalar",
+    "value": 16.7,
+    "unit": "wt.%",
+    "category": "material_composition",
+    "material": "M316",
+    "sentence": "Table 1 Compositions: M316 (Batch 1) — C .036, Cr 16.70, Ni 13.7, Mo 2.29, Mn 1.87, Si .64"
+  },
+  {
+    "qid": "nickel content of M316 stainless steel (Batch 1)",
+    "value_type": "scalar",
+    "value": 13.7,
+    "unit": "wt.%",
+    "category": "material_composition",
+    "material": "M316",
+    "sentence": "Table 1 Compositions: M316 (Batch 1) — C .036, Cr 16.70, Ni 13.7, Mo 2.29, Mn 1.87, Si .64"
+  }
+]

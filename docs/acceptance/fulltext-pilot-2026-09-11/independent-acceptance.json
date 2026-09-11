@@ -1,0 +1,19 @@
+{
+  "source_dir": "data/fulltext-pilot/independent-records",
+  "source_files": 5,
+  "records_extracted": 163,
+  "records_valid": 163,
+  "records_error": 0,
+  "fatal_count": 0,
+  "success_rate": 1.0,
+  "gate_passed": true,
+  "confidence_distribution": {
+    "missing": 163
+  },
+  "formula_engine": "pymatgen",
+  "material_resolved": 53,
+  "material_formula_matched": 49,
+  "top_issue_codes": {
+    "warn:MISSING_MATERIAL": 54
+  }
+}

@@ -1,0 +1,218 @@
+[
+  {
+    "qid": "blister temperature of uranium aluminide fuel",
+    "value_type": "scalar",
+    "value": 447,
+    "unit": "°C",
+    "category": "thermal",
+    "material": "UAL-x",
+    "sentence": "The blister temperature is around 447 °C for currently used uranium aluminide fuel (Beeston et al., 1980)."
+  },
+  {
+    "qid": "temperature drop across corrosion layer at oxide spallation onset",
+    "value_type": "scalar",
+    "value": 119,
+    "unit": "°C",
+    "category": "corrosion",
+    "material": "Al",
+    "sentence": "When the temperature drop across the oxide layer reaches 119 °C, corrosion product spalls from the surface of the cladding."
+  },
+  {
+    "qid": "reaction zone thickness after spallation",
+    "value_type": "scalar",
+    "value": 200,
+    "unit": "µm",
+    "category": "corrosion",
+    "material": "Al",
+    "sentence": "The thickness of the reaction zone could reach 200 µm and cause plate blistering and cladding breach due to impairment of heat transfer trough the reaction zone (Yoder et al., 1992)."
+  },
+  {
+    "qid": "oxide-water surface temperature limit during normal operation",
+    "value_type": "scalar",
+    "value": 180,
+    "unit": "°C",
+    "category": "thermal",
+    "material": "Al",
+    "sentence": "oxide-water surface temperature, is determined by conducting thermohydraulic analysis and is usually below 180 °C during normal operation."
+  },
+  {
+    "qid": "maximum plate heat flux during normal operation",
+    "value_type": "scalar",
+    "value": 550,
+    "unit": "W/cm²",
+    "category": "fuel_design",
+    "material": null,
+    "sentence": "plate heat flux is determined from the plate power and its maximum values during normal operation reach 550 W/cm2"
+  },
+  {
+    "qid": "cladding thermal conductivity range during normal operation",
+    "value_type": "range",
+    "value": [1.5, 1.75],
+    "unit": "W/cm-C",
+    "category": "thermal",
+    "material": "Al",
+    "sentence": "cladding thermal conductivity, W/cm-C, is a function of temperature and is in the 1.50–1.75 W/cm-C range during normal operation"
+  },
+  {
+    "qid": "oxide thermal conductivity",
+    "value_type": "scalar",
+    "value": 0.0225,
+    "unit": "W/cm-C",
+    "category": "thermal",
+    "material": "Al",
+    "sentence": "oxide thermal conductivity, W/cm-C, and is 0.0225 W/cm-C (Griess et al., 1964)"
+  },
+  {
+    "qid": "thermal conductivity ratio of unirradiated U-Mo to uranium aluminide dispersion",
+    "value_type": "scalar",
+    "value": 2,
+    "unit": null,
+    "category": "thermal",
+    "material": "U-Mo",
+    "sentence": "thermal conductivity of the unirradiated U-Mo fuel is approximately factor of 2 lower (Burkes et al., 2010) than that of uranium aluminide dispersion (Polkinghorne and Lacy, 1991)."
+  },
+  {
+    "qid": "as-fabricated fuel plate thickness",
+    "value_type": "scalar",
+    "value": 0.133,
+    "unit": "cm",
+    "category": "fuel_design",
+    "material": null,
+    "sentence": "Table 1 Fuel design parameters. As fabricated fuel plate thickness, cm — 0.133"
+  },
+  {
+    "qid": "as-fabricated fuel foil thickness",
+    "value_type": "scalar",
+    "value": 0.033,
+    "unit": "cm",
+    "category": "fuel_design",
+    "material": "U-Mo",
+    "sentence": "Table 1 Fuel design parameters. As fabricated foil thickness, cm — 0.033"
+  },
+  {
+    "qid": "fuel swelling factor",
+    "value_type": "scalar",
+    "value": 1.2,
+    "unit": null,
+    "category": "swelling",
+    "material": "U-Mo",
+    "sentence": "Table 1 Fuel design parameters. Swelling factor — 1.2"
+  },
+  {
+    "qid": "foil half thickness including swelling",
+    "value_type": "scalar",
+    "value": 0.0198,
+    "unit": "cm",
+    "category": "fuel_design",
+    "material": "U-Mo",
+    "sentence": "Table 1 Fuel design parameters. Foil half thickness with swelling, cm — 0.0198"
+  },
+  {
+    "qid": "cladding thickness",
+    "value_type": "scalar",
+    "value": 0.05,
+    "unit": "cm",
+    "category": "fuel_design",
+    "material": "Al",
+    "sentence": "Table 1 Fuel design parameters. Cladding thickness, cm — 0.05"
+  },
+  {
+    "qid": "cladding thermal conductivity (design value)",
+    "value_type": "scalar",
+    "value": 1.75,
+    "unit": "W/cm-C",
+    "category": "thermal",
+    "material": "Al",
+    "sentence": "Table 1 Fuel design parameters. K_cladding, W/cm-C — 1.75"
+  },
+  {
+    "qid": "boehmite thermal conductivity",
+    "value_type": "scalar",
+    "value": 0.0225,
+    "unit": "W/cm-C",
+    "category": "thermal",
+    "material": "boehmite",
+    "sentence": "Table 1 Fuel design parameters. K_boehmite, W/cm-C — 0.0225"
+  },
+  {
+    "qid": "oxide/water interface temperature (design value)",
+    "value_type": "scalar",
+    "value": 180,
+    "unit": "°C",
+    "category": "thermal",
+    "material": null,
+    "sentence": "Table 1 Fuel design parameters. T_oxide/water, C — 180"
+  },
+  {
+    "qid": "fuel thermal conductivity (design value)",
+    "value_type": "scalar",
+    "value": 0.15,
+    "unit": "W/cm-C",
+    "category": "thermal",
+    "material": "U-Mo",
+    "sentence": "Table 1 Fuel design parameters. K_fuel, W/cm-C — 0.15"
+  },
+  {
+    "qid": "U-Mo fuel blister temperature (design value)",
+    "value_type": "scalar",
+    "value": 400,
+    "unit": "°C",
+    "category": "thermal",
+    "material": "U-Mo",
+    "sentence": "Table 1 Fuel design parameters. Blister temperature, C — 400"
+  },
+  {
+    "qid": "design heat flux range",
+    "value_type": "range",
+    "value": [200, 700],
+    "unit": "W/cm²",
+    "category": "fuel_design",
+    "material": null,
+    "sentence": "Assume that reactor fuel is designed to operate within the heat flux range from 200 to 700 W/cm2 and the oxide-water interface temperature is 180 °C."
+  },
+  {
+    "qid": "degraded fuel thermal conductivity (burnup-induced)",
+    "value_type": "scalar",
+    "value": 0.1,
+    "unit": "W/cm-K",
+    "category": "thermal",
+    "material": "U-Mo",
+    "sentence": "assume that due to burnup-induced fuel degradation, the fuel thermal conductivity decreased to 0.1 W/cm-K (Burkes et al., 2015), swelling increased to 50%, and blister temperature decreased to 350 °C."
+  },
+  {
+    "qid": "degraded fuel swelling (burnup-induced)",
+    "value_type": "scalar",
+    "value": 50,
+    "unit": "%",
+    "category": "swelling",
+    "material": "U-Mo",
+    "sentence": "assume that due to burnup-induced fuel degradation, the fuel thermal conductivity decreased to 0.1 W/cm-K (Burkes et al., 2015), swelling increased to 50%, and blister temperature decreased to 350 °C."
+  },
+  {
+    "qid": "degraded U-Mo blister temperature",
+    "value_type": "scalar",
+    "value": 350,
+    "unit": "°C",
+    "category": "thermal",
+    "material": "U-Mo",
+    "sentence": "assume that due to burnup-induced fuel degradation, the fuel thermal conductivity decreased to 0.1 W/cm-K (Burkes et al., 2015), swelling increased to 50%, and blister temperature decreased to 350 °C."
+  },
+  {
+    "qid": "critical heat flux where plate blistering becomes dominant failure mechanism",
+    "value_type": "scalar",
+    "value": 325,
+    "unit": "W/cm²",
+    "category": "fuel_performance",
+    "material": null,
+    "sentence": "The result plotted in Fig. 2 shows that if the heat flux exceeds 325 W/cm2 , plate blistering becomes a dominant failure mechanism."
+  },
+  {
+    "qid": "reduced plate surface temperature scenario",
+    "value_type": "scalar",
+    "value": 120,
+    "unit": "°C",
+    "category": "thermal",
+    "material": null,
+    "sentence": "Fig. 3 which shows critical oxide thickness plotted for the case assuming plate surface temperature of 120 °C and fuel thermal conductivity of 0.1 W/cm-K, swelling of 50%, and blister temperature of 350 °C."
+  }
+]

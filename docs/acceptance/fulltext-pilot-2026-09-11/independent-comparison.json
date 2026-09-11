@@ -1,0 +1,110 @@
+{
+ "10_1016_j_nucengdes_2018_01_045": {
+  "indep": 24,
+  "pilot": 22,
+  "gold": 14,
+  "vs_pilot": {
+   "matched": 22,
+   "consistency_of_indep": 0.917,
+   "consistency_of_pilot": 1.0,
+   "matched_strict": 21,
+   "consistency_strict_of_indep": 0.875
+  },
+  "vs_gold": {
+   "matched": 11,
+   "precision_lenient": 0.458,
+   "matched_strict": 9,
+   "precision_strict": 0.375
+  }
+ },
+ "10_1063_1_5127696": {
+  "indep": 34,
+  "pilot": 22,
+  "gold": 22,
+  "vs_pilot": {
+   "matched": 19,
+   "consistency_of_indep": 0.559,
+   "consistency_of_pilot": 0.864,
+   "matched_strict": 16,
+   "consistency_strict_of_indep": 0.471
+  },
+  "vs_gold": {
+   "matched": 18,
+   "precision_lenient": 0.529,
+   "matched_strict": 17,
+   "precision_strict": 0.5
+  }
+ },
+ "10_13832_j_jnpe_2025_S2_0122": {
+  "indep": 27,
+  "pilot": 23,
+  "gold": 25,
+  "vs_pilot": {
+   "matched": 22,
+   "consistency_of_indep": 0.815,
+   "consistency_of_pilot": 0.957,
+   "matched_strict": 18,
+   "consistency_strict_of_indep": 0.667
+  },
+  "vs_gold": {
+   "matched": 24,
+   "precision_lenient": 0.889,
+   "matched_strict": 16,
+   "precision_strict": 0.593
+  }
+ },
+ "10_1016_j_scriptamat_2015_12_019": {
+  "indep": 33,
+  "pilot": 28,
+  "gold": 19,
+  "vs_pilot": {
+   "matched": 26,
+   "consistency_of_indep": 0.788,
+   "consistency_of_pilot": 0.929,
+   "matched_strict": 21,
+   "consistency_strict_of_indep": 0.636
+  },
+  "vs_gold": {
+   "matched": 19,
+   "precision_lenient": 0.576,
+   "matched_strict": 17,
+   "precision_strict": 0.515
+  }
+ },
+ "10_1680_ieacifcacc_48748": {
+  "indep": 45,
+  "pilot": 29,
+  "gold": 16,
+  "vs_pilot": {
+   "matched": 24,
+   "consistency_of_indep": 0.533,
+   "consistency_of_pilot": 0.828,
+   "matched_strict": 13,
+   "consistency_strict_of_indep": 0.289
+  },
+  "vs_gold": {
+   "matched": 13,
+   "precision_lenient": 0.289,
+   "matched_strict": 4,
+   "precision_strict": 0.089
+  }
+ },
+ "_overall": {
+  "indep": 163,
+  "pilot": 124,
+  "gold": 96,
+  "vs_pilot": {
+   "matched": 113,
+   "consistency_of_indep": 0.693,
+   "consistency_of_pilot": 0.911,
+   "matched_strict": 89,
+   "consistency_strict_of_indep": 0.546
+  },
+  "vs_gold": {
+   "matched": 85,
+   "precision_lenient": 0.521,
+   "matched_strict": 63,
+   "precision_strict": 0.387
+  }
+ }
+}

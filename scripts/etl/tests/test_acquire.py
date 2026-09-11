@@ -1,11 +1,18 @@
 """etl.acquire 安全核心的行为测试（零网络：resolver/fetcher 全部注入桩）。"""
 
+import json
+import stat
+import zipfile
+from pathlib import Path
+
 import pytest
 
 from etl.acquire import (
     FetchError,
     host_is_allowed,
+    list_archive_members,
     resolve_open_access,
+    restore_fulltext_from_archive,
     validate_public_http_url,
 )
 
@@ -186,3 +193,105 @@ class TestResolveOpenAccess:
     def test_empty_doi_rejected(self):
         with pytest.raises(ValueError, match="DOI"):
             resolve_open_access("   ", fetcher=stub_fetcher({}), resolver=RESOLVER)
+
+
+SLUG = "10_1016_j_nucengdes_2018_01_045"
+GOOD_MEMBER = f"raw/mineru/{SLUG}/auto/{SLUG}.md"
+
+
+def make_archive(path, members: dict[str, bytes]):
+    with zipfile.ZipFile(path, "w") as zf:
+        for name, payload in members.items():
+            zf.writestr(name, payload)
+    return str(path)
+
+
+class TestRestoreFulltextFromArchive:
+    @pytest.fixture()
+    def archive(self, tmp_path):
+        return make_archive(
+            tmp_path / "raw.zip",
+            {
+                GOOD_MEMBER: "# fulltext body\n",
+                f"raw/mineru/{SLUG}/auto/layout.json": "{}",
+                f"raw/mineru/{SLUG}/auto/figure1.png": b"\x89PNG",
+                "raw/mineru/other_slug/auto/other.md": "# other\n",
+                "__MACOSX/raw/mineru/evil": b"junk",
+                f"raw/mineru/{SLUG}/._resource": b"junk",
+            },
+        )
+
+    @pytest.fixture()
+    def wiki_root(self, tmp_path, monkeypatch):
+        root = tmp_path / "wiki"
+        root.mkdir()
+        monkeypatch.setenv("NFMD_OUTPUT_ALLOWLIST", str(root))
+        return str(root)
+
+    def test_restores_only_slug_text_members(self, archive, wiki_root):
+        result = restore_fulltext_from_archive(
+            SLUG, archive_path=archive, wiki_root=wiki_root
+        )
+        assert sorted(result["restored"]) == [
+            GOOD_MEMBER,
+            f"raw/mineru/{SLUG}/auto/layout.json",
+        ]
+        body = Path(wiki_root, *GOOD_MEMBER.split("/")).read_text()
+        assert body == "# fulltext body\n"
+        assert not Path(wiki_root, "raw", "mineru", "other_slug").exists()
+
+    def test_skips_existing_then_overwrites(self, archive, wiki_root):
+        first = restore_fulltext_from_archive(
+            SLUG, archive_path=archive, wiki_root=wiki_root
+        )
+        second = restore_fulltext_from_archive(
+            SLUG, archive_path=archive, wiki_root=wiki_root
+        )
+        assert first["restored"] and second["restored"] == []
+        assert sorted(second["skipped"]) == sorted(first["restored"])
+        third = restore_fulltext_from_archive(
+            SLUG, archive_path=archive, wiki_root=wiki_root, overwrite=True
+        )
+        assert sorted(third["restored"]) == sorted(first["restored"])
+
+    def test_unknown_slug_raises(self, archive, wiki_root):
+        with pytest.raises(ValueError, match="No fulltext members"):
+            restore_fulltext_from_archive(
+                "10_9999_missing", archive_path=archive, wiki_root=wiki_root
+            )
+
+    def test_invalid_slug_rejected(self, archive, wiki_root):
+        for bad in ("../etc", "UPPER_SLUG", "slug;rm", ""):
+            with pytest.raises(ValueError, match="[Ii]nvalid literature slug"):
+                list_archive_members(archive, bad)
+
+    def test_traversal_member_hard_fails(self, tmp_path, wiki_root):
+        archive = make_archive(
+            tmp_path / "evil.zip",
+            {f"raw/mineru/{SLUG}/auto/{SLUG}.md": "# ok\n",
+             f"raw/mineru/{SLUG}/../../escape.md": "# evil\n"},
+        )
+        with pytest.raises(ValueError, match="escapes target dir"):
+            restore_fulltext_from_archive(
+                SLUG, archive_path=archive, wiki_root=wiki_root
+            )
+
+    def test_symlink_member_hard_fails(self, tmp_path, wiki_root):
+        zip_path = tmp_path / "link.zip"
+        with zipfile.ZipFile(zip_path, "w") as zf:
+            info = zipfile.ZipInfo(GOOD_MEMBER)
+            info.create_system = 3
+            info.external_attr = (stat.S_IFLNK | 0o777) << 16
+            zf.writestr(info, "/etc/passwd")
+        with pytest.raises(ValueError, match="symlink"):
+            restore_fulltext_from_archive(
+                SLUG, archive_path=str(zip_path), wiki_root=wiki_root
+            )
+
+    def test_cli_restore(self, archive, wiki_root, capsys):
+        from etl.acquire import main
+
+        assert main(["restore", "--slug", SLUG, "--archive", archive,
+                     "--wiki-root", wiki_root]) == 0
+        payload = json.loads(capsys.readouterr().out)
+        assert payload["slug"] == SLUG and payload["restored"] == 2

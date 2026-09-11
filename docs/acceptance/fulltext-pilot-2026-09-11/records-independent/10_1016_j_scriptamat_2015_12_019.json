@@ -1,0 +1,301 @@
+[
+  {
+    "qid": "Mo content in U-Mo dispersion fuel",
+    "value_type": "scalar",
+    "value": 7,
+    "unit": "wt.%",
+    "category": "material_composition",
+    "material": "U-7Mo",
+    "sentence": "synchrotron scattering analysis results on U–7wt.%Mo fuel specimens irradiated in the Advanced Test Reactor to three burnup levels (3.0, 5.2, and 6.3 × 10^21 fission/cm3) are reported."
+  },
+  {
+    "qid": "burnup of Sample A",
+    "value_type": "scalar",
+    "value": 3.0,
+    "unit": "×10²¹ fissions/cm³",
+    "category": "irradiation",
+    "material": "U-7Mo",
+    "sentence": "Table 1 List of samples. Burnup (×10^21 f/cm3): Sample A — 3.0"
+  },
+  {
+    "qid": "burnup of Sample B",
+    "value_type": "scalar",
+    "value": 5.2,
+    "unit": "×10²¹ fissions/cm³",
+    "category": "irradiation",
+    "material": "U-7Mo",
+    "sentence": "Table 1 List of samples. Burnup (×10^21 f/cm3): Sample B — 5.2"
+  },
+  {
+    "qid": "burnup of Sample C",
+    "value_type": "scalar",
+    "value": 6.3,
+    "unit": "×10²¹ fissions/cm³",
+    "category": "irradiation",
+    "material": "U-7Mo",
+    "sentence": "Table 1 List of samples. Burnup (×10^21 f/cm3): Sample C — 6.3"
+  },
+  {
+    "qid": "burnup of control Sample O",
+    "value_type": "scalar",
+    "value": 0.0,
+    "unit": "×10²¹ fissions/cm³",
+    "category": "irradiation",
+    "material": "U-7Mo",
+    "sentence": "Table 1 List of samples. Burnup (×10^21 f/cm3): Sample O — 0.0 (Sample O is the control sample, which was not irradiated.)"
+  },
+  {
+    "qid": "fission gas bubble superlattice constant by WAXS",
+    "value_type": "scalar",
+    "value": 11.7,
+    "uncertainty": "±0.2",
+    "unit": "nm",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "Based on the WAXS data, the superlattice constant (a_SL) was determined to be 11.7 ± 0.2 nm (see Fig. 2)."
+  },
+  {
+    "qid": "fission gas bubble superlattice constant by SAXS",
+    "value_type": "scalar",
+    "value": 12.0,
+    "uncertainty": "±0.2",
+    "unit": "nm",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "Two sets of superlattice reflections of low indices, {111} and {200}, were found in Sample A, indicating a superlattice constant of 12.0 ± 0.2 nm, as shown in Fig. 4(a)."
+  },
+  {
+    "qid": "fission gas bubble superlattice constant by TEM (previous observation)",
+    "value_type": "scalar",
+    "value": 12.0,
+    "unit": "nm",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "This value is comparable with the previous TEM observations (12.0 nm) [10]."
+  },
+  {
+    "qid": "grain size after grain sub-division",
+    "value_type": "range",
+    "value": [100, 500],
+    "unit": "nm",
+    "category": "microstructure",
+    "material": "U-7Mo",
+    "sentence": "The grain sub-division reduces the grain size from the micron scale to 100–500 nm [11,12,13,10]."
+  },
+  {
+    "qid": "FIB-milled sample cube size",
+    "value_type": "scalar",
+    "value": 30,
+    "unit": "μm",
+    "category": "experiment",
+    "material": "U-7Mo",
+    "sentence": "Each sample was fabricated by focused ion beam (FIB) milling into an approximately 30 μm × 30 μm × 30 μm cube by an FEI QUANTA 3D FIB system"
+  },
+  {
+    "qid": "synchrotron X-ray beam cross-section",
+    "value_type": "scalar",
+    "value": 10,
+    "unit": "μm",
+    "category": "experiment",
+    "material": null,
+    "sentence": "a 10 μm × 10 μm monochromatic (71.676 keV) X-ray beam was utilized to illuminate the U–7wt.%Mo samples for the X-ray scattering experiment."
+  },
+  {
+    "qid": "synchrotron X-ray energy",
+    "value_type": "scalar",
+    "value": 71.676,
+    "unit": "keV",
+    "category": "experiment",
+    "material": null,
+    "sentence": "a 10 μm × 10 μm monochromatic (71.676 keV) X-ray beam was utilized to illuminate the U–7wt.%Mo samples for the X-ray scattering experiment."
+  },
+  {
+    "qid": "WAXS detector pixel size",
+    "value_type": "scalar",
+    "value": 200,
+    "unit": "μm",
+    "category": "experiment",
+    "material": null,
+    "sentence": "The WAXS patterns were collected by a GE Revolution 41RT panel detector with a 41 cm × 41 cm detection area and 200 μm × 200 μm pixel size."
+  },
+  {
+    "qid": "WAXS detector area side length",
+    "value_type": "scalar",
+    "value": 41,
+    "unit": "cm",
+    "category": "experiment",
+    "material": null,
+    "sentence": "The WAXS patterns were collected by a GE Revolution 41RT panel detector with a 41 cm × 41 cm detection area and 200 μm × 200 μm pixel size."
+  },
+  {
+    "qid": "SAXS detector pixel size",
+    "value_type": "scalar",
+    "value": 60,
+    "unit": "μm",
+    "category": "experiment",
+    "material": null,
+    "sentence": "Separately taken were the SAXS data by a 31 mm × 25 mm Pixirad detector with 60 μm hexagonal pixels."
+  },
+  {
+    "qid": "elastic constant c11 of U-7Mo (VASP prediction)",
+    "value_type": "scalar",
+    "value": 174.51,
+    "unit": "GPa",
+    "category": "elastic",
+    "material": "U-7Mo",
+    "sentence": "The stiffness tensor of U–7wt.%Mo was predicted by first principle calculation (c11 = 174.51 GPa, c12 = 107.71 GPa and c44 = 49.52 GPa) using Vienna Ab-initio Simulation Package (VASP)."
+  },
+  {
+    "qid": "elastic constant c12 of U-7Mo (VASP prediction)",
+    "value_type": "scalar",
+    "value": 107.71,
+    "unit": "GPa",
+    "category": "elastic",
+    "material": "U-7Mo",
+    "sentence": "The stiffness tensor of U–7wt.%Mo was predicted by first principle calculation (c11 = 174.51 GPa, c12 = 107.71 GPa and c44 = 49.52 GPa) using Vienna Ab-initio Simulation Package (VASP)."
+  },
+  {
+    "qid": "elastic constant c44 of U-7Mo (VASP prediction)",
+    "value_type": "scalar",
+    "value": 49.52,
+    "unit": "GPa",
+    "category": "elastic",
+    "material": "U-7Mo",
+    "sentence": "The stiffness tensor of U–7wt.%Mo was predicted by first principle calculation (c11 = 174.51 GPa, c12 = 107.71 GPa and c44 = 49.52 GPa) using Vienna Ab-initio Simulation Package (VASP)."
+  },
+  {
+    "qid": "adjustable parameter A range in modified Williamson-Hall analysis",
+    "value_type": "range",
+    "value": [1, 2],
+    "unit": null,
+    "category": "model_parameter",
+    "material": null,
+    "sentence": "where A is an adjustable parameter ranging from 1 to 2, b is the length of Burgers vector, ρ is the dislocation density, C is the contrast factor"
+  },
+  {
+    "qid": "diffraction contribution of large grains in control sample",
+    "value_type": "scalar",
+    "value": 95,
+    "unit": "%",
+    "category": "microstructure",
+    "material": "U-7Mo",
+    "sentence": "In the control sample (O), the majority of the diffraction (over 95%) is contributed by large-sized grains."
+  },
+  {
+    "qid": "diffraction contribution of recrystallized grains in Sample C",
+    "value_type": "scalar",
+    "value": 70,
+    "unit": "%",
+    "category": "microstructure",
+    "material": "U-7Mo",
+    "sentence": "As burnup rises, the contribution of small-sized recrystallized grains increases with burnup to over 70% in Sample C, as illustrated by Fig. 1(b)."
+  },
+  {
+    "qid": "detector-limited maximum resolvable grain size",
+    "value_type": "scalar",
+    "value": 100,
+    "unit": "nm",
+    "category": "measurement",
+    "material": null,
+    "sentence": "As the grain size in those samples exceeds the detector limit, which is approximately 100 nm in the current experimental condition, only the internal strains or dislocation densities were quantified in the present study."
+  },
+  {
+    "qid": "radius of gyration of bubbles in Sample C (Guinier fitting)",
+    "value_type": "scalar",
+    "value": 11.3,
+    "unit": "nm",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "in Sample C, the Guinier fitting gives a radius of gyration around 11.3 nm, corresponding to a diameter around 29.2 nm, which is much larger than the bubbles in the superlattice (4 nm)."
+  },
+  {
+    "qid": "diameter of bubbles in Sample C from Guinier fitting",
+    "value_type": "scalar",
+    "value": 29.2,
+    "unit": "nm",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "in Sample C, the Guinier fitting gives a radius of gyration around 11.3 nm, corresponding to a diameter around 29.2 nm, which is much larger than the bubbles in the superlattice (4 nm)."
+  },
+  {
+    "qid": "diameter of superlattice bubbles",
+    "value_type": "scalar",
+    "value": 4,
+    "unit": "nm",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "in Sample C, the Guinier fitting gives a radius of gyration around 11.3 nm, corresponding to a diameter around 29.2 nm, which is much larger than the bubbles in the superlattice (4 nm)."
+  },
+  {
+    "qid": "bubble size range in Sample C (maximum entropy fitting)",
+    "value_type": "range",
+    "value": [20, 100],
+    "unit": "nm",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "Further maximum entropy fitting shows that the bubble size ranges from approximately 20 nm up to 100 nm with a maximum approximately at 35 nm, as illustrated in Fig. 4(b)."
+  },
+  {
+    "qid": "most probable bubble size in Sample C",
+    "value_type": "scalar",
+    "value": 35,
+    "unit": "nm",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "Further maximum entropy fitting shows that the bubble size ranges from approximately 20 nm up to 100 nm with a maximum approximately at 35 nm, as illustrated in Fig. 4(b)."
+  },
+  {
+    "qid": "Q position of superlattice {111} reflection (this study)",
+    "value_type": "scalar",
+    "value": 0.091,
+    "unit": "Å⁻¹",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "although the Q position of that peak (0.08 Å⁻¹) is off the observations in this study (0.091 Å⁻¹ for {111} and 0.105 Å⁻¹ for {200})."
+  },
+  {
+    "qid": "Q position of superlattice {200} reflection (this study)",
+    "value_type": "scalar",
+    "value": 0.105,
+    "unit": "Å⁻¹",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "although the Q position of that peak (0.08 Å⁻¹) is off the observations in this study (0.091 Å⁻¹ for {111} and 0.105 Å⁻¹ for {200})."
+  },
+  {
+    "qid": "Q position of SANS peak in irradiated U-9Mo (Golosov)",
+    "value_type": "scalar",
+    "value": 0.08,
+    "unit": "Å⁻¹",
+    "category": "bubble",
+    "material": "U-9Mo",
+    "sentence": "That peak might also be related to the bubble superlattice, although the Q position of that peak (0.08 Å⁻¹) is off the observations in this study"
+  },
+  {
+    "qid": "burnup of neutron scattering comparison sample",
+    "value_type": "scalar",
+    "value": 7.3,
+    "unit": "×10²¹ fissions/cm³",
+    "category": "irradiation",
+    "material": "U-7Mo",
+    "sentence": "the fact that the lattice constant does not drop in Sample C might originate from the relatively insufficient burnup (6.3 × 10^21 fission/cm3 compared to 7.3 × 10^21 fission/cm3)"
+  },
+  {
+    "qid": "fold increase of dislocation loop nucleation and growth after superlattice collapse",
+    "value_type": "scalar",
+    "value": 5,
+    "unit": null,
+    "category": "microstructure",
+    "material": "U-7Mo",
+    "sentence": "Once the bubble superlattice structure was eliminated, the nucleation and growth of dislocation loops increased five fold."
+  },
+  {
+    "qid": "diameter of large bubbles observed by TEM after superlattice collapse",
+    "value_type": "scalar",
+    "value": 100,
+    "unit": "nm",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "After the superlattice collapse, in addition to the large bubbles (over 100 nm in diameter) that were observed by TEM [10], intermediatesized bubbles (around 35 nm) also exist in the recrystallized grains according to the SAXS data."
+  }
+]
