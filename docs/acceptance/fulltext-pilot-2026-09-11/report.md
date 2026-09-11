@@ -85,3 +85,6 @@ python3 data/fulltext-pilot/eval_gold.py               # → gold-comparison.jso
 1. 独立会话双通道协议可行且全程机械化（抽取→合并→自审计→confidence→ETL 验收），可直接复用为后续全文抽取的标准作业流程。
 2. confidence 分布对「会话独立性」敏感：独立会话 high 占比 15%（批次 1 同会话 83%），ChatExtract 判据在独立会话下更保守、更可信。
 3. 单位受控词表仍是最大管线瓶颈（两批次一致）；recall 高、precision 受金标覆盖面与单位异构压制。
+## 后续（NFMA-10，试点结论转化，2026-09-11）
+
+本报告「结论与建议」的四条已转化：**①** 独立会话复测完成，见 [independent-retest.md](independent-retest.md)（试点 124 条 91% 被复现，数值层跨会话稳定）；**②** 单位受控词表 v2 落地 `etl.normalize`（含测试），激活与 uncertainty 分列提案见 [ADR-0006](../../adr/0006-unit-vocabulary-and-uncertainty-split.md)（🟡 待审批，附 gap 走查）；**③** `raw.zip` 按需恢复进获取层（`etl.acquire restore --slug … --archive … --wiki-root …`，zip-slip 防护 + 测试）；**④** 双通道生产化接入仍待做（llm-wiki 侧流程改造，未开工）。

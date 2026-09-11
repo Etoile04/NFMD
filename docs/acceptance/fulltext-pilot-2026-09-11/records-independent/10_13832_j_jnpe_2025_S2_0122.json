@@ -1,0 +1,245 @@
+[
+  {
+    "qid": "displacement threshold energy of U in SRIM calculation",
+    "value_type": "scalar",
+    "value": 35.6,
+    "unit": "eV",
+    "category": "simulation_parameter",
+    "material": "U",
+    "sentence": "表 1 SRIM计算中离位阈能的取值：U — 35.6"
+  },
+  {
+    "qid": "displacement threshold energy of Mo in SRIM calculation",
+    "value_type": "scalar",
+    "value": 65,
+    "unit": "eV",
+    "category": "simulation_parameter",
+    "material": "Mo",
+    "sentence": "表 1 SRIM计算中离位阈能的取值：Mo — 65"
+  },
+  {
+    "qid": "displacement threshold energy of Nb in SRIM calculation",
+    "value_type": "scalar",
+    "value": 60,
+    "unit": "eV",
+    "category": "simulation_parameter",
+    "material": "Nb",
+    "sentence": "表 1 SRIM计算中离位阈能的取值：Nb — 60"
+  },
+  {
+    "qid": "displacement threshold energy of Zr in SRIM calculation",
+    "value_type": "scalar",
+    "value": 40,
+    "unit": "eV",
+    "category": "simulation_parameter",
+    "material": "Zr",
+    "sentence": "表 1 SRIM计算中离位阈能的取值：Zr — 40"
+  },
+  {
+    "qid": "number of fission fragment isotopes of 235U",
+    "value_type": "scalar",
+    "value": 1200,
+    "unit": "count",
+    "category": "irradiation",
+    "material": "U-235",
+    "sentence": "235U 的裂变碎片包含 1200 多种不同的同位素，其携带的初始动能和产生概率满足一定统计规律[17]。"
+  },
+  {
+    "qid": "number of representative fission fragments after merging",
+    "value_type": "scalar",
+    "value": 47,
+    "unit": "count",
+    "category": "simulation_parameter",
+    "material": null,
+    "sentence": "裂变碎片被合并为 47 个虚拟代表性裂变碎片，每个原子序数对应一个，具有加权质量、平均产生概率和能量。"
+  },
+  {
+    "qid": "side length of SRIM simulation cubic matrix",
+    "value_type": "scalar",
+    "value": 6,
+    "unit": "μm",
+    "category": "simulation_parameter",
+    "material": null,
+    "sentence": "离子的初始位置则在边长为 6 μm 立方体基体中随机选取，3 个方向余弦均独立随机生成。"
+  },
+  {
+    "qid": "initial energy range of heavy ion sources (I and Xe)",
+    "value_type": "range",
+    "value": [50, 80],
+    "unit": "MeV",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "本研究采用了两种典型裂变产物元素 I 和 Xe作为重离子源，分析其初始能量为 50~80 MeV所产生的辐照效应。"
+  },
+  {
+    "qid": "number of particles per fission SRIM simulation",
+    "value_type": "scalar",
+    "value": 10000,
+    "unit": "count",
+    "category": "simulation_parameter",
+    "material": null,
+    "sentence": "裂变的模拟计算中，虽然每次模拟设置了10000 个粒子，但 dpa 分布仍然存在一定的统计涨落（图 2）"
+  },
+  {
+    "qid": "dpa per unit fluence of U10Mo under fission (SRIM)",
+    "value_type": "scalar",
+    "value": 1.74952,
+    "unit": "dpa/10^-15 cm^-2",
+    "category": "irradiation_damage",
+    "material": "U10Mo",
+    "sentence": "表 2 U10Mo 和 U5.8Mo5.6Nb5.5Zr 的辐照损伤计算结果：U10Mo dpa/10^-15 cm^-2 — 1.74952"
+  },
+  {
+    "qid": "rpa of U10Mo under fission (SRIM)",
+    "value_type": "scalar",
+    "value": 0.07548,
+    "unit": null,
+    "category": "irradiation_damage",
+    "material": "U10Mo",
+    "sentence": "表 2 U10Mo 和 U5.8Mo5.6Nb5.5Zr 的辐照损伤计算结果：U10Mo rpa — 0.07548"
+  },
+  {
+    "qid": "gas-vacancy ratio of U10Mo under fission (SRIM)",
+    "value_type": "scalar",
+    "value": 1.33518,
+    "unit": null,
+    "category": "irradiation_damage",
+    "material": "U10Mo",
+    "sentence": "表 2 U10Mo 和 U5.8Mo5.6Nb5.5Zr 的辐照损伤计算结果：U10Mo 第三列 — 1.33518"
+  },
+  {
+    "qid": "dpa per unit fluence of U5.8Mo5.6Nb5.5Zr under fission (SRIM)",
+    "value_type": "scalar",
+    "value": 1.55886,
+    "unit": "dpa/10^-15 cm^-2",
+    "category": "irradiation_damage",
+    "material": "U5.8Mo5.6Nb5.5Zr",
+    "sentence": "表 2 U10Mo 和 U5.8Mo5.6Nb5.5Zr 的辐照损伤计算结果：U5.8Mo5.6Nb5.5Zr dpa/10^-15 cm^-2 — 1.55886"
+  },
+  {
+    "qid": "rpa of U5.8Mo5.6Nb5.5Zr under fission (SRIM)",
+    "value_type": "scalar",
+    "value": 0.05495,
+    "unit": null,
+    "category": "irradiation_damage",
+    "material": "U5.8Mo5.6Nb5.5Zr",
+    "sentence": "表 2 U10Mo 和 U5.8Mo5.6Nb5.5Zr 的辐照损伤计算结果：U5.8Mo5.6Nb5.5Zr rpa — 0.05495"
+  },
+  {
+    "qid": "gas-vacancy ratio of U5.8Mo5.6Nb5.5Zr under fission (SRIM)",
+    "value_type": "scalar",
+    "value": 1.39799,
+    "unit": null,
+    "category": "irradiation_damage",
+    "material": "U5.8Mo5.6Nb5.5Zr",
+    "sentence": "表 2 U10Mo 和 U5.8Mo5.6Nb5.5Zr 的辐照损伤计算结果：U5.8Mo5.6Nb5.5Zr 第三列 — 1.39799"
+  },
+  {
+    "qid": "peak location of ion-irradiation dpa distribution",
+    "value_type": "range",
+    "value": [3, 5],
+    "unit": "μm",
+    "category": "irradiation_damage",
+    "material": null,
+    "sentence": "由图 3~图 5 可见，离子辐照 dpa 在离子入射后 3~5 μm 存在一个明显的峰值，随后迅速衰减，这与试验中观察到的现象一致"
+  },
+  {
+    "qid": "reference in-pile fission density for ion irradiation equivalence",
+    "value_type": "scalar",
+    "value": 2.1e+20,
+    "unit": "cm⁻³",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "以复现堆内试验裂变密度 n0 = 2.1 × 10^20 cm^-3 的辐照损伤效应为例，可采用的离子束注量和应当观察的深度如表 3。"
+  },
+  {
+    "qid": "equivalent ion fluence at fission density 2.1e20 cm^-3 (all cases)",
+    "value_type": "scalar",
+    "value": 8.4e+24,
+    "unit": "cm⁻²",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "表 3 裂变密度为 n0 = 2.1 × 10^20 cm^-3 时：Xe 80 MeV / I 80 MeV 的 Φ 均为 8.4 × 10^24 cm^-2"
+  },
+  {
+    "qid": "equivalent dpa observation depth of U10Mo with 80 MeV Xe",
+    "value_type": "range",
+    "value": [4.9, 5.0],
+    "unit": "μm",
+    "category": "irradiation_damage",
+    "material": "U10Mo",
+    "sentence": "表 3：U10Mo Xe 80 MeV — dpa 等效深度 4.9~5.0 μm"
+  },
+  {
+    "qid": "equivalent rpa observation depth of U10Mo with 80 MeV Xe",
+    "value_type": "range",
+    "value": [3.8, 3.9],
+    "unit": "μm",
+    "category": "irradiation_damage",
+    "material": "U10Mo",
+    "sentence": "表 3：U10Mo Xe 80 MeV — 等效深度 3.8~3.9 μm"
+  },
+  {
+    "qid": "equivalent dpa observation depth of U10Mo with 80 MeV I",
+    "value_type": "range",
+    "value": [5.4, 5.5],
+    "unit": "μm",
+    "category": "irradiation_damage",
+    "material": "U10Mo",
+    "sentence": "表 3：U10Mo I 80 MeV — dpa 等效深度 5.4~5.5 μm"
+  },
+  {
+    "qid": "equivalent rpa observation depth of U10Mo with 80 MeV I",
+    "value_type": "range",
+    "value": [3.9, 4.0],
+    "unit": "μm",
+    "category": "irradiation_damage",
+    "material": "U10Mo",
+    "sentence": "表 3：U10Mo I 80 MeV — 等效深度 3.9~4.0 μm"
+  },
+  {
+    "qid": "equivalent dpa observation depth of U5.8Mo5.6Nb5.5Zr with 80 MeV Xe",
+    "value_type": "range",
+    "value": [5.2, 5.3],
+    "unit": "μm",
+    "category": "irradiation_damage",
+    "material": "U5.8Mo5.6Nb5.5Zr",
+    "sentence": "表 3：U5.8Mo5.6Nb5.5Zr Xe 80 MeV — dpa 等效深度 5.2~5.3 μm"
+  },
+  {
+    "qid": "equivalent rpa observation depth of U5.8Mo5.6Nb5.5Zr with 80 MeV Xe",
+    "value_type": "range",
+    "value": [3.6, 3.8],
+    "unit": "μm",
+    "category": "irradiation_damage",
+    "material": "U5.8Mo5.6Nb5.5Zr",
+    "sentence": "表 3：U5.8Mo5.6Nb5.5Zr Xe 80 MeV — 等效深度 3.6~3.8 μm"
+  },
+  {
+    "qid": "equivalent dpa observation depth of U5.8Mo5.6Nb5.5Zr with 80 MeV I",
+    "value_type": "range",
+    "value": [5.7, 5.8],
+    "unit": "μm",
+    "category": "irradiation_damage",
+    "material": "U5.8Mo5.6Nb5.5Zr",
+    "sentence": "表 3：U5.8Mo5.6Nb5.5Zr I 80 MeV — dpa 等效深度 5.7~5.8 μm"
+  },
+  {
+    "qid": "equivalent rpa observation depth of U5.8Mo5.6Nb5.5Zr with 80 MeV I",
+    "value_type": "range",
+    "value": [4.1, 4.2],
+    "unit": "μm",
+    "category": "irradiation_damage",
+    "material": "U5.8Mo5.6Nb5.5Zr",
+    "sentence": "表 3：U5.8Mo5.6Nb5.5Zr I 80 MeV — 等效深度 4.1~4.2 μm"
+  },
+  {
+    "qid": "fission products per fission event used in equivalence formulas",
+    "value_type": "scalar",
+    "value": 2,
+    "unit": null,
+    "category": "model_parameter",
+    "material": null,
+    "sentence": "如果堆内试验裂变密度为 n (cm^-3)，那么可近似认为产生了 2n 个裂变产物；则进入该模拟区域的裂变产物通量应为 N ∝ 2n·d_fiss^sim (cm^-2)"
+  }
+]

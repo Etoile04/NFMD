@@ -1,0 +1,305 @@
+[
+  {
+    "qid": "ATLAS maximum acceleration energy per nucleon",
+    "value_type": "scalar",
+    "value": 17,
+    "unit": "MeV/u",
+    "category": "experiment",
+    "material": null,
+    "sentence": "ATLAS is anuclear physics research faciliy basedon an array oflnear accelerators (Linacs) which areable to accelerate a wide range of ions (from hydrogen to uranium) up to 17 MeV per nucleon."
+  },
+  {
+    "qid": "heavy ion energy level suitable for irradiation effects studies",
+    "value_type": "scalar",
+    "value": 100,
+    "unit": "MeV",
+    "category": "experiment",
+    "material": null,
+    "sentence": "the Argonne Tanemi Accelerator System (ATLAS), is capable of producing high- energy heavy ions (up to 100 MeV level, or > 1 Me/u) which are suitable orirradiation efects studies in materials."
+  },
+  {
+    "qid": "damage zone thickness at several-MeV ion facilities",
+    "value_type": "range",
+    "value": [1, 2],
+    "unit": "µm",
+    "category": "irradiation_damage",
+    "material": null,
+    "sentence": "Several ion irradiation facilities are currently operating in the US [10] with capabilities to accelerate ions to energies of several MeV. At those energies, a damage zone thinner than approximately 1-2 microns can be produced."
+  },
+  {
+    "qid": "damage zone thickness from ~100 MeV heavy ions in light materials",
+    "value_type": "scalar",
+    "value": 10,
+    "unit": "µm",
+    "category": "irradiation_damage",
+    "material": null,
+    "sentence": "The alternative high-energy irradiation (~100 MeV) of heavy ions (e.g. Xe, I, and Zr) creates a damage zone of approximately 10 µm in light materials"
+  },
+  {
+    "qid": "damage layer thickness from high-energy heavy ions in nuclear fuel materials",
+    "value_type": "scalar",
+    "value": 5,
+    "unit": "µm",
+    "category": "irradiation_damage",
+    "material": null,
+    "sentence": "The alternative high-energy irradiation (~100 MeV) of heavy ions (e.g. Xe, I, and Zr) creates a damage zone of approximately 10 µm in light materials, and a damage layer thicker than 5 µm can be produced in nuclear fuel materials."
+  },
+  {
+    "qid": "typical kinetic energy of fission fragments",
+    "value_type": "scalar",
+    "value": 100,
+    "unit": "MeV",
+    "category": "irradiation",
+    "material": null,
+    "sentence": "the majority of the radiation-induced microstructural modifications in nuclear fuel materials are induced by fission fragments with approximately 100 MeV kineic energy rather than the fission neutrons."
+  },
+  {
+    "qid": "typical fission product mass",
+    "value_type": "scalar",
+    "value": 100,
+    "unit": "amu",
+    "category": "irradiation",
+    "material": null,
+    "sentence": "replicain a typical fission product (~100 amu) with its typical kinetic energy (~100 MeV) only requires approximately 1 MeV per nucleon acceleration capability."
+  },
+  {
+    "qid": "acceleration capability required to replicate fission products",
+    "value_type": "scalar",
+    "value": 1,
+    "unit": "MeV/u",
+    "category": "experiment",
+    "material": null,
+    "sentence": "replicain a typical fission product (~100 amu) with its typical kinetic energy (~100 MeV) only requires approximately 1 MeV per nucleon acceleration capability."
+  },
+  {
+    "qid": "ATLAS ion irradiation chamber maximum acceleration capability",
+    "value_type": "scalar",
+    "value": 1.5,
+    "unit": "MeV/u",
+    "category": "experiment",
+    "material": null,
+    "sentence": "At this position, ATLAS has a maximum acceleration capability of approximately 1.5 MeV per nucleon."
+  },
+  {
+    "qid": "specimen temperature from 200 particle-nA beam without heat sink",
+    "value_type": "scalar",
+    "value": 350,
+    "unit": "°C",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "A 200 particle-nA fission product ion beam can heat a specimen up to approximately 350° in the absence of an effective heat sink [17, 18]."
+  },
+  {
+    "qid": "beam current for passive heating irradiation",
+    "value_type": "scalar",
+    "value": 200,
+    "unit": "particle-nA",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "A 200 particle-nA fission product ion beam can heat a specimen up to approximately 350° in the absence of an effective heat sink [17, 18]."
+  },
+  {
+    "qid": "temperature range of passive heating holder",
+    "value_type": "range",
+    "value": [200, 350],
+    "unit": "°C",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "without using externally-powered heaters, a passive heating holder is sufficient for medium temperature irradiation experiments (between 200 to 350°C)."
+  },
+  {
+    "qid": "reduced beam current for irradiation below 200°C",
+    "value_type": "scalar",
+    "value": 70,
+    "unit": "particle-nA",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "While using passive heheauan ou troybeu.o ee at temperatures below ~200 °C, the beam current has to be reduced to ~70 particle-nA, requiring longer beam times to reach desired target doses."
+  },
+  {
+    "qid": "minimum temperature for external heating holder",
+    "value_type": "scalar",
+    "value": 350,
+    "unit": "°C",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "Another sample holder was designed to provide external heating for irradiation applications at elevated temperatures (> 350 °C)."
+  },
+  {
+    "qid": "cartridge heater maximum operation temperature",
+    "value_type": "scalar",
+    "value": 1200,
+    "unit": "°C",
+    "category": "experiment",
+    "material": null,
+    "sentence": "In this case, a cartridge heater (maximum operation temperature: 1200°C) is mounted o theback eachthreecopper ample tages."
+  },
+  {
+    "qid": "stainless steel spacer thickness on sample holder",
+    "value_type": "scalar",
+    "value": 0.125,
+    "unit": "in",
+    "category": "experiment",
+    "material": null,
+    "sentence": "Each copper stage is stalleon stainess-steel dsk wih two 1/8° stainless steel spacers to enhance thermal insulation."
+  },
+  {
+    "qid": "Xe ion energy used for U-7Mo irradiation at ATLAS",
+    "value_type": "scalar",
+    "value": 84,
+    "unit": "MeV",
+    "category": "irradiation_condition",
+    "material": "U-7Mo",
+    "sentence": "A U-7%Mo sample was irradiated by 84 MeV Xe ions at ~350 °C at ATLAS (Fig. 2(a))."
+  },
+  {
+    "qid": "irradiation temperature of U-7Mo Xe irradiation",
+    "value_type": "scalar",
+    "value": 350,
+    "unit": "°C",
+    "category": "irradiation_condition",
+    "material": "U-7Mo",
+    "sentence": "A U-7%Mo sample was irradiated by 84 MeV Xe ions at ~350 °C at ATLAS (Fig. 2(a))."
+  },
+  {
+    "qid": "Mo content in irradiated U-Mo alloy",
+    "value_type": "scalar",
+    "value": 7,
+    "unit": "wt.%",
+    "category": "material_composition",
+    "material": "U-7Mo",
+    "sentence": "A U-7%Mo sample was irradiated by 84 MeV Xe ions at ~350 °C at ATLAS"
+  },
+  {
+    "qid": "phases in U-7Mo before irradiation",
+    "value_type": "text",
+    "value_text": "α-U and γ*-U2Mo mixture",
+    "category": "microstructure",
+    "material": "U-7Mo",
+    "sentence": "The U-7%Mo mainly consisted of α-U and γ*-U2Mo phases before irradiation."
+  },
+  {
+    "qid": "FIB cube specimen size for U-7Mo synchrotron XRD",
+    "value_type": "scalar",
+    "value": 15,
+    "unit": "µm",
+    "category": "experiment",
+    "material": "U-7Mo",
+    "sentence": "A 15 µm ×15 µm ×15 µm cube specimen was prepared from the irradiated U-7%Mo sample."
+  },
+  {
+    "qid": "size of grain-boundary bubbles induced by Xe irradiation in U-7Mo",
+    "value_type": "text",
+    "value_text": "tens of nm",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "Large bubbles approximately tens of nm in diameter which are induced by the Xe irradiation, were found to aggregate on grain boundaries (Fig. 2(c))"
+  },
+  {
+    "qid": "size of intra-granular bubbles in Xe-irradiated U-7Mo",
+    "value_type": "scalar",
+    "value": 10,
+    "unit": "nm",
+    "category": "bubble",
+    "material": "U-7Mo",
+    "sentence": "whereas small bubbles beneath 10 nm were observed to be uniformly distributed within grains (Fig. 2(d))."
+  },
+  {
+    "qid": "MA957 steel composition",
+    "value_type": "text",
+    "value_text": "Fe-14Cr-1Ti-0.3Mo-0.25Y2O3",
+    "category": "material_composition",
+    "material": "MA957",
+    "sentence": "SS-J1 type miniature tensile specimens of MA957 (Fe-14Cr-1Ti-0.3Mo-0.25Y2O3) nanostructured steel were irradiated at ATLAS using 84 MeV Fe ions to a ~40 dpa peak dose [11]."
+  },
+  {
+    "qid": "Fe ion energy for MA957 irradiation",
+    "value_type": "scalar",
+    "value": 84,
+    "unit": "MeV",
+    "category": "irradiation_condition",
+    "material": "MA957",
+    "sentence": "SS-J1 type miniature tensile specimens of MA957 (Fe-14Cr-1Ti-0.3Mo-0.25Y2O3) nanostructured steel were irradiated at ATLAS using 84 MeV Fe ions to a ~40 dpa peak dose [11]."
+  },
+  {
+    "qid": "peak dose of MA957 Fe ion irradiation",
+    "value_type": "scalar",
+    "value": 40,
+    "unit": "dpa",
+    "category": "irradiation_damage",
+    "material": "MA957",
+    "sentence": "SS-J1 type miniature tensile specimens of MA957 (Fe-14Cr-1Ti-0.3Mo-0.25Y2O3) nanostructured steel were irradiated at ATLAS using 84 MeV Fe ions to a ~40 dpa peak dose [11]."
+  },
+  {
+    "qid": "penetration depth of several-MeV ions in materials",
+    "value_type": "scalar",
+    "value": 100,
+    "unit": "nm",
+    "category": "irradiation_damage",
+    "material": null,
+    "sentence": "Ions of several MeV kinetic energy are stopped within a few hundred nm once injected into materials."
+  },
+  {
+    "qid": "depth of radiation-affected region from ~100 MeV heavy ions",
+    "value_type": "range",
+    "value": [5, 10],
+    "unit": "µm",
+    "category": "irradiation_damage",
+    "material": null,
+    "sentence": "heavy ions of ~100 MeV available at ATLAS can create a radiation-affected region of approximately 5~10 µm in depth, allowing microstructure evolution to occur with less interference from the surface."
+  },
+  {
+    "qid": "synchrotron XRD beam energy for irradiated specimens",
+    "value_type": "scalar",
+    "value": 70,
+    "unit": "keV",
+    "category": "experiment",
+    "material": null,
+    "sentence": "The synchrotron XRD was carried out at Sector 1-ID of the Advanced Photon Source (APS) at ANL, using a 70-keV monochromatic synchrotron beam."
+  },
+  {
+    "qid": "CARIBU radioactive beam time fraction",
+    "value_type": "scalar",
+    "value": 3,
+    "unit": "%",
+    "category": "experiment",
+    "material": null,
+    "sentence": "These beams are pulsed and use only 3% of the beam time. Hence, with a beam switching capability intense stable beams can be delivered 97% of the time to the dedicated irradiation facility."
+  },
+  {
+    "qid": "stable beam time fraction with beam switching",
+    "value_type": "scalar",
+    "value": 97,
+    "unit": "%",
+    "category": "experiment",
+    "material": null,
+    "sentence": "These beams are pulsed and use only 3% of the beam time. Hence, with a beam switching capability intense stable beams can be delivered 97% of the time to the dedicated irradiation facility."
+  },
+  {
+    "qid": "XMAT accelerator energy for 238U50+",
+    "value_type": "scalar",
+    "value": 1.2,
+    "unit": "MeV/u",
+    "category": "experiment",
+    "material": null,
+    "sentence": "The XMAT facility willuse a CW heavy-ion accelerator capable of providing beams of any stable isotope with adjustable energy up to 1.2 MeV/u for 238U50+ and 1.7MeV for prs."
+  },
+  {
+    "qid": "XMAT accelerator energy for protons",
+    "value_type": "scalar",
+    "value": 1.7,
+    "unit": "MeV",
+    "category": "experiment",
+    "material": null,
+    "sentence": "The XMAT facility willuse a CW heavy-ion accelerator capable of providing beams of any stable isotope with adjustable energy up to 1.2 MeV/u for 238U50+ and 1.7MeV for prs."
+  },
+  {
+    "qid": "ATLAS ion irradiation temperature range",
+    "value_type": "scalar",
+    "value": 800,
+    "unit": "°C",
+    "category": "irradiation_condition",
+    "material": null,
+    "sentence": "allowing the ATLAS ion irradiation chamber to irradiate materials using an extensive range of ions with up to 1.5 MeV per nucleon kinetic energy at temperatures ranging from room temperature to ~800°C."
+  }
+]
