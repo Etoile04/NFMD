@@ -139,6 +139,48 @@ class TestNormalizeUnit:
         assert normalize_unit("  W/mK  ") == "W/(m·K)"
 
 
+class TestNormalizeUnitV2:
+    """受控词表 v2（NFMA-10）：机械折叠 + 扩容别名表。
+
+    用例直接取自金标对照差异归因中观察到的序列化异构形态
+    （docs/acceptance/fulltext-pilot-2026-09-11/report.md）。
+    """
+
+    def test_ascii_exponents_fold_to_superscripts(self):
+        """试点主差异：Unicode 上标漂串 vs ASCII `^` 形应归一。"""
+        assert normalize_unit("10^-15 cm^-2") == "10⁻¹⁵ cm⁻²"
+        assert normalize_unit("fissions/cm^3") == "fissions/cm³"
+        assert normalize_unit("m^2/s") == "m²/s"
+
+    def test_separator_variants_converge(self):
+        """`*` 乘号与空白形分隔符应折叠到同一规范形。"""
+        assert normalize_unit("W/(cm*K)") == "W/(cm·K)"
+        assert normalize_unit("W/cm*K") == "W/(cm·K)"
+        assert normalize_unit("W/cm-K") == "W/(cm·K)"
+        assert normalize_unit("W/cm-C") == "W/(cm·°C)"
+
+    def test_case_insensitive_fallback(self):
+        """全小写输入经大小写不敏感层命中（'C' 特指摄氏度）。"""
+        assert normalize_unit("w/cm²") == "W/cm²"
+        assert normalize_unit("w/mk") == "W/(m·K)"
+        assert normalize_unit("°c") == "°C"
+
+    def test_scale_prefix_x_to_multiplication_sign(self):
+        assert normalize_unit("x10²¹") == "×10²¹"
+        assert normalize_unit("MeV/nucleon") == "MeV/u"
+
+    def test_ambiguous_hyphen_not_folded(self):
+        """连字符指数形（cm-2）与区间语义有歧义，不做机械折叠。"""
+        assert normalize_unit("cm-2") == "cm-2"
+
+    def test_lookup_layers_collision_free(self):
+        """两层查找表的键折叠后不得冲突（模块加载时也有断言兜底）。"""
+        from etl.normalize import _UNIT_LOOKUP, _UNIT_LOOKUP_LOWER
+
+        assert len(set(_UNIT_LOOKUP)) == len(_UNIT_LOOKUP)
+        assert len(set(_UNIT_LOOKUP_LOWER)) == len(_UNIT_LOOKUP_LOWER)
+
+
 # ===========================================================================
 # TestParseTemperature
 # ===========================================================================
