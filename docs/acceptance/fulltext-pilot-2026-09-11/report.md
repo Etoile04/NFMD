@@ -61,3 +61,27 @@ python3 data/fulltext-pilot/eval_gold.py               # → gold-comparison.jso
 ```
 
 机器可读证据：[gold-comparison.json](gold-comparison.json)（逐篇 P/R 与未匹配清单）、[pilot-acceptance.json](pilot-acceptance.json)（ETL 验收）、[records/](records/)（124 条带证据字段的抽取记录）。
+
+## 批次 2：独立会话双通道复测（2026-09-11 追加）
+
+针对批次 1 的主要局限（双通道为同一会话先后两遍，独立性不足），批次 2 换 5 篇新论文，通道 A / 通道 B 由**两个互不可见的独立 LLM 会话**执行（每条记录带 `question` + 逐字 `source_sentence` 证据）：
+
+| 论文 | 通道 A / B 记录数 | 合并后 |
+|---|---|---|
+| Sun 2022 (Acta Mater, 10.1016/j.actamat.2022.118282) | 85 / 50 | 107 |
+| Starikov 2018 (JNM, 10.1016/j.jnucmat.2017.11.047) | 133 / 68 | 188 |
+| Kim/Hofman/Cheon 2013 (JNM, 10.1016/j.jnucmat.2013.01.291) | 102 / 182 | 237 |
+| Hirschhorn 2020 (JNM, 10.1016/j.jnucmat.2019.151929) | 39 / 96 | 117 |
+| Doyle 2025 (JNM, 10.1016/j.jnucmat.2025.155851) | 229 / 152 | 278 |
+
+- **合并与自审计**：`etl.fulltext_pilot merge`（值一致 > 名称 token Jaccard≥0.5）+ 机械化自审计（数值是否出现在出处句中，容忍 OCR 冒号小数 / 丢失 × 号的科学计数）；OCR 损坏指数（如 `1  10⁻⁹` 印作 `1  109`）诚实记 `no`。
+- **ETL 验收**：927/927 **100% 通过**，0 fatal（[batch2-pilot-acceptance.json](batch2-pilot-acceptance.json)）。confidence：high 143 / medium 559 / low 225——独立会话下双通道命中率低于批次 1 的同会话两遍（批次 1 high 占 83%），印证批次 1 的一致性确被高估。
+- **金标对照**（仅 kim_2013 有 corpus-snapshot 金标，33 条）：宽松口径 P=0.11 / **R=0.82**（27/33），严格口径 P=0.06 / R=0.45。低 precision 主因是本次穷举式抽取（237 条 vs 金标精选 33 条）+ 单位串异构（同批次 1 结论 2）。
+- **产物**：[batch2-records/](batch2-records/)（927 条带证据记录）；复现：`data/fulltext-pilot/audit_batch2.py`（自审计）→ `export_batch2.py`（id + 受控 category 映射）→ `uv run python -m etl.acceptance --source-dir data/fulltext-pilot/channels/records` → `uv run python -m etl.fulltext_pilot evaluate ...`。
+- **修复**：`etl.fulltext_pilot` CLI 子命令注册 bug（`add_argument`→`add_parser`）、金标 `value` 字段回退、单位 NFKD 折叠（`cm⁻³`→`cm-3`）；13 个单测全绿。
+
+### 批次 2 结论
+
+1. 独立会话双通道协议可行且全程机械化（抽取→合并→自审计→confidence→ETL 验收），可直接复用为后续全文抽取的标准作业流程。
+2. confidence 分布对「会话独立性」敏感：独立会话 high 占比 15%（批次 1 同会话 83%），ChatExtract 判据在独立会话下更保守、更可信。
+3. 单位受控词表仍是最大管线瓶颈（两批次一致）；recall 高、precision 受金标覆盖面与单位异构压制。
