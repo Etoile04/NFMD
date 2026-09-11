@@ -7,13 +7,22 @@ ADR-0002）。真实抓取入口由调用方组装：先 ``validate_public_http_
 重定向跟随前对目标 URL 复检同一校验。
 """
 
+import argparse
 import ipaddress
 import json
+import os
+import re
+import shutil
 import socket
+import stat
 import urllib.error
 import urllib.parse
 import urllib.request
+import zipfile
 from collections.abc import Callable, Iterable
+from pathlib import Path
+
+from etl.path_safety import safe_write_path
 
 # DNS 解析器：hostname → IP 地址字符串列表
 HostResolver = Callable[[str], list[str]]
@@ -155,3 +164,163 @@ def resolve_open_access(
         result["errors"].append(f"unpaywall: {e}")
 
     return result
+
+
+# ---------------------------------------------------------------------------
+# 全文层按需恢复（NFMA-10，试点结论转化）：从归档（raw.zip）恢复 MinerU
+# 全文到语料根的规范路径 raw/mineru/<slug>/…，作为获取层在本地库/开放 API
+# 之外的就近后备——产物只是落盘文件，仍走既有 extract→validate 管线。
+# 安全模型与 etl.path_safety 同构：成员名 normpath 后禁止父目录引用段，
+# realpath 解析后限制在 wiki_root 内；落盘前再过一次 safe_write_path
+# （仓库外语料根需在 NFMD_OUTPUT_ALLOWLIST 登记）。
+# ---------------------------------------------------------------------------
+
+# DOI slug 形态：10_1016_j_nucengdes_2018_01_045（小写字母数字与 _ . -）
+_SLUG_RE = re.compile(r"^[0-9a-z][0-9a-z._-]*$")
+
+# 仅恢复文本类全文资产（MinerU markdown 及其伴随文本），图片等不在此列
+_MEMBER_SUFFIX_ALLOWLIST = {".md", ".txt", ".json"}
+_MEMBER_SIZE_LIMIT = 64 * 1024 * 1024  # 单成员解压上限（防 zip bomb）
+_TOTAL_SIZE_LIMIT = 128 * 1024 * 1024  # 单次恢复累计上限
+
+
+def _sanitize_member_name(name: str) -> str:
+    """zip 成员路径校验：拒绝绝对路径、盘符、NUL 与父目录引用段。
+
+    先检查原始段再 normpath——normpath 会折叠内层父目录引用，先查才能
+    让任何含 ``..`` 的成员显式失败而不是静默改道。
+    """
+    if not name or "\x00" in name:
+        raise ValueError(f"Invalid archive member name: {name!r}")
+    segments = [s for s in name.replace("\\", "/").split("/") if s]
+    if any(s == os.pardir for s in segments):
+        raise ValueError(f"Archive member escapes target dir: {name!r}")
+    normalized = os.path.normpath("/".join(segments))
+    if normalized.startswith("/") or re.match(r"^[A-Za-z]:", normalized):
+        raise ValueError(f"Archive member is an absolute path: {name!r}")
+    return normalized
+
+
+def _is_junk_member(name: str) -> bool:
+    """macOS 打包垃圾（__MACOSX 段、 ._ 资源叉文件）。"""
+    segments = name.split("/")
+    return any(s == "__MACOSX" for s in segments) or any(
+        s.startswith("._") for s in segments if s
+    )
+
+
+def _member_destination(wiki_root: str, member: str) -> str:
+    """成员名 → 校验后的落盘绝对路径：realpath 解析并限制在 wiki_root 内。"""
+    root_real = os.path.realpath(wiki_root)
+    candidate = os.path.normpath(os.path.join(root_real, member))
+    if not (candidate == root_real or candidate.startswith(root_real + os.sep)):
+        raise ValueError(f"Archive member escapes wiki root: {member!r}")
+    return candidate
+
+
+def list_archive_members(archive_path: str, slug: str) -> list[str]:
+    """列出归档中 raw/mineru/<slug>/ 下可恢复的文本成员（已过滤目录与垃圾项）。
+
+    任何成员名越界（绝对路径/父目录引用）、符号链接成员或超限成员都会使
+    整个列举失败——恢复操作不容许部分放行。
+    """
+    if not _SLUG_RE.match(slug or ""):
+        raise ValueError(f"Invalid literature slug: {slug!r}")
+    prefix = f"raw/mineru/{slug}/"
+    members: list[str] = []
+    with zipfile.ZipFile(archive_path) as zf:
+        for info in zf.infolist():
+            name = _sanitize_member_name(info.filename)
+            if _is_junk_member(name) or not name.startswith(prefix):
+                continue
+            if name.endswith("/"):
+                continue  # 目录项
+            if Path(name).suffix.lower() not in _MEMBER_SUFFIX_ALLOWLIST:
+                continue
+            mode = info.external_attr >> 16
+            if stat.S_ISLNK(mode):
+                raise ValueError(f"Archive member is a symlink: {info.filename!r}")
+            if info.file_size > _MEMBER_SIZE_LIMIT:
+                raise ValueError(
+                    f"Archive member too large ({info.file_size} bytes): {info.filename!r}"
+                )
+            members.append(name)
+    return members
+
+
+def restore_fulltext_from_archive(
+    slug: str,
+    *,
+    archive_path: str,
+    wiki_root: str,
+    overwrite: bool = False,
+) -> dict:
+    """按需恢复：把归档中该文献的全文文本解压到 wiki_root 的规范路径。
+
+    返回 ``{"restored": [...], "skipped": [...]}``；已存在且未要求覆盖的
+    成员跳过。
+    """
+    members = list_archive_members(archive_path, slug)
+    if not members:
+        raise ValueError(f"No fulltext members for slug {slug!r} in {archive_path}")
+
+    restored: list[str] = []
+    skipped: list[str] = []
+    total = 0
+    with zipfile.ZipFile(archive_path) as zf:
+        for name in members:
+            destination = safe_write_path(_member_destination(wiki_root, name))
+            if os.path.exists(destination) and not overwrite:
+                skipped.append(name)
+                continue
+            total += zf.getinfo(name).file_size
+            if total > _TOTAL_SIZE_LIMIT:
+                raise ValueError(
+                    f"Cumulative restore size exceeds limit at member {name!r}"
+                )
+            os.makedirs(os.path.dirname(destination), exist_ok=True)
+            with zf.open(name) as src, Path(destination).open("wb") as dst:
+                shutil.copyfileobj(src, dst)
+            restored.append(name)
+    return {"restored": restored, "skipped": skipped}
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="文献获取后备路径（本地库/开放 API 之外的就近恢复）"
+    )
+    sub = parser.add_subparsers(dest="cmd", required=True)
+
+    p_restore = sub.add_parser("restore", help="从 raw.zip 按需恢复全文到语料根")
+    p_restore.add_argument(
+        "--slug", required=True, help="文献 slug（如 10_1016_j_nucengdes_2018_01_045）"
+    )
+    p_restore.add_argument("--archive", required=True, help="归档路径（raw.zip）")
+    p_restore.add_argument("--wiki-root", required=True, help="语料根（解压落盘根）")
+    p_restore.add_argument("--overwrite", action="store_true", help="覆盖已存在文件")
+
+    args = parser.parse_args(argv)
+    if args.cmd == "restore":
+        result = restore_fulltext_from_archive(
+            args.slug,
+            archive_path=args.archive,
+            wiki_root=args.wiki_root,
+            overwrite=args.overwrite,
+        )
+        print(
+            json.dumps(
+                {
+                    "slug": args.slug,
+                    "restored": len(result["restored"]),
+                    "skipped": len(result["skipped"]),
+                    "files": result["restored"],
+                },
+                ensure_ascii=False,
+                indent=1,
+            )
+        )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
