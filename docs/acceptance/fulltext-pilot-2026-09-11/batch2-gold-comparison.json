@@ -1,0 +1,68 @@
+{
+  "10_1016_j_jnucmat_2013_01_291": {
+    "strict": {
+      "true_positive": 15,
+      "false_positive": 222,
+      "false_negative": 18,
+      "precision": 0.0633,
+      "recall": 0.4545,
+      "f1": 0.1111,
+      "matched_gold_ids": [
+        "10_1016_j_jnucmat_2013_01_291_atomized_particle_avg_size",
+        "10_1016_j_jnucmat_2013_01_291_grain_size_atomized",
+        "10_1016_j_jnucmat_2013_01_291_grain_size_ground",
+        "10_1016_j_jnucmat_2013_01_291_intragranular_bubble_size_low_bu",
+        "10_1016_j_jnucmat_2013_01_291_intragranular_bubble_size_high_bu",
+        "10_1016_j_jnucmat_2013_01_291_suparlattice_spacing_high_bu",
+        "10_1016_j_jnucmat_2013_01_291_intragranular_vol_fraction_low_bu",
+        "10_1016_j_jnucmat_2013_01_291_intragranular_vol_fraction_high_bu",
+        "10_1016_j_jnucmat_2013_01_291_sem_resolution_limit",
+        "10_1016_j_jnucmat_2013_01_291_fgb_fraction_early_stage",
+        "10_1016_j_jnucmat_2013_01_291_bol_fuel_temp_range",
+        "10_1016_j_jnucmat_2013_01_291_recrx_subgrain_size",
+        "10_1016_j_jnucmat_2013_01_291_blister_test_temp",
+        "10_1016_j_jnucmat_2013_01_291_A005_fgb_fracture",
+        "10_1016_j_jnucmat_2013_01_291_A005_fgb_polished"
+      ]
+    },
+    "lenient": {
+      "true_positive": 27,
+      "false_positive": 210,
+      "false_negative": 6,
+      "precision": 0.1139,
+      "recall": 0.8182,
+      "f1": 0.2,
+      "matched_gold_ids": [
+        "10_1016_j_jnucmat_2013_01_291_avrami_exponent_n",
+        "10_1016_j_jnucmat_2013_01_291_recrystallization_constant_K0",
+        "10_1016_j_jnucmat_2013_01_291_incubation_fd_ground",
+        "10_1016_j_jnucmat_2013_01_291_fgb_swelling_rate_pre_rx",
+        "10_1016_j_jnucmat_2013_01_291_fgb_swelling_rate_post_rx",
+        "10_1016_j_jnucmat_2013_01_291_gb_mo_content",
+        "10_1016_j_jnucmat_2013_01_291_atomized_particle_avg_size",
+        "10_1016_j_jnucmat_2013_01_291_grain_size_atomized",
+        "10_1016_j_jnucmat_2013_01_291_grain_size_ground",
+        "10_1016_j_jnucmat_2013_01_291_intragranular_bubble_size_low_bu",
+        "10_1016_j_jnucmat_2013_01_291_intragranular_bubble_size_high_bu",
+        "10_1016_j_jnucmat_2013_01_291_suparlattice_spacing_high_bu",
+        "10_1016_j_jnucmat_2013_01_291_intragranular_vol_fraction_low_bu",
+        "10_1016_j_jnucmat_2013_01_291_intragranular_vol_fraction_high_bu",
+        "10_1016_j_jnucmat_2013_01_291_recrx_fd_threshold",
+        "10_1016_j_jnucmat_2013_01_291_sem_resolution_limit",
+        "10_1016_j_jnucmat_2013_01_291_fracture_surface_correction_factor",
+        "10_1016_j_jnucmat_2013_01_291_fgb_fraction_early_stage",
+        "10_1016_j_jnucmat_2013_01_291_K_constant_range",
+        "10_1016_j_jnucmat_2013_01_291_uo2_full_recrx_fd",
+        "10_1016_j_jnucmat_2013_01_291_fission_rate_standard",
+        "10_1016_j_jnucmat_2013_01_291_bol_fuel_temp_range",
+        "10_1016_j_jnucmat_2013_01_291_recrx_subgrain_size",
+        "10_1016_j_jnucmat_2013_01_291_blister_test_temp",
+        "10_1016_j_jnucmat_2013_01_291_enrichment",
+        "10_1016_j_jnucmat_2013_01_291_A005_fgb_fracture",
+        "10_1016_j_jnucmat_2013_01_291_A005_fgb_polished"
+      ]
+    },
+    "extracted": 237,
+    "gold": 33
+  }
+}
