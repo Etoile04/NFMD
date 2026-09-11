@@ -1,0 +1,576 @@
+[
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_01",
+  "name": "burnup levels of irradiated samples",
+  "name_en": "burnup levels of irradiated samples",
+  "unit": "10^21 f/cm3",
+  "category": "irradiation_condition",
+  "value_type": "range",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": [
+    3.0,
+    6.3
+   ],
+   "sentence": "U–7wt.%Mo fuel specimens irradiated in the Advanced Test Reactor to three burnup levels (3.0, 5.2, and 6.3 × 10^21 fission/cm3)"
+  },
+  "self_audit": "pass",
+  "value": [
+   3.0,
+   6.3
+  ],
+  "channel_b": {
+   "value": [
+    3.0,
+    6.3
+   ],
+   "sentence": "irradiated in the Advanced Test Reactor to three burnup levels (3.0, 5.2, and 6.3 × 10^21 fission/cm3)"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_02",
+  "name": "burnup of Sample A",
+  "name_en": "burnup of Sample A",
+  "unit": "10^21 f/cm3",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 3.0,
+   "sentence": "Table 1: Sample A, Burnup 3.0 ×10^21 f/cm3"
+  },
+  "self_audit": "pass",
+  "value": 3.0,
+  "channel_b": {
+   "value": 3.0,
+   "sentence": "Table 1: Sample A — 3.0"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_03",
+  "name": "burnup of Sample B",
+  "name_en": "burnup of Sample B",
+  "unit": "10^21 f/cm3",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 5.2,
+   "sentence": "Table 1: Sample B, Burnup 5.2 ×10^21 f/cm3"
+  },
+  "self_audit": "pass",
+  "value": 5.2,
+  "channel_b": {
+   "value": 5.2,
+   "sentence": "Table 1: Sample B — 5.2"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_04",
+  "name": "burnup of Sample C",
+  "name_en": "burnup of Sample C",
+  "unit": "10^21 f/cm3",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 6.3,
+   "sentence": "Table 1: Sample C, Burnup 6.3 ×10^21 f/cm3"
+  },
+  "self_audit": "pass",
+  "value": 6.3,
+  "channel_b": {
+   "value": 6.3,
+   "sentence": "Table 1: Sample C — 6.3"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_05",
+  "name": "superlattice constant by WAXS",
+  "name_en": "superlattice constant by WAXS",
+  "unit": "nm",
+  "category": "bubble_characteristics",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 11.7,
+   "sentence": "the superlattice constant (aSL) was determined to be 11.7 ± 0.2 nm"
+  },
+  "self_audit": "pass",
+  "value": 11.7,
+  "uncertainty": "±0.2",
+  "channel_b": {
+   "value": 11.7,
+   "sentence": "the superlattice constant (aSL) was determined to be 11.7 ± 0.2 nm"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_06",
+  "name": "superlattice constant by SAXS",
+  "name_en": "superlattice constant by SAXS",
+  "unit": "nm",
+  "category": "bubble_characteristics",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 12.0,
+   "sentence": "Two sets of superlattice reflections of low indices, {111} and {200}, were found in Sample A, indicating a superlattice constant of 12.0 ± 0.2 nm"
+  },
+  "self_audit": "pass",
+  "value": 12.0,
+  "uncertainty": "±0.2",
+  "channel_b": {
+   "value": 12.0,
+   "sentence": "indicating a superlattice constant of 12.0 ± 0.2 nm"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_07",
+  "name": "superlattice constant by previous TEM observation",
+  "name_en": "superlattice constant by previous TEM observation",
+  "unit": "nm",
+  "category": "bubble_characteristics",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 12.0,
+   "sentence": "This value is comparable with the previous TEM observations (12.0 nm) [10]."
+  },
+  "self_audit": "pass",
+  "value": 12.0,
+  "channel_b": {
+   "value": 12.0,
+   "sentence": "comparable with the previous TEM observations (12.0 nm)"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_08",
+  "name": "grain size after sub-division",
+  "name_en": "grain size after sub-division",
+  "unit": "nm",
+  "category": "microstructure",
+  "value_type": "range",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": [
+    100,
+    500
+   ],
+   "sentence": "The grain sub-division reduces the grain size from the micron scale to 100–500 nm"
+  },
+  "self_audit": "pass",
+  "value": [
+   100,
+   500
+  ],
+  "channel_b": {
+   "value": [
+    100,
+    500
+   ],
+   "sentence": "The grain sub-division reduces the grain size from the micron scale to 100–500 nm"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_09",
+  "name": "sample cube side length prepared by FIB",
+  "name_en": "sample cube side length prepared by FIB",
+  "unit": "μm",
+  "category": "measurement",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 30,
+   "sentence": "Each sample was fabricated by focused ion beam (FIB) milling into an approximately 30 μm × 30 μm × 30 μm cube"
+  },
+  "self_audit": "pass",
+  "value": 30,
+  "channel_b": {
+   "value": 30,
+   "sentence": "FIB milling into an approximately 30 μm × 30 μm × 30 μm cube"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_10",
+  "name": "monochromatic synchrotron X-ray energy",
+  "name_en": "monochromatic synchrotron X-ray energy",
+  "unit": "keV",
+  "category": "measurement",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 71.676,
+   "sentence": "a 10 μm × 10 μm monochromatic (71.676 keV) X-ray beam was utilized"
+  },
+  "self_audit": "pass",
+  "value": 71.676,
+  "channel_b": {
+   "value": 71.676,
+   "sentence": "a 10 μm × 10 μm monochromatic (71.676 keV) X-ray beam"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_11",
+  "name": "elastic constant c11 of U-7wt%Mo by first-principles",
+  "name_en": "elastic constant c11 of U-7wt%Mo by first-principles",
+  "unit": "GPa",
+  "category": "elastic",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 174.51,
+   "sentence": "The stiffness tensor of U–7wt.%Mo was predicted by first principle calculation (c11 = 174.51 GPa, c12 = 107.71 GPa and c44 = 49.52 GPa) using Vienna Ab-initio Simulation Package (VASP)"
+  },
+  "self_audit": "pass",
+  "value": 174.51,
+  "channel_b": {
+   "value": 174.51,
+   "sentence": "c11 = 174.51 GPa"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_12",
+  "name": "elastic constant c12 of U-7wt%Mo by first-principles",
+  "name_en": "elastic constant c12 of U-7wt%Mo by first-principles",
+  "unit": "GPa",
+  "category": "elastic",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 107.71,
+   "sentence": "c12 = 107.71 GPa"
+  },
+  "self_audit": "pass",
+  "value": 107.71,
+  "channel_b": {
+   "value": 107.71,
+   "sentence": "c12 = 107.71 GPa"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_13",
+  "name": "elastic constant c44 of U-7wt%Mo by first-principles",
+  "name_en": "elastic constant c44 of U-7wt%Mo by first-principles",
+  "unit": "GPa",
+  "category": "elastic",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 49.52,
+   "sentence": "c44 = 49.52 GPa"
+  },
+  "self_audit": "pass",
+  "value": 49.52,
+  "channel_b": {
+   "value": 49.52,
+   "sentence": "c44 = 49.52 GPa"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_14",
+  "name": "contribution of large grains in unirradiated control sample",
+  "name_en": "contribution of large grains in unirradiated control sample",
+  "unit": "%",
+  "category": "microstructure",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 95,
+   "sentence": "In the control sample (O), the majority of the diffraction (over 95%) is contributed by large-sized grains."
+  },
+  "self_audit": "pass",
+  "value": 95,
+  "channel_b": {
+   "value": 95,
+   "sentence": "the majority of the diffraction (over 95%) is contributed by large-sized grains"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_15",
+  "name": "contribution of recrystallized grains in Sample C",
+  "name_en": "contribution of recrystallized grains in Sample C",
+  "unit": "%",
+  "category": "microstructure",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 70,
+   "sentence": "the contribution of small-sized recrystallized grains increases with burnup to over 70% in Sample C"
+  },
+  "self_audit": "pass",
+  "value": 70,
+  "channel_b": {
+   "value": 70,
+   "sentence": "increases with burnup to over 70% in Sample C"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_16",
+  "name": "grain size detection limit in current WAXS condition",
+  "name_en": "grain size detection limit in current WAXS condition",
+  "unit": "nm",
+  "category": "measurement",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 100,
+   "sentence": "the grain size in those samples exceeds the detector limit, which is approximately 100 nm in the current experimental condition"
+  },
+  "self_audit": "pass",
+  "value": 100,
+  "channel_b": {
+   "value": 100,
+   "sentence": "exceeds the detector limit, which is approximately 100 nm"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_17",
+  "name": "radius of gyration of bubbles in Sample C",
+  "name_en": "radius of gyration of bubbles in Sample C",
+  "unit": "nm",
+  "category": "bubble_characteristics",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 11.3,
+   "sentence": "the Guinier fitting gives a radius of gyration around 11.3 nm, corresponding to a diameter around 29.2 nm"
+  },
+  "self_audit": "pass",
+  "value": 11.3,
+  "channel_b": {
+   "value": 11.3,
+   "sentence": "the Guinier fitting gives a radius of gyration around 11.3 nm"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_18",
+  "name": "bubble diameter in superlattice",
+  "name_en": "bubble diameter in superlattice",
+  "unit": "nm",
+  "category": "bubble_characteristics",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 4,
+   "sentence": "which is much larger than the bubbles in the superlattice (4 nm)"
+  },
+  "self_audit": "pass",
+  "value": 4,
+  "channel_b": {
+   "value": 4,
+   "sentence": "much larger than the bubbles in the superlattice (4 nm)"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_19",
+  "name": "bubble size range in Sample C by maximum entropy fitting",
+  "name_en": "bubble size range in Sample C by maximum entropy fitting",
+  "unit": "nm",
+  "category": "bubble_characteristics",
+  "value_type": "range",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": [
+    20,
+    100
+   ],
+   "sentence": "the bubble size ranges from approximately 20 nm up to 100 nm with a maximum approximately at 35 nm"
+  },
+  "self_audit": "pass",
+  "value": [
+   20,
+   100
+  ],
+  "channel_b": {
+   "value": [
+    20,
+    100
+   ],
+   "sentence": "bubble size ranges from approximately 20 nm up to 100 nm with a maximum approximately at 35 nm"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_20",
+  "name": "intermediate bubble size in recrystallized grains",
+  "name_en": "intermediate bubble size in recrystallized grains",
+  "unit": "nm",
+  "category": "bubble_characteristics",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 35,
+   "sentence": "intermediate-sized bubbles (around 35 nm) also exist in the recrystallized grains according to the SAXS data"
+  },
+  "self_audit": "pass",
+  "value": 35,
+  "channel_b": {
+   "value": 35,
+   "sentence": "intermediate-sized bubbles (around 35 nm) also exist in the recrystallized grains"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_21",
+  "name": "diameter of large bubbles after superlattice collapse",
+  "name_en": "diameter of large bubbles after superlattice collapse",
+  "unit": "nm",
+  "category": "bubble_characteristics",
+  "value_type": "text",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": "over 100 nm",
+   "sentence": "in addition to the large bubbles (over 100 nm in diameter) that were observed by TEM"
+  },
+  "self_audit": "pass",
+  "value_text": "over 100 nm",
+  "channel_b": {
+   "value": "over 100 nm",
+   "sentence": "the large bubbles (over 100 nm in diameter) that were observed by TEM"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_22",
+  "name": "increase factor of dislocation loop nucleation after superlattice collapse",
+  "name_en": "increase factor of dislocation loop nucleation after superlattice collapse",
+  "unit": "dimensionless",
+  "category": "irradiation_damage",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 5,
+   "sentence": "the nucleation and growth of dislocation loops increased five fold"
+  },
+  "self_audit": "pass",
+  "value": 5,
+  "channel_b": {
+   "value": 5,
+   "sentence": "the nucleation and growth of dislocation loops increased five fold"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_23",
+  "name": "burnup of Golosov neutron scattering comparison",
+  "name_en": "burnup of Golosov neutron scattering comparison",
+  "unit": "10^21 f/cm3",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "U-9wt%Mo",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": {
+   "value": 7.3,
+   "sentence": "relatively insufficient burnup (6.3 × 10^21 fission/cm3 compared to 7.3 × 10^21 fission/cm3)"
+  },
+  "self_audit": "pass",
+  "value": 7.3,
+  "channel_b": {
+   "value": 7.3,
+   "sentence": "compared to 7.3 × 10^21 fission/cm3"
+  }
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_B23",
+  "name": "bubble diameter corresponding to Sample C gyration radius",
+  "name_en": "bubble diameter corresponding to Sample C gyration radius",
+  "unit": "nm",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 29.2,
+   "sentence": "corresponding to a diameter around 29.2 nm"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 29.2
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_B24",
+  "name": "SANS peak Q position in U-9wt%Mo comparison",
+  "name_en": "SANS peak Q position in U-9wt%Mo comparison",
+  "unit": "Å^-1",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 0.08,
+   "sentence": "the Q position of that peak (0.08 Å^-1)"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 0.08
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_B25",
+  "name": "superlattice satellite Q position for 111 reflection",
+  "name_en": "superlattice satellite Q position for 111 reflection",
+  "unit": "Å^-1",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 0.091,
+   "sentence": "(0.091 Å^-1 for {111} and 0.105 Å^-1 for {200})"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 0.091
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_B26",
+  "name": "superlattice satellite Q position for 200 reflection",
+  "name_en": "superlattice satellite Q position for 200 reflection",
+  "unit": "Å^-1",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 0.105,
+   "sentence": "0.105 Å^-1 for {200}"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 0.105
+ },
+ {
+  "id": "10_1016_j_scriptamat_2015_12_019_B27",
+  "name": "WAXS detector pixel size",
+  "name_en": "WAXS detector pixel size",
+  "unit": "μm",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1016_j_scriptamat_2015_12_019/auto/10_1016_j_scriptamat_2015_12_019.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 200,
+   "sentence": "200 μm × 200 μm pixel size"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 200
+ }
+]

@@ -1,0 +1,625 @@
+[
+ {
+  "id": "10_1680_ieacifcacc_48748_01",
+  "name": "temperature range of irradiation creep data",
+  "name_en": "temperature range of irradiation creep data",
+  "unit": "°C",
+  "category": "irradiation_condition",
+  "value_type": "range",
+  "material": "stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": [
+    250,
+    380
+   ],
+   "sentence": "The available irradiation creep data cover a limited fluence and temperature range (250-380°C)"
+  },
+  "self_audit": "pass",
+  "value": [
+   250,
+   380
+  ],
+  "channel_b": {
+   "value": [
+    250,
+    380
+   ],
+   "sentence": "The available irradiation creep data cover a limited fluence and temperature range (250-380°C)"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_02",
+  "name": "stress levels of SA M316 spring groups",
+  "name_en": "stress levels of SA M316 spring groups",
+  "unit": "ksi",
+  "category": "irradiation_creep",
+  "value_type": "list",
+  "material": "M316 stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": [
+    2.0,
+    4.0,
+    5.5,
+    8.0
+   ],
+   "sentence": "these stresses formed groups centered at 2.0, 4.0, 5.5 and 8.0 ksi for SA M316 (Batch 1)"
+  },
+  "self_audit": "pass",
+  "value_list": [
+   2.0,
+   4.0,
+   5.5,
+   8.0
+  ],
+  "channel_b": {
+   "value": [
+    2.0,
+    4.0,
+    5.5,
+    8.0
+   ],
+   "sentence": "stresses formed groups centered at 2.0, 4.0, 5.5 and 8.0 ksi for SA M316 (Batch 1)"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_03",
+  "name": "stress levels of CW M316 spring groups",
+  "name_en": "stress levels of CW M316 spring groups",
+  "unit": "ksi",
+  "category": "irradiation_creep",
+  "value_type": "list",
+  "material": "M316 stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": [
+    3.0,
+    5.0,
+    9.0,
+    12.5
+   ],
+   "sentence": "3.0, 5.0, 9.0 and 12.5 ksi for CW M316 (Batch 1)"
+  },
+  "self_audit": "pass",
+  "value_list": [
+   3.0,
+   5.0,
+   9.0,
+   12.5
+  ],
+  "channel_b": {
+   "value": [
+    3.0,
+    5.0,
+    9.0,
+    12.5
+   ],
+   "sentence": "3.0, 5.0, 9.0 and 12.5 ksi for CW M316 (Batch 1)"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_04",
+  "name": "Poisson ratio used for equivalent strain conversion",
+  "name_en": "Poisson ratio used for equivalent strain conversion",
+  "unit": "dimensionless",
+  "category": "model_parameter",
+  "value_type": "scalar",
+  "material": "stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 0.5,
+   "sentence": "Figure 4 shows the resulting creep rates when Poisson's ratio is 0.5."
+  },
+  "self_audit": "pass",
+  "value": 0.5,
+  "channel_b": {
+   "value": 0.5,
+   "sentence": "Figure 4 shows the resulting creep rates when Poisson's ratio is 0.5."
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_05",
+  "name": "Poisson ratio associated with McElroy-Gilbert creep model",
+  "name_en": "Poisson ratio associated with McElroy-Gilbert creep model",
+  "unit": "dimensionless",
+  "category": "model_parameter",
+  "value_type": "scalar",
+  "material": "stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": -0.75,
+   "sentence": "The creep model of McElroy et al. and Gilbert is associated with a Poisson's ratio of -0.75."
+  },
+  "self_audit": "pass",
+  "value": -0.75,
+  "channel_b": {
+   "value": -0.75,
+   "sentence": "The creep model of McElroy et al. and Gilbert is associated with a Poisson's ratio of -0.75."
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_06",
+  "name": "overprediction factor of McElroy-Gilbert model for SA M316 at 280°C",
+  "name_en": "overprediction factor of McElroy-Gilbert model for SA M316 at 280°C",
+  "unit": "dimensionless",
+  "category": "model_parameter",
+  "value_type": "scalar",
+  "material": "M316 stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 5,
+   "sentence": "at 280°C the model overpredicts the fast neutron spectrum SA M316 and SA 304 irradiation creep rates by factors of 5 and 3, respectively"
+  },
+  "self_audit": "pass",
+  "value": 5,
+  "channel_b": {
+   "value": 5,
+   "sentence": "overpredicts ... SA M316 and SA 304 irradiation creep rates by factors of 5 and 3, respectively"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_07",
+  "name": "overprediction factor of McElroy-Gilbert model for SA 304 at 280°C",
+  "name_en": "overprediction factor of McElroy-Gilbert model for SA 304 at 280°C",
+  "unit": "dimensionless",
+  "category": "model_parameter",
+  "value_type": "scalar",
+  "material": "304 stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 3,
+   "sentence": "overpredicts the fast neutron spectrum SA M316 and SA 304 irradiation creep rates by factors of 5 and 3, respectively"
+  },
+  "self_audit": "pass",
+  "value": 3,
+  "channel_b": {
+   "value": 3,
+   "sentence": "by factors of 5 and 3, respectively"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_08",
+  "name": "temperature gradient in fuel pin tubing",
+  "name_en": "temperature gradient in fuel pin tubing",
+  "unit": "°C/cm",
+  "category": "irradiation_condition",
+  "value_type": "range",
+  "material": "stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": [
+    400,
+    800
+   ],
+   "sentence": "The cylindrical tubing used in fuel pins or capsules is subjected to temperature gradient of the order of 400 to 800 °C/cm"
+  },
+  "self_audit": "pass",
+  "value": [
+   400,
+   800
+  ],
+  "channel_b": {
+   "value": [
+    400,
+    800
+   ],
+   "sentence": "subjected to temperature gradient of the order of 400 to 800 °C/cm"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_09",
+  "name": "swelling rate in equation 4 example",
+  "name_en": "swelling rate in equation 4 example",
+  "unit": "%ΔV/V per 10^22 n/cm2",
+  "category": "swelling",
+  "value_type": "scalar",
+  "material": "stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 1,
+   "sentence": "for a swelling rate of 1% ΔV/V per 10^22 fast fluence (E>0.1 MeV)"
+  },
+  "self_audit": "pass",
+  "value": 1,
+  "channel_b": {
+   "value": 1,
+   "sentence": "for a swelling rate of 1% ΔV/V per 10^22 fast fluence (E>0.1 MeV)"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_10",
+  "name": "fast flux in equation 4 example",
+  "name_en": "fast flux in equation 4 example",
+  "unit": "n/cm2/s",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 1000000000000000.0,
+   "sentence": "a fast flux of 10^15, a stress of 10^4 psi"
+  },
+  "self_audit": "pass",
+  "value": 1000000000000000.0,
+  "channel_b": null,
+  "notes": "[single-channel A]"
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_11",
+  "name": "stress in equation 4 example",
+  "name_en": "stress in equation 4 example",
+  "unit": "psi",
+  "category": "irradiation_creep",
+  "value_type": "scalar",
+  "material": "stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 10000,
+   "sentence": "a stress of 10^4 psi"
+  },
+  "self_audit": "pass",
+  "value": 10000,
+  "channel_b": {
+   "value": 10000,
+   "sentence": "a stress of 10^4 psi"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_12",
+  "name": "D constant in equation 4 example",
+  "name_en": "D constant in equation 4 example",
+  "unit": "dimensionless",
+  "category": "model_parameter",
+  "value_type": "scalar",
+  "material": "stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 2e-07,
+   "sentence": "a D value of 2×10^-7, the second term in equation (4) yields a creep rate of 7.2×10^-5 %/hr"
+  },
+  "self_audit": "pass",
+  "value": 2e-07,
+  "channel_b": {
+   "value": 2e-07,
+   "sentence": "a D value of 2×10^-7"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_13",
+  "name": "creep rate enhancement example from equation 4 second term",
+  "name_en": "creep rate enhancement example from equation 4 second term",
+  "unit": "%/hr",
+  "category": "irradiation_creep",
+  "value_type": "scalar",
+  "material": "stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 7.2e-05,
+   "sentence": "the second term in equation (4) yields a creep rate of 7.2×10^-5 %/hr"
+  },
+  "self_audit": "pass",
+  "value": 7.2e-05,
+  "channel_b": {
+   "value": 7.2e-05,
+   "sentence": "yields a creep rate of 7.2×10^-5 %/hr"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_14",
+  "name": "steady state irradiation creep rate of SA 304L from Figure 4",
+  "name_en": "steady state irradiation creep rate of SA 304L from Figure 4",
+  "unit": "%/hr",
+  "category": "irradiation_creep",
+  "value_type": "scalar",
+  "material": "304L stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 5.4e-05,
+   "sentence": "compared to the creep rates for SA 304L and M316, shown in Figure 4, of 5.4×10^-5 and 1.7×10^-5 %/hr, respectively"
+  },
+  "self_audit": "pass",
+  "value": 5.4e-05,
+  "channel_b": {
+   "value": 5.4e-05,
+   "sentence": "creep rates for SA 304L and M316 ... of 5.4×10^-5 and 1.7×10^-5 %/hr"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_15",
+  "name": "steady state irradiation creep rate of SA M316 from Figure 4",
+  "name_en": "steady state irradiation creep rate of SA M316 from Figure 4",
+  "unit": "%/hr",
+  "category": "irradiation_creep",
+  "value_type": "scalar",
+  "material": "M316 stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 1.7e-05,
+   "sentence": "of 5.4×10^-5 and 1.7×10^-5 %/hr, respectively"
+  },
+  "self_audit": "pass",
+  "value": 1.7e-05,
+  "channel_b": {
+   "value": 1.7e-05,
+   "sentence": "of 5.4×10^-5 and 1.7×10^-5 %/hr"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_16",
+  "name": "steady state creep constant B of CW M316",
+  "name_en": "steady state creep constant B of CW M316",
+  "unit": "10^30 (per Table II)",
+  "category": "irradiation_creep",
+  "value_type": "scalar",
+  "material": "M316 stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 0.37,
+   "sentence": "Table II: CW M316, B×10^30 — 0.37"
+  },
+  "self_audit": "pass",
+  "value": 0.37,
+  "channel_b": {
+   "value": 0.37,
+   "sentence": "Table II: CW M316 B — 0.37"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_17",
+  "name": "steady state creep constant B of SA M316",
+  "name_en": "steady state creep constant B of SA M316",
+  "unit": "10^30 (per Table II)",
+  "category": "irradiation_creep",
+  "value_type": "scalar",
+  "material": "M316 stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 0.47,
+   "sentence": "Table II: SA M316, B×10^30 — 0.47"
+  },
+  "self_audit": "pass",
+  "value": 0.47,
+  "channel_b": {
+   "value": 0.47,
+   "sentence": "Table II: SA M316 B — 0.47"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_18",
+  "name": "steady state creep constant B of SA 304",
+  "name_en": "steady state creep constant B of SA 304",
+  "unit": "10^30 (per Table II)",
+  "category": "irradiation_creep",
+  "value_type": "scalar",
+  "material": "304 stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 0.86,
+   "sentence": "Table II: SA 304, B×10^30 — 0.86"
+  },
+  "self_audit": "pass",
+  "value": 0.86,
+  "channel_b": {
+   "value": 0.86,
+   "sentence": "Table II: SA 304 B — 0.86"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_19",
+  "name": "steady state creep constant B of SA 304L",
+  "name_en": "steady state creep constant B of SA 304L",
+  "unit": "10^30 (per Table II)",
+  "category": "irradiation_creep",
+  "value_type": "scalar",
+  "material": "304L stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 1.5,
+   "sentence": "Table II: SA 304L, B×10^30 — 1.5"
+  },
+  "self_audit": "pass",
+  "value": 1.5,
+  "channel_b": {
+   "value": 1.5,
+   "sentence": "Table II: SA 304L B — 1.5"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_20",
+  "name": "transient creep constant A of CW M316",
+  "name_en": "transient creep constant A of CW M316",
+  "unit": "per Table II",
+  "category": "irradiation_creep",
+  "value_type": "scalar",
+  "material": "M316 stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 0.12,
+   "sentence": "Table II: CW M316, A — 0.12; the transient is more correctly given by A = 0.41×10^3/σ + 0.12"
+  },
+  "self_audit": "pass",
+  "value": 0.12,
+  "channel_b": {
+   "value": 0.12,
+   "sentence": "Table II: CW M316 A — 0.12"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_21",
+  "name": "M23C6 precipitation temperature range in irradiated SA 304",
+  "name_en": "M23C6 precipitation temperature range in irradiated SA 304",
+  "unit": "°C",
+  "category": "material_processing",
+  "value_type": "range",
+  "material": "304 stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": [
+    370,
+    425
+   ],
+   "sentence": "the precipitation of M23C6 in SA 304 irradiated in the temperature interval between 370 and 425 °C"
+  },
+  "self_audit": "pass",
+  "value": [
+   370,
+   425
+  ],
+  "channel_b": {
+   "value": [
+    370,
+    425
+   ],
+   "sentence": "precipitation of M23C6 in SA 304 irradiated in the temperature interval between 370 and 425 °C"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_22",
+  "name": "minimum D value from preliminary residual stress analysis",
+  "name_en": "minimum D value from preliminary residual stress analysis",
+  "unit": "dimensionless",
+  "category": "model_parameter",
+  "value_type": "scalar",
+  "material": "stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 2e-07,
+   "sentence": "The preliminary analysis of these results indicates minimum D values greater than 2×10^-7"
+  },
+  "self_audit": "pass",
+  "value": 2e-07,
+  "channel_b": {
+   "value": 2e-07,
+   "sentence": "minimum D values greater than 2×10^-7"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_23",
+  "name": "linear stress limit of CW M316 irradiation creep",
+  "name_en": "linear stress limit of CW M316 irradiation creep",
+  "unit": "psi",
+  "category": "irradiation_creep",
+  "value_type": "scalar",
+  "material": "M316 stainless steel",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": {
+   "value": 15000,
+   "sentence": "the 20 percent cold-worked type M316 stainless steel exhibits linear behavior for equivalent stresses below 15,000 psi and a higher stress exponent for higher stresses"
+  },
+  "self_audit": "pass",
+  "value": 15000,
+  "channel_b": {
+   "value": 15000,
+   "sentence": "linear behavior for equivalent stresses below 15,000 psi"
+  }
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_B23",
+  "name": "creep rate enhancement percentage for SA 304L",
+  "name_en": "creep rate enhancement percentage for SA 304L",
+  "unit": "%",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 130,
+   "sentence": "the irradiation creep rates of SA 304L and M316 would be enhanced by 130 and 420%, respectively"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 130
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_B24",
+  "name": "creep rate enhancement percentage for SA M316",
+  "name_en": "creep rate enhancement percentage for SA M316",
+  "unit": "%",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 420,
+   "sentence": "enhanced by 130 and 420%, respectively"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 420
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_B25",
+  "name": "steady state creep constant C of CW M316",
+  "name_en": "steady state creep constant C of CW M316",
+  "unit": "10^38 (per Table II)",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 0.51,
+   "sentence": "Table II: CW M316 C — 0.51"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 0.51
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_B26",
+  "name": "axial strain profile temperature difference symmetry range",
+  "name_en": "axial strain profile temperature difference symmetry range",
+  "unit": "°C",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": [
+    30,
+    70
+   ],
+   "sentence": "symmetrical above and below the core midplane for temperature differences of 30 to 70°C"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": [
+   30,
+   70
+  ]
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_B27",
+  "name": "EBR-II pressurized tube stress level for strain profiles",
+  "name_en": "EBR-II pressurized tube stress level for strain profiles",
+  "unit": "ksi",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 15,
+   "sentence": "the two EBR-II pressurized tubes at 15 ksi"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 15
+ },
+ {
+  "id": "10_1680_ieacifcacc_48748_B28",
+  "name": "cold work level of CW M316",
+  "name_en": "cold work level of CW M316",
+  "unit": "%",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1680_ieacifcacc_48748/auto/10_1680_ieacifcacc_48748.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 20,
+   "sentence": "the 20 percent cold-worked type M316 stainless steel"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 20
+ }
+]

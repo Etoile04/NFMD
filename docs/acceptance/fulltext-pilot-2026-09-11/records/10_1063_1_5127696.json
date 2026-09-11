@@ -1,0 +1,460 @@
+[
+ {
+  "id": "10_1063_1_5127696_01",
+  "name": "in-pile fission damage level in nuclear fuel",
+  "name_en": "in-pile fission damage level in nuclear fuel",
+  "unit": "dpa",
+  "category": "irradiation_condition",
+  "value_type": "text",
+  "material": "nuclear fuel",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": "1000's of dpa",
+   "sentence": "the ATLAS heavy ion beams can replicate the damage of in-pile-irradiated nuclear fuel materials, which can reach 1000's of displacements per atom (dpa)"
+  },
+  "self_audit": "pass",
+  "value_text": "1000's of dpa",
+  "channel_b": {
+   "value": "1000's of dpa",
+   "sentence": "the ATLAS heavy ion beams can replicate the damage of in-pile-irradiated nuclear fuel materials, which can reach 1000's of displacements per atom (dpa)"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_02",
+  "name": "damage zone thickness from conventional several-MeV ion irradiation",
+  "name_en": "damage zone thickness from conventional several-MeV ion irradiation",
+  "unit": "μm",
+  "category": "irradiation_condition",
+  "value_type": "range",
+  "material": "nuclear fuel",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": [
+    1,
+    2
+   ],
+   "sentence": "a damage zone thinner than approximately 1-2 microns can be produced"
+  },
+  "self_audit": "pass",
+  "value": [
+   1,
+   2
+  ],
+  "channel_b": {
+   "value": [
+    1,
+    2
+   ],
+   "sentence": "a damage zone thinner than approximately 1-2 microns can be produced"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_03",
+  "name": "damage zone depth in nuclear fuel materials from ~100 MeV heavy ions",
+  "name_en": "damage zone depth in nuclear fuel materials from ~100 MeV heavy ions",
+  "unit": "μm",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "nuclear fuel",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 5,
+   "sentence": "a damage layer thicker than 5 µm can be produced in nuclear fuel materials"
+  },
+  "self_audit": "pass",
+  "value": 5,
+  "channel_b": {
+   "value": 5,
+   "sentence": "a damage layer thicker than 5 µm can be produced in nuclear fuel materials"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_04",
+  "name": "kinetic energy of fission fragments inducing microstructural modifications",
+  "name_en": "kinetic energy of fission fragments inducing microstructural modifications",
+  "unit": "MeV",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "nuclear fuel",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 100,
+   "sentence": "the majority of the radiation-induced microstructural modifications in nuclear fuel materials are induced by fission fragments with approximately 100 MeV kinetic energy"
+  },
+  "self_audit": "pass",
+  "value": 100,
+  "channel_b": {
+   "value": 100,
+   "sentence": "fission fragments with approximately 100 MeV kinetic energy rather than the fission neutrons"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_05",
+  "name": "ATLAS maximum acceleration capability",
+  "name_en": "ATLAS maximum acceleration capability",
+  "unit": "MeV/nucleon",
+  "category": "experiment",
+  "value_type": "scalar",
+  "material": "uranium",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 17,
+   "sentence": "accelerate a wide range of ions (from hydrogen to uranium) up to 17 MeV per nucleon"
+  },
+  "self_audit": "pass",
+  "value": 17,
+  "channel_b": {
+   "value": 17,
+   "sentence": "accelerate a wide range of ions (from hydrogen to uranium) up to 17 MeV per nucleon"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_06",
+  "name": "energy required to replicate typical fission product per nucleon",
+  "name_en": "energy required to replicate typical fission product per nucleon",
+  "unit": "MeV/nucleon",
+  "category": "experiment",
+  "value_type": "scalar",
+  "material": "nuclear fuel",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 1,
+   "sentence": "replicating a typical fission product (~100 amu) with its typical kinetic energy (~100 MeV) only requires approximately 1 MeV per nucleon acceleration capability"
+  },
+  "self_audit": "pass",
+  "value": 1,
+  "channel_b": {
+   "value": 1,
+   "sentence": "only requires approximately 1 MeV per nucleon acceleration capability"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_07",
+  "name": "ATLAS acceleration capability at ion irradiation chamber position",
+  "name_en": "ATLAS acceleration capability at ion irradiation chamber position",
+  "unit": "MeV/nucleon",
+  "category": "experiment",
+  "value_type": "scalar",
+  "material": "nuclear fuel",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 1.5,
+   "sentence": "At this position, ATLAS has a maximum acceleration capability of approximately 1.5 MeV per nucleon."
+  },
+  "self_audit": "pass",
+  "value": 1.5,
+  "channel_b": {
+   "value": 1.5,
+   "sentence": "At this position, ATLAS has a maximum acceleration capability of approximately 1.5 MeV per nucleon."
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_08",
+  "name": "specimen temperature from 200 pnA beam without heat sink",
+  "name_en": "specimen temperature from 200 pnA beam without heat sink",
+  "unit": "°C",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "nuclear fuel",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 350,
+   "sentence": "A 200 particle-nA fission product ion beam can heat a specimen up to approximately 350° in the absence of an effective heat sink"
+  },
+  "self_audit": "pass",
+  "value": 350,
+  "channel_b": {
+   "value": 350,
+   "sentence": "A 200 particle-nA fission product ion beam can heat a specimen up to approximately 350° in the absence of an effective heat sink"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_09",
+  "name": "passive heating holder medium temperature range",
+  "name_en": "passive heating holder medium temperature range",
+  "unit": "°C",
+  "category": "irradiation_condition",
+  "value_type": "range",
+  "material": "nuclear fuel",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": [
+    200,
+    350
+   ],
+   "sentence": "a passive heating holder is sufficient for medium temperature irradiation experiments (between 200 to 350°C)"
+  },
+  "self_audit": "pass",
+  "value": [
+   200,
+   350
+  ],
+  "channel_b": {
+   "value": [
+    200,
+    350
+   ],
+   "sentence": "medium temperature irradiation experiments (between 200 to 350°C)"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_10",
+  "name": "beam current for irradiation temperatures below 200 °C",
+  "name_en": "beam current for irradiation temperatures below 200 °C",
+  "unit": "particle-nA",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "nuclear fuel",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 70,
+   "sentence": "For irradiations at temperatures below ~200 °C, the beam current has to be reduced to ~70 particle-nA"
+  },
+  "self_audit": "pass",
+  "value": 70,
+  "channel_b": {
+   "value": 70,
+   "sentence": "at temperatures below ~200 °C, the beam current has to be reduced to ~70 particle-nA"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_11",
+  "name": "cartridge heater maximum operation temperature",
+  "name_en": "cartridge heater maximum operation temperature",
+  "unit": "°C",
+  "category": "experiment",
+  "value_type": "scalar",
+  "material": "nuclear fuel",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 1200,
+   "sentence": "a cartridge heater (maximum operation temperature: 1200°C) is mounted on the back of each of the three copper sample stages"
+  },
+  "self_audit": "pass",
+  "value": 1200,
+  "channel_b": {
+   "value": 1200,
+   "sentence": "a cartridge heater (maximum operation temperature: 1200°C)"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_12",
+  "name": "U-7Mo ion irradiation temperature",
+  "name_en": "U-7Mo ion irradiation temperature",
+  "unit": "°C",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 350,
+   "sentence": "A U-7%Mo sample was irradiated by 84 MeV Xe ions at ~350 °C at ATLAS"
+  },
+  "self_audit": "pass",
+  "value": 350,
+  "channel_b": {
+   "value": 350,
+   "sentence": "A U-7%Mo sample was irradiated by 84 MeV Xe ions at ~350 °C at ATLAS"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_13",
+  "name": "Xe ion energy for U-7Mo irradiation",
+  "name_en": "Xe ion energy for U-7Mo irradiation",
+  "unit": "MeV",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 84,
+   "sentence": "A U-7%Mo sample was irradiated by 84 MeV Xe ions at ~350 °C at ATLAS"
+  },
+  "self_audit": "pass",
+  "value": 84,
+  "channel_b": {
+   "value": 84,
+   "sentence": "irradiated by 84 MeV Xe ions at ~350 °C at ATLAS"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_14",
+  "name": "micro-cube specimen side length for synchrotron XRD",
+  "name_en": "micro-cube specimen side length for synchrotron XRD",
+  "unit": "μm",
+  "category": "measurement",
+  "value_type": "scalar",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 15,
+   "sentence": "A 15 µm × 15 µm × 15 µm cube specimen was prepared from the irradiated U-7%Mo sample"
+  },
+  "self_audit": "pass",
+  "value": 15,
+  "channel_b": {
+   "value": 15,
+   "sentence": "A 15 µm × 15 µm × 15 µm cube specimen was prepared from the irradiated U-7%Mo sample"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_15",
+  "name": "diameter of small intragranular bubbles induced by Xe irradiation",
+  "name_en": "diameter of small intragranular bubbles induced by Xe irradiation",
+  "unit": "nm",
+  "category": "bubble",
+  "value_type": "text",
+  "material": "U-7wt%Mo",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": "beneath 10 nm",
+   "sentence": "small bubbles beneath 10 nm were observed to be uniformly distributed within grains"
+  },
+  "self_audit": "pass",
+  "value_text": "beneath 10 nm",
+  "channel_b": {
+   "value": "beneath 10 nm",
+   "sentence": "small bubbles beneath 10 nm were observed to be uniformly distributed within grains"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_16",
+  "name": "MA957 peak dose from 84 MeV Fe ion irradiation",
+  "name_en": "MA957 peak dose from 84 MeV Fe ion irradiation",
+  "unit": "dpa",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "MA957",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 40,
+   "sentence": "SS-J1 type miniature tensile specimens of MA957 (Fe-14Cr-1Ti-0.3Mo-0.25Y2O3) nanostructured steel were irradiated at ATLAS using 84 MeV Fe ions to a ~40 dpa peak dose"
+  },
+  "self_audit": "pass",
+  "value": 40,
+  "channel_b": {
+   "value": 40,
+   "sentence": "irradiated at ATLAS using 84 MeV Fe ions to a ~40 dpa peak dose"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_17",
+  "name": "radiation-affected region depth from ~100 MeV heavy ions in structural materials",
+  "name_en": "radiation-affected region depth from ~100 MeV heavy ions in structural materials",
+  "unit": "μm",
+  "category": "irradiation_condition",
+  "value_type": "range",
+  "material": "MA957",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": [
+    5,
+    10
+   ],
+   "sentence": "heavy ions of ~100 MeV available at ATLAS can create a radiation-affected region of approximately 5~10 µm in depth"
+  },
+  "self_audit": "pass",
+  "value": [
+   5,
+   10
+  ],
+  "channel_b": {
+   "value": [
+    5,
+    10
+   ],
+   "sentence": "heavy ions of ~100 MeV available at ATLAS can create a radiation-affected region of approximately 5~10 µm in depth"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_18",
+  "name": "XMAT accelerator energy for 238U50+",
+  "name_en": "XMAT accelerator energy for 238U50+",
+  "unit": "MeV/u",
+  "category": "experiment",
+  "value_type": "scalar",
+  "material": "uranium",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": 1.2,
+   "sentence": "The XMAT facility will use a CW heavy-ion accelerator capable of providing beams of any stable isotope with adjustable energy up to 1.2 MeV/u for 238U50+"
+  },
+  "self_audit": "pass",
+  "value": 1.2,
+  "channel_b": {
+   "value": 1.2,
+   "sentence": "adjustable energy up to 1.2 MeV/u for 238U50+ and 1.7 MeV for protons"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_19",
+  "name": "specimen temperature range of ATLAS ion irradiation chamber",
+  "name_en": "specimen temperature range of ATLAS ion irradiation chamber",
+  "unit": "°C",
+  "category": "irradiation_condition",
+  "value_type": "text",
+  "material": "nuclear fuel",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": {
+   "value": "room temperature to ~800 °C",
+   "sentence": "irradiate materials using an extensive range of ions with up to 1.5 MeV per nucleon kinetic energy at temperatures ranging from room temperature to ~800°C"
+  },
+  "self_audit": "pass",
+  "value_text": "room temperature to ~800 °C",
+  "channel_b": {
+   "value": "room temperature to ~800 °C",
+   "sentence": "at temperatures ranging from room temperature to ~800°C"
+  }
+ },
+ {
+  "id": "10_1063_1_5127696_B19",
+  "name": "XMAT accelerator energy for protons",
+  "name_en": "XMAT accelerator energy for protons",
+  "unit": "MeV",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 1.7,
+   "sentence": "1.2 MeV/u for 238U50+ and 1.7 MeV for protons"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 1.7
+ },
+ {
+  "id": "10_1063_1_5127696_B20",
+  "name": "CARIBU beam time fraction",
+  "name_en": "CARIBU beam time fraction",
+  "unit": "%",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 3,
+   "sentence": "These beams are pulsed and use only 3% of the beam time."
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 3
+ },
+ {
+  "id": "10_1063_1_5127696_B21",
+  "name": "monochromatic synchrotron beam energy at APS Sector 1-ID",
+  "name_en": "monochromatic synchrotron beam energy at APS Sector 1-ID",
+  "unit": "keV",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1063_1_5127696/auto/10_1063_1_5127696.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 70,
+   "sentence": "using a 70-keV monochromatic synchrotron beam"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 70
+ }
+]

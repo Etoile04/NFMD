@@ -1,0 +1,505 @@
+[
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_01",
+  "name": "displacement threshold energy of U in SRIM calculation",
+  "name_en": "displacement threshold energy of U in SRIM calculation",
+  "unit": "eV",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "U",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 35.6,
+   "sentence": "表 1 SRIM计算中离位阈能的取值：U — 35.6"
+  },
+  "self_audit": "pass",
+  "value": 35.6,
+  "channel_b": {
+   "value": 35.6,
+   "sentence": "表 1：U — 35.6"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_02",
+  "name": "displacement threshold energy of Mo in SRIM calculation",
+  "name_en": "displacement threshold energy of Mo in SRIM calculation",
+  "unit": "eV",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "Mo",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 65,
+   "sentence": "表 1 SRIM计算中离位阈能的取值：Mo — 65"
+  },
+  "self_audit": "pass",
+  "value": 65,
+  "channel_b": {
+   "value": 65,
+   "sentence": "表 1：Mo — 65"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_03",
+  "name": "displacement threshold energy of Nb in SRIM calculation",
+  "name_en": "displacement threshold energy of Nb in SRIM calculation",
+  "unit": "eV",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "Nb",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 60,
+   "sentence": "表 1 SRIM计算中离位阈能的取值：Nb — 60"
+  },
+  "self_audit": "pass",
+  "value": 60,
+  "channel_b": {
+   "value": 60,
+   "sentence": "表 1：Nb — 60"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_04",
+  "name": "displacement threshold energy of Zr in SRIM calculation",
+  "name_en": "displacement threshold energy of Zr in SRIM calculation",
+  "unit": "eV",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "Zr",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 40,
+   "sentence": "表 1 SRIM计算中离位阈能的取值：Zr — 40"
+  },
+  "self_audit": "pass",
+  "value": 40,
+  "channel_b": {
+   "value": 40,
+   "sentence": "表 1：Zr — 40"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_05",
+  "name": "number of representative fission fragments used in simulation",
+  "name_en": "number of representative fission fragments used in simulation",
+  "unit": "count",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "U-Mo metallic fuel",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 47,
+   "sentence": "裂变碎片被合并为 47 个虚拟代表性裂变碎片，每个原子序数对应一个，具有加权质量、平均产生概率和能量。"
+  },
+  "self_audit": "pass",
+  "value": 47,
+  "channel_b": {
+   "value": 47,
+   "sentence": "裂变碎片被合并为 47 个虚拟代表性裂变碎片"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_06",
+  "name": "side length of simulation matrix cube",
+  "name_en": "side length of simulation matrix cube",
+  "unit": "μm",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "U-Mo metallic fuel",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 6,
+   "sentence": "离子的初始位置则在边长为 6 μm 立方体基体中随机选取"
+  },
+  "self_audit": "pass",
+  "value": 6,
+  "channel_b": {
+   "value": 6,
+   "sentence": "离子的初始位置则在边长为 6 μm 立方体基体中随机选取"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_07",
+  "name": "initial energy range of heavy ions I and Xe",
+  "name_en": "initial energy range of heavy ions I and Xe",
+  "unit": "MeV",
+  "category": "simulation_parameter",
+  "value_type": "range",
+  "material": "U-Mo metallic fuel",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": [
+    50,
+    80
+   ],
+   "sentence": "本研究采用了两种典型裂变产物元素 I 和 Xe作为重离子源，分析其初始能量为 50~80 MeV所产生的辐照效应。"
+  },
+  "self_audit": "pass",
+  "value": [
+   50,
+   80
+  ],
+  "channel_b": {
+   "value": [
+    50,
+    80
+   ],
+   "sentence": "初始能量为 50~80 MeV所产生的辐照效应"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_08",
+  "name": "dpa per 10^15 cm^-2 for U10Mo under fission",
+  "name_en": "dpa per 10^15 cm^-2 for U10Mo under fission",
+  "unit": "dpa/10^15 cm^-2",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "U10Mo",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 1.74952,
+   "sentence": "表 2：U10Mo dpa/10^-15 cm^-2 — 1.74952"
+  },
+  "self_audit": "pass",
+  "value": 1.74952,
+  "channel_b": {
+   "value": 1.74952,
+   "sentence": "表 2：U10Mo — 1.74952"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_09",
+  "name": "rpa per fission for U10Mo",
+  "name_en": "rpa per fission for U10Mo",
+  "unit": "rpa",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "U10Mo",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 0.07548,
+   "sentence": "表 2：U10Mo rpa — 0.07548"
+  },
+  "self_audit": "pass",
+  "value": 0.07548,
+  "channel_b": {
+   "value": 0.07548,
+   "sentence": "表 2：U10Mo rpa — 0.07548"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_10",
+  "name": "gas vacancy ratio per fission for U10Mo",
+  "name_en": "gas vacancy ratio per fission for U10Mo",
+  "unit": "ratio",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "U10Mo",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 1.33518,
+   "sentence": "表 2：U10Mo 气体空位比 — 1.33518"
+  },
+  "self_audit": "pass",
+  "value": 1.33518,
+  "channel_b": {
+   "value": 1.33518,
+   "sentence": "表 2：U10Mo 气体空位比 — 1.33518"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_11",
+  "name": "dpa per 10^15 cm^-2 for U5.8Mo5.6Nb5.5Zr under fission",
+  "name_en": "dpa per 10^15 cm^-2 for U5.8Mo5.6Nb5.5Zr under fission",
+  "unit": "dpa/10^15 cm^-2",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "U5.8Mo5.6Nb5.5Zr",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 1.55886,
+   "sentence": "表 2：U5.8Mo5.6Nb5.5Zr dpa/10^-15 cm^-2 — 1.55886"
+  },
+  "self_audit": "pass",
+  "value": 1.55886,
+  "channel_b": {
+   "value": 1.55886,
+   "sentence": "表 2：U5.8Mo5.6Nb5.5Zr — 1.55886"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_12",
+  "name": "rpa per fission for U5.8Mo5.6Nb5.5Zr",
+  "name_en": "rpa per fission for U5.8Mo5.6Nb5.5Zr",
+  "unit": "rpa",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "U5.8Mo5.6Nb5.5Zr",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 0.05495,
+   "sentence": "表 2：U5.8Mo5.6Nb5.5Zr rpa — 0.05495"
+  },
+  "self_audit": "pass",
+  "value": 0.05495,
+  "channel_b": {
+   "value": 0.05495,
+   "sentence": "表 2：U5.8Mo5.6Nb5.5Zr rpa — 0.05495"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_13",
+  "name": "gas vacancy ratio per fission for U5.8Mo5.6Nb5.5Zr",
+  "name_en": "gas vacancy ratio per fission for U5.8Mo5.6Nb5.5Zr",
+  "unit": "ratio",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "U5.8Mo5.6Nb5.5Zr",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 1.39799,
+   "sentence": "表 2：U5.8Mo5.6Nb5.5Zr 气体空位比 — 1.39799"
+  },
+  "self_audit": "pass",
+  "value": 1.39799,
+  "channel_b": {
+   "value": 1.39799,
+   "sentence": "表 2：U5.8Mo5.6Nb5.5Zr 气体空位比 — 1.39799"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_14",
+  "name": "depth of ion dpa peak after incidence",
+  "name_en": "depth of ion dpa peak after incidence",
+  "unit": "μm",
+  "category": "irradiation_damage",
+  "value_type": "range",
+  "material": "U-Mo metallic fuel",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": [
+    3,
+    5
+   ],
+   "sentence": "离子辐照 dpa 在离子入射后 3~5 μm 存在一个明显的峰值，随后迅速衰减"
+  },
+  "self_audit": "pass",
+  "value": [
+   3,
+   5
+  ],
+  "channel_b": {
+   "value": [
+    3,
+    5
+   ],
+   "sentence": "离子辐照 dpa 在离子入射后 3~5 μm 存在一个明显的峰值"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_15",
+  "name": "example fission density for equivalence calculation",
+  "name_en": "example fission density for equivalence calculation",
+  "unit": "cm^-3",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "U-Mo metallic fuel",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 2.1e+20,
+   "sentence": "以复现堆内试验裂变密度 n0 = 2.1×10^20 cm^-3 的辐照损伤效应为例"
+  },
+  "self_audit": "pass",
+  "value": 2.1e+20,
+  "channel_b": {
+   "value": 2.1e+20,
+   "sentence": "以复现堆内试验裂变密度 n0 = 2.1×10^20 cm^-3 的辐照损伤效应为例"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_16",
+  "name": "equivalent ion fluence at 80 MeV for fission density 2.1e20",
+  "name_en": "equivalent ion fluence at 80 MeV for fission density 2.1e20",
+  "unit": "cm^-2",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "U-Mo metallic fuel",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 8.4e+24,
+   "sentence": "表 3：等效离子注量 Φ/cm^-2 — 8.4×10^24（80 MeV）"
+  },
+  "self_audit": "pass",
+  "value": 8.4e+24,
+  "channel_b": {
+   "value": 8.4e+24,
+   "sentence": "表 3：Φ/cm^-2 — 8.4×10^24"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_17",
+  "name": "dpa equivalent depth for U10Mo with 80 MeV Xe",
+  "name_en": "dpa equivalent depth for U10Mo with 80 MeV Xe",
+  "unit": "μm",
+  "category": "simulation_parameter",
+  "value_type": "range",
+  "material": "U10Mo",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": [
+    4.9,
+    5.0
+   ],
+   "sentence": "表 3：U10Mo Xe 80 MeV dpa 等效深度 4.9~5.0 μm"
+  },
+  "self_audit": "pass",
+  "value": [
+   4.9,
+   5.0
+  ],
+  "channel_b": {
+   "value": [
+    4.9,
+    5.0
+   ],
+   "sentence": "表 3：U10Mo Xe dpa 等效深度 4.9~5.0 μm"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_18",
+  "name": "dpa equivalent depth for U10Mo with 80 MeV I",
+  "name_en": "dpa equivalent depth for U10Mo with 80 MeV I",
+  "unit": "μm",
+  "category": "simulation_parameter",
+  "value_type": "range",
+  "material": "U10Mo",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": [
+    5.4,
+    5.5
+   ],
+   "sentence": "表 3：U10Mo I 80 MeV dpa 等效深度 5.4~5.5 μm"
+  },
+  "self_audit": "pass",
+  "value": [
+   5.4,
+   5.5
+  ],
+  "channel_b": {
+   "value": [
+    5.4,
+    5.5
+   ],
+   "sentence": "表 3：U10Mo I dpa 等效深度 5.4~5.5 μm"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_19",
+  "name": "number of particles per fission simulation",
+  "name_en": "number of particles per fission simulation",
+  "unit": "count",
+  "category": "simulation_parameter",
+  "value_type": "scalar",
+  "material": "U-Mo metallic fuel",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": 10000,
+   "sentence": "虽然每次模拟设置了10000 个粒子，但 dpa 分布仍然存在一定的统计涨落"
+  },
+  "self_audit": "pass",
+  "value": 10000,
+  "channel_b": {
+   "value": 10000,
+   "sentence": "虽然每次模拟设置了10000 个粒子"
+  }
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_20",
+  "name": "number of fission fragment isotopes of 235U",
+  "name_en": "number of fission fragment isotopes of 235U",
+  "unit": "count",
+  "category": "other",
+  "value_type": "text",
+  "material": "235U",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": {
+   "value": "1200多种",
+   "sentence": "235U 的裂变碎片包含 1200 多种不同的同位素"
+  },
+  "self_audit": "pass",
+  "value_text": "1200多种",
+  "channel_b": null,
+  "notes": "[single-channel A]"
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_B20",
+  "name": "dpa equivalent depth for U5.8Mo5.6Nb5.5Zr with 80 MeV Xe",
+  "name_en": "dpa equivalent depth for U5.8Mo5.6Nb5.5Zr with 80 MeV Xe",
+  "unit": "μm",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": [
+    5.2,
+    5.3
+   ],
+   "sentence": "表 3：U5.8Mo5.6Nb5.5Zr Xe dpa 等效深度 5.2~5.3 μm"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": [
+   5.2,
+   5.3
+  ]
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_B21",
+  "name": "dpa equivalent depth for U5.8Mo5.6Nb5.5Zr with 80 MeV I",
+  "name_en": "dpa equivalent depth for U5.8Mo5.6Nb5.5Zr with 80 MeV I",
+  "unit": "μm",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": [
+    5.7,
+    5.8
+   ],
+   "sentence": "表 3：U5.8Mo5.6Nb5.5Zr I dpa 等效深度 5.7~5.8 μm"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": [
+   5.7,
+   5.8
+  ]
+ },
+ {
+  "id": "10_13832_j_jnpe_2025_S2_0122_B22",
+  "name": "gas vacancy ratio equivalent depth for U10Mo with 80 MeV Xe",
+  "name_en": "gas vacancy ratio equivalent depth for U10Mo with 80 MeV Xe",
+  "unit": "μm",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_13832_j_jnpe_2025_S2_0122/auto/10_13832_j_jnpe_2025_S2_0122.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": [
+    3.8,
+    3.9
+   ],
+   "sentence": "表 3：U10Mo Xe 气体空位比等效深度 3.8~3.9 μm"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": [
+   3.8,
+   3.9
+  ]
+ }
+]

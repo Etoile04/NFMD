@@ -1,0 +1,454 @@
+[
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_01",
+  "name": "blister temperature of uranium aluminide fuel",
+  "name_en": "blister temperature of uranium aluminide fuel",
+  "unit": "°C",
+  "category": "thermal",
+  "value_type": "scalar",
+  "material": "uranium aluminide fuel",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 447,
+   "sentence": "The blister temperature is around 447 °C for currently used uranium aluminide fuel (Beeston et al., 1980)."
+  },
+  "self_audit": "pass",
+  "value": 447,
+  "channel_b": {
+   "value": 447,
+   "sentence": "The blister temperature is around 447 °C for currently used uranium aluminide fuel (Beeston et al., 1980)."
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_02",
+  "name": "temperature drop across oxide layer at spallation",
+  "name_en": "temperature drop across oxide layer at spallation",
+  "unit": "°C",
+  "category": "corrosion",
+  "value_type": "scalar",
+  "material": "aluminum cladding",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 119,
+   "sentence": "When the temperature drop across the oxide layer reaches 119 °C, corrosion product spalls from the surface of the cladding."
+  },
+  "self_audit": "pass",
+  "value": 119,
+  "channel_b": {
+   "value": 119,
+   "sentence": "When the temperature drop across the oxide layer reaches 119 °C, corrosion product spalls from the surface of the cladding."
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_03",
+  "name": "maximum plate heat flux during normal operation",
+  "name_en": "maximum plate heat flux during normal operation",
+  "unit": "W/cm2",
+  "category": "fuel_performance",
+  "value_type": "scalar",
+  "material": "U-Mo monolithic fuel",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 550,
+   "sentence": "plate heat flux is determined from the plate power and its maximum values during normal operation reach 550 W/cm2"
+  },
+  "self_audit": "pass",
+  "value": 550,
+  "channel_b": {
+   "value": 550,
+   "sentence": "plate heat flux ... its maximum values during normal operation reach 550 W/cm2"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_04",
+  "name": "oxide-water surface temperature during normal operation",
+  "name_en": "oxide-water surface temperature during normal operation",
+  "unit": "°C",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "aluminum cladding",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 180,
+   "sentence": "oxide-water surface temperature, is determined by conducting thermohydraulic analysis and is usually below 180 °C during normal operation."
+  },
+  "self_audit": "pass",
+  "value": 180,
+  "channel_b": {
+   "value": 180,
+   "sentence": "is usually below 180 °C during normal operation."
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_05",
+  "name": "cladding thermal conductivity range during normal operation",
+  "name_en": "cladding thermal conductivity range during normal operation",
+  "unit": "W/cm-C",
+  "category": "thermal",
+  "value_type": "range",
+  "material": "aluminum cladding",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": [
+    1.5,
+    1.75
+   ],
+   "sentence": "is a function of temperature and is in the 1.50–1.75 W/cm-C range during normal operation"
+  },
+  "self_audit": "pass",
+  "value": [
+   1.5,
+   1.75
+  ],
+  "channel_b": {
+   "value": [
+    1.5,
+    1.75
+   ],
+   "sentence": "is in the 1.50–1.75 W/cm-C range during normal operation"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_06",
+  "name": "oxide thermal conductivity",
+  "name_en": "oxide thermal conductivity",
+  "unit": "W/cm-C",
+  "category": "thermal",
+  "value_type": "scalar",
+  "material": "boehmite",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 0.0225,
+   "sentence": "k_ox oxide thermal conductivity, W/cm-C, and is 0.0225 W/cm-C (Griess et al., 1964)"
+  },
+  "self_audit": "pass",
+  "value": 0.0225,
+  "channel_b": {
+   "value": 0.0225,
+   "sentence": "k_ox oxide thermal conductivity ... is 0.0225 W/cm-C (Griess et al., 1964)"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_07",
+  "name": "maximum reaction zone thickness",
+  "name_en": "maximum reaction zone thickness",
+  "unit": "μm",
+  "category": "corrosion",
+  "value_type": "scalar",
+  "material": "aluminum cladding",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 200,
+   "sentence": "The thickness of the reaction zone could reach 200 µm and cause plate blistering and cladding breach due to impairment of heat transfer trough the reaction zone"
+  },
+  "self_audit": "pass",
+  "value": 200,
+  "channel_b": {
+   "value": 200,
+   "sentence": "The thickness of the reaction zone could reach 200 µm"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_08",
+  "name": "as fabricated fuel plate thickness",
+  "name_en": "as fabricated fuel plate thickness",
+  "unit": "cm",
+  "category": "fuel_design",
+  "value_type": "scalar",
+  "material": "U-Mo monolithic fuel",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 0.133,
+   "sentence": "Table 1 Fuel design parameters. As fabricated fuel plate thickness, cm — 0.133"
+  },
+  "self_audit": "pass",
+  "value": 0.133,
+  "channel_b": {
+   "value": 0.133,
+   "sentence": "Table 1: As fabricated fuel plate thickness, cm — 0.133"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_09",
+  "name": "as fabricated foil thickness",
+  "name_en": "as fabricated foil thickness",
+  "unit": "cm",
+  "category": "fuel_design",
+  "value_type": "scalar",
+  "material": "U-Mo monolithic fuel",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 0.033,
+   "sentence": "Table 1 Fuel design parameters. As fabricated foil thickness, cm — 0.033"
+  },
+  "self_audit": "pass",
+  "value": 0.033,
+  "channel_b": {
+   "value": 0.033,
+   "sentence": "Table 1: As fabricated foil thickness, cm — 0.033"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_10",
+  "name": "swelling factor",
+  "name_en": "swelling factor",
+  "unit": "dimensionless",
+  "category": "swelling",
+  "value_type": "scalar",
+  "material": "U-Mo monolithic fuel",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 1.2,
+   "sentence": "Table 1 Fuel design parameters. Swelling factor — 1.2"
+  },
+  "self_audit": "pass",
+  "value": 1.2,
+  "channel_b": {
+   "value": 1.2,
+   "sentence": "Table 1: Swelling factor — 1.2"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_11",
+  "name": "foil half thickness with swelling",
+  "name_en": "foil half thickness with swelling",
+  "unit": "cm",
+  "category": "fuel_design",
+  "value_type": "scalar",
+  "material": "U-Mo monolithic fuel",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 0.0198,
+   "sentence": "Table 1 Fuel design parameters. Foil half thickness with swelling, cm — 0.0198"
+  },
+  "self_audit": "pass",
+  "value": 0.0198,
+  "channel_b": {
+   "value": 0.0198,
+   "sentence": "Table 1: Foil half thickness with swelling, cm — 0.0198"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_12",
+  "name": "cladding thickness",
+  "name_en": "cladding thickness",
+  "unit": "cm",
+  "category": "fuel_design",
+  "value_type": "scalar",
+  "material": "aluminum cladding",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 0.05,
+   "sentence": "Table 1 Fuel design parameters. Cladding thickness, cm — 0.05"
+  },
+  "self_audit": "pass",
+  "value": 0.05,
+  "channel_b": {
+   "value": 0.05,
+   "sentence": "Table 1: Cladding thickness, cm — 0.05"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_13",
+  "name": "cladding thermal conductivity design value",
+  "name_en": "cladding thermal conductivity design value",
+  "unit": "W/cm-C",
+  "category": "thermal",
+  "value_type": "scalar",
+  "material": "aluminum cladding",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 1.75,
+   "sentence": "Table 1: K_cladding, W/cm-C — 1.75"
+  },
+  "self_audit": "pass",
+  "value": 1.75,
+  "channel_b": {
+   "value": 1.75,
+   "sentence": "Table 1: K_cladding, W/cm-C — 1.75"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_14",
+  "name": "oxide-water interface temperature design value",
+  "name_en": "oxide-water interface temperature design value",
+  "unit": "°C",
+  "category": "irradiation_condition",
+  "value_type": "scalar",
+  "material": "aluminum cladding",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 180,
+   "sentence": "Table 1: T_oxide/water C — 180"
+  },
+  "self_audit": "pass",
+  "value": 180,
+  "channel_b": {
+   "value": 180,
+   "sentence": "Table 1: T_oxide/water C — 180"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_15",
+  "name": "fuel thermal conductivity unirradiated design value",
+  "name_en": "fuel thermal conductivity unirradiated design value",
+  "unit": "W/cm-C",
+  "category": "thermal",
+  "value_type": "scalar",
+  "material": "U-Mo",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 0.15,
+   "sentence": "Table 1: K_fuel, W/cm-C — 0.15"
+  },
+  "self_audit": "pass",
+  "value": 0.15,
+  "channel_b": {
+   "value": 0.15,
+   "sentence": "Table 1: K_fuel, W/cm-C — 0.15"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_16",
+  "name": "blister temperature design assumption",
+  "name_en": "blister temperature design assumption",
+  "unit": "°C",
+  "category": "thermal",
+  "value_type": "scalar",
+  "material": "U-Mo monolithic fuel",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 400,
+   "sentence": "Table 1: Blister temperature, C — 400"
+  },
+  "self_audit": "pass",
+  "value": 400,
+  "channel_b": {
+   "value": 400,
+   "sentence": "Table 1: Blister temperature, C — 400"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_17",
+  "name": "design heat flux range",
+  "name_en": "design heat flux range",
+  "unit": "W/cm2",
+  "category": "fuel_performance",
+  "value_type": "range",
+  "material": "U-Mo monolithic fuel",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": [
+    200,
+    700
+   ],
+   "sentence": "Assume that reactor fuel is designed to operate within the heat flux range from 200 to 700 W/cm2"
+  },
+  "self_audit": "pass",
+  "value": [
+   200,
+   700
+  ],
+  "channel_b": {
+   "value": [
+    200,
+    700
+   ],
+   "sentence": "reactor fuel is designed to operate within the heat flux range from 200 to 700 W/cm2"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_18",
+  "name": "degraded fuel thermal conductivity at high burnup",
+  "name_en": "degraded fuel thermal conductivity at high burnup",
+  "unit": "W/cm-K",
+  "category": "thermal",
+  "value_type": "scalar",
+  "material": "U-Mo",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 0.1,
+   "sentence": "assume that due to burnup-induced fuel degradation, the fuel thermal conductivity decreased to 0.1 W/cm-K (Burkes et al., 2015)"
+  },
+  "self_audit": "pass",
+  "value": 0.1,
+  "channel_b": {
+   "value": 0.1,
+   "sentence": "the fuel thermal conductivity decreased to 0.1 W/cm-K (Burkes et al., 2015)"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_19",
+  "name": "heat flux above which blistering becomes dominant with degraded fuel",
+  "name_en": "heat flux above which blistering becomes dominant with degraded fuel",
+  "unit": "W/cm2",
+  "category": "fuel_performance",
+  "value_type": "scalar",
+  "material": "U-Mo monolithic fuel",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 325,
+   "sentence": "The result plotted in Fig. 2 shows that if the heat flux exceeds 325 W/cm2, plate blistering becomes a dominant failure mechanism."
+  },
+  "self_audit": "pass",
+  "value": 325,
+  "channel_b": {
+   "value": 325,
+   "sentence": "if the heat flux exceeds 325 W/cm2, plate blistering becomes a dominant failure mechanism."
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_20",
+  "name": "blister temperature of degraded fuel",
+  "name_en": "blister temperature of degraded fuel",
+  "unit": "°C",
+  "category": "thermal",
+  "value_type": "scalar",
+  "material": "U-Mo monolithic fuel",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": {
+   "value": 350,
+   "sentence": "swelling increased to 50%, and blister temperature decreased to 350 °C"
+  },
+  "self_audit": "pass",
+  "value": 350,
+  "channel_b": {
+   "value": 350,
+   "sentence": "blister temperature decreased to 350 °C"
+  }
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_B20",
+  "name": "swelling of degraded fuel case",
+  "name_en": "swelling of degraded fuel case",
+  "unit": "%",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 50,
+   "sentence": "swelling increased to 50%"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 50
+ },
+ {
+  "id": "10_1016_j_nucengdes_2018_01_045_B21",
+  "name": "plate surface temperature in Figure 3 case",
+  "name_en": "plate surface temperature in Figure 3 case",
+  "unit": "°C",
+  "category": "other",
+  "value_type": "scalar",
+  "source_file": "raw/mineru/10_1016_j_nucengdes_2018_01_045/auto/10_1016_j_nucengdes_2018_01_045.md",
+  "channel_a": null,
+  "channel_b": {
+   "value": 120,
+   "sentence": "the case assuming plate surface temperature of 120 °C"
+  },
+  "self_audit": "pass",
+  "notes": "[single-channel B]",
+  "value": 120
+ }
+]
