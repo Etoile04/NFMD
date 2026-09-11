@@ -1,0 +1,20 @@
+{
+  "source_dir": "data/fulltext-pilot/parameters",
+  "source_files": 5,
+  "records_extracted": 124,
+  "records_valid": 124,
+  "records_error": 0,
+  "fatal_count": 0,
+  "success_rate": 1.0,
+  "gate_passed": true,
+  "confidence_distribution": {
+    "high": 103,
+    "medium": 21
+  },
+  "formula_engine": "pymatgen",
+  "material_resolved": 32,
+  "material_formula_matched": 14,
+  "top_issue_codes": {
+    "warn:MISSING_MATERIAL": 19
+  }
+}
