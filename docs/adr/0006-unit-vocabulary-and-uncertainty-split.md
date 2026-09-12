@@ -1,6 +1,6 @@
 # ADR-0006: 单位受控词表激活 + uncertainty 分列（schema v3 草案）
 
-- 状态：**Draft（待 CPO 评审）**
+- 状态：**Accepted（CPO 裁决 2026-09-12，见文末裁决记录）**
 - 日期：2026-09-11
 - 关联：[ADR-0002](0002-dependencies-accepted-not-created.md)、[ADR-0005](0005-formula-normalizer-injection.md)、[docs/database-safety-rules.md](../database-safety-rules.md)、[gap 走查](../research/parameters-schema-gap-walkthrough.md)（G1/G2）、NFMA-9 试点与 NFMA-10 复测证据
 
@@ -52,3 +52,12 @@ ALTER TABLE parameters ADD CONSTRAINT chk_params_uncertainty CHECK (
 1. 是否批准 D1 回填（执行窗口 + 备份位置确认）；
 2. 是否批准 D2 的两列形态（vs. 单列 `numeric` + 隐式绝对语义）；
 3. 回填映射是否要求人工抽查清单（建议：回填前导出 distinct 旧值 → 新值映射表供抽查）。
+
+## CPO 裁决记录（2026-09-12）
+
+ADR-0006 整体批准（D1/D2/D3 全部通过），附加执行条件：
+
+1. **D1 回填：批准**。附加条件：(a) 执行前导出 distinct 旧 unit 串 → 新规范形的完整映射表（人工抽查后再执行）；(b) `pg_dump parameters` 全表备份落 `var/backups/parameters-pre-v3-<date>.sql.gz`；(c) 按 🟡 流程 COUNT → 预览 → 备份 → 事务包裹 → 行数报告。执行窗口：下次 ETL load 前，随 schema v3 迁移一并完成。
+2. **D2 两列形态：批准**。`uncertainty_value` + `uncertainty_kind` 显式优于单列隐式绝对语义——`relative_pct` 已在试点语料中出现，单列方案会立刻再次欠拟合。range 迁移（`|b| ≤ 5%|a|` 判定）并入 D1 同一事务。
+3. **映射抽查：要求**。distinct 映射表先于回填落地，抽查通过是回填执行的前置门（gate），不是事后审计。
+4. **D3 暂缓项：确认**。G3/G4/G5 不入本批次；G3 条件组列 ADR-0007 候选，G4/G5 随下一批捎带。
