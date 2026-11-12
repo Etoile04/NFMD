@@ -30,3 +30,13 @@ data/imports/
 # Local tool state
 .mimosa/
 .benchmarks/
+
+# ── CPO / agent 临时件（NFMA-773 仓务债）────────────────────────────────
+# 仓根的 agent 私有临时件：交付腿草稿、看板读数、票面草稿、agent 私有草稿。
+# 真实风险不是占地方，而是一次 `git add -A` 把它们提交进仓（内含内部读数与票面草稿）。
+# 这里只做「封堵」：规则全部锚定仓库根，避免误伤 docs/ 等目录下的同名文件。
+/.nfma*
+/nfma*
+/.cpo-recovered/
+/.zcode/
+# ⛔ knowledge-layer/ 是独立小程序（自带 .gitignore），由它自己管，不在本仓封堵。
